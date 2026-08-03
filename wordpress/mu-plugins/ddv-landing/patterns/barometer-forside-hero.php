@@ -6,11 +6,11 @@ return array(
 	'content'    => <<<'HTML'
 <!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide ddv-section has-ddv-cream-background-color has-background">
-<!-- wp:columns {"verticalAlignment":"top"} -->
-<div class="wp-block-columns are-vertically-aligned-top">
+<!-- wp:columns {"verticalAlignment":"center"} -->
+<div class="wp-block-columns are-vertically-aligned-center">
 
-<!-- wp:column {"verticalAlignment":"top","width":"66%"} -->
-<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:66%">
+<!-- wp:column {"verticalAlignment":"center","width":"42%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:42%">
 <!-- wp:paragraph {"className":"ddv-eyebrow"} -->
 <p class="ddv-eyebrow">Det danske Vedligeholdsbarometer</p>
 <!-- /wp:paragraph -->
@@ -44,8 +44,13 @@ return array(
 <!-- /wp:column -->
 </div>
 <!-- /wp:columns -->
+</div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center","width":"24%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:24%">
 <!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
-<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/900x520/EDE6D6/2E453F?text=H%C3%A5nd+med+telefon+%2B+graf-illustration" alt="Illustration af hånd der holder telefon med graf"/></figure>
+<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/460x520/EDE6D6/2E453F?text=H%C3%A5nd+med+telefon+%2B+graf-illustration" alt="Illustration af hånd der holder telefon med graf"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->
