@@ -53,8 +53,13 @@ mu-plugin'et er aktivt, dukker de op i pattern-inserteren under kategorien
    arrays. Overskriv ikke jeres eksisterende farver/fonte — tilføj ved siden af.
    - Erstat hex-koderne med jeres officielle brandfarver (dem her er aflæst
      omtrentligt fra screenshots og skal kalibreres mod jeres designsystem).
-   - Har I egne webfonte, peg `fontFamily` i snippet'et på dem i stedet for
-     fallback-stakken.
+   - **Fonte:** Hvis jeres tema allerede definerer rigtige brandfonte under
+     `settings.typography.fontFamilies` (fx en `heading`- og `body`-slug, der
+     bruges i `styles.elements.heading` / `styles.typography`), så spring
+     `fontFamilies`-delen af snippet'et helt over. Mønstrene sætter ingen
+     eksplicit skrifttype på overskrifter/tekst, så de arver automatisk jeres
+     temas rigtige fonte. Kun hvis temaet IKKE har egne fonte defineret, skal
+     I tilføje `ddv-heading`/`ddv-body` fra snippet'et.
 3. Gem/genindlæs Site Editor. Gå til **Sider → Opret ny side** (eller åbn en
    eksisterende landingsside) og åbn block-editoren.
 4. Klik **+ (Indsæt blok/mønster)** → fanen **Mønstre** → kategori
