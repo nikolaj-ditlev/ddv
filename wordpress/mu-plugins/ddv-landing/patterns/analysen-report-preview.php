@@ -51,8 +51,8 @@ return array(
 
 <!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
-<!-- wp:image {"sizeSlug":"large","style":{"border":{"radius":"16px"}}} -->
-<figure class="wp-block-image size-large"><img src="https://placehold.co/560x480/FFFFFF/2E453F?text=Rapport%3A+Samlet+resultat+62%2F100" alt="Mockup af DDV rapport med modenhedspyramide" style="border-radius:16px"/></figure>
+<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
+<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/560x480/FFFFFF/2E453F?text=Rapport%3A+Samlet+resultat+62%2F100" alt="Mockup af DDV rapport med modenhedspyramide"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->

@@ -25,8 +25,8 @@ return array(
 
 <!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%">
-<!-- wp:image {"sizeSlug":"large","style":{"border":{"radius":"16px"}}} -->
-<figure class="wp-block-image size-large"><img src="https://placehold.co/560x420/2E453F/F3EEE2?text=Data+%26+grafer" alt="Illustration af tablet med grafer og data" style="border-radius:16px"/></figure>
+<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
+<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/560x420/2E453F/F3EEE2?text=Data+%26+grafer" alt="Illustration af tablet med grafer og data"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->

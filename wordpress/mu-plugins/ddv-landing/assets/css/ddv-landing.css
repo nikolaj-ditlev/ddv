@@ -149,6 +149,11 @@
 	.ddv-connector { transform: rotate(90deg); margin: 0 auto; }
 }
 
+/* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content") ---------- */
+.ddv-rounded-image img {
+	border-radius: var(--ddv-radius-card);
+}
+
 /* ---------- Hero-hjælpeklasser ---------- */
 .ddv-hero-visual { position: relative; }
 .ddv-eyebrow-row { margin-bottom: 1.5rem; }

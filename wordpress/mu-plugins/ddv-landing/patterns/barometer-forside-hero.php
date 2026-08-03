@@ -44,8 +44,8 @@ return array(
 <!-- /wp:column -->
 </div>
 <!-- /wp:columns -->
-<!-- wp:image {"sizeSlug":"large","style":{"border":{"radius":"16px"}}} -->
-<figure class="wp-block-image size-large"><img src="https://placehold.co/900x520/EDE6D6/2E453F?text=H%C3%A5nd+med+telefon+%2B+graf-illustration" alt="Illustration af hånd der holder telefon med graf" style="border-radius:16px"/></figure>
+<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
+<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/900x520/EDE6D6/2E453F?text=H%C3%A5nd+med+telefon+%2B+graf-illustration" alt="Illustration af hånd der holder telefon med graf"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->

@@ -32,8 +32,8 @@ return array(
 
 <!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%">
-<!-- wp:image {"sizeSlug":"large","style":{"border":{"radius":"16px"}}} -->
-<figure class="wp-block-image size-large"><img src="https://placehold.co/560x480/D8CCB3/2E453F?text=Foto%3A+Jonas+%26+Niels-Jacob" alt="Foto af underviserne Jonas og Niels-Jacob" style="border-radius:16px"/></figure>
+<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
+<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/560x480/D8CCB3/2E453F?text=Foto%3A+Jonas+%26+Niels-Jacob" alt="Foto af underviserne Jonas og Niels-Jacob"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->
