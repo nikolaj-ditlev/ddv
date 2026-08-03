@@ -4,8 +4,8 @@ return array(
 	'title'      => __( 'Barometer forside – Split-hero med 2 sidekort', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"className":"ddv-section","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
-<div class="wp-block-group ddv-section has-ddv-cream-background-color has-background">
+<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide ddv-section has-ddv-cream-background-color has-background">
 <!-- wp:columns {"verticalAlignment":"top"} -->
 <div class="wp-block-columns are-vertically-aligned-top">
 

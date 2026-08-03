@@ -4,8 +4,8 @@ return array(
 	'title'      => __( 'Barometer – Sammenligning (Barometer vs. Analysen)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"className":"ddv-section","layout":{"type":"constrained"}} -->
-<div class="wp-block-group ddv-section">
+<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide ddv-section">
 
 <!-- wp:paragraph {"align":"center","className":"ddv-card__eyebrow"} -->
 <p class="has-text-align-center ddv-card__eyebrow">SÅDAN FUNGERER DET</p>

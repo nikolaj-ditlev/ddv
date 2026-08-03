@@ -4,8 +4,8 @@ return array(
 	'title'      => __( 'CTA-bånd (rød, genbruges på alle 3 sider)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"className":"ddv-section","layout":{"type":"constrained"}} -->
-<div class="wp-block-group ddv-section">
+<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide ddv-section">
 <!-- wp:group {"className":"ddv-cta-banner ddv-card--red","style":{"spacing":{"padding":{"top":"4rem","bottom":"4rem","left":"2rem","right":"2rem"}}},"layout":{"type":"constrained","contentSize":"640px"}} -->
 <div class="wp-block-group ddv-cta-banner ddv-card--red" style="padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
 <!-- wp:paragraph {"align":"center","className":"ddv-card__eyebrow"} -->

@@ -4,8 +4,8 @@ return array(
 	'title'      => __( 'Barometer – Statistik-grid (5 kort)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"className":"ddv-section","layout":{"type":"constrained"}} -->
-<div class="wp-block-group ddv-section">
+<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide ddv-section">
 
 <!-- wp:columns -->
 <div class="wp-block-columns">
