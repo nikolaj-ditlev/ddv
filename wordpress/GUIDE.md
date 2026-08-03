@@ -15,16 +15,18 @@ dem skal du IKKE genbygge, de er ens på alle 3 screenshots.
 
 ```
 wordpress/
-├── mu-plugins/ddv-landing/
-│   ├── ddv-landing.php              ← loader: enqueuer CSS + registrerer patterns
-│   ├── theme-json-snippet.json      ← farver/fonte du merger ind i temaets theme.json
-│   ├── assets/css/ddv-landing.css   ← styling af custom komponenter (kort, FAQ, badges...)
-│   └── patterns/
-│       ├── analysen-*.php           ← sektioner til side 1 (DDV Analysen)
-│       ├── barometer-*.php          ← sektioner til side 2 (Vedligeholdsbarometer)
-│       ├── barometer-forside-*.php  ← sektion til side 3 (Barometer forside)
-│       ├── faq.php, cta-banner.php  ← delte sektioner (bruges på flere sider)
-│       └── page-*.php               ← 3 "fuld side"-patterns, der samler sektionerne
+├── mu-plugins/
+│   ├── ddv-landing-loader.php       ← SKAL ligge fladt i mu-plugins/ (se punkt 2 nedenfor)
+│   └── ddv-landing/
+│       ├── ddv-landing.php              ← selve loaderen: enqueuer CSS + registrerer patterns
+│       ├── theme-json-snippet.json      ← farver/fonte du merger ind i temaets theme.json
+│       ├── assets/css/ddv-landing.css   ← styling af custom komponenter (kort, FAQ, badges...)
+│       └── patterns/
+│           ├── analysen-*.php           ← sektioner til side 1 (DDV Analysen)
+│           ├── barometer-*.php          ← sektioner til side 2 (Vedligeholdsbarometer)
+│           ├── barometer-forside-*.php  ← sektion til side 3 (Barometer forside)
+│           ├── faq.php, cta-banner.php  ← delte sektioner (bruges på flere sider)
+│           └── page-*.php               ← 3 "fuld side"-patterns, der samler sektionerne
 └── GUIDE.md
 ```
 
@@ -32,11 +34,19 @@ Hver `.php`-fil i `patterns/` returnerer rigtig Gutenberg-blok-markup. Når
 mu-plugin'et er aktivt, dukker de op i pattern-inserteren under kategorien
 **"DDV Landingssider"** — klar til at klikke ind på en side.
 
+> **Vigtigt:** WordPress' mu-plugins-mekanisme scanner **kun** `.php`-filer der
+> ligger direkte i `wp-content/mu-plugins/` — den kigger ikke i undermapper.
+> Derfor findes `ddv-landing-loader.php`, som skal ligge ved siden af
+> `ddv-landing/`-mappen (ikke inde i den) og blot `require`'er den rigtige fil.
+
 ## 2. Installation (5 min)
 
-1. Kopiér `wordpress/mu-plugins/ddv-landing/` til jeres WP-installations
-   `wp-content/mu-plugins/`-mappe (mu = "must use", loader automatisk, ingen
-   aktivering nødvendig). Har I ikke en `mu-plugins`-mappe, opret den blot.
+1. Upload både mappen `ddv-landing/` **og** filen `ddv-landing-loader.php` til
+   jeres WP-installations `wp-content/mu-plugins/`-mappe, så de ligger side
+   om side (`wp-content/mu-plugins/ddv-landing-loader.php` og
+   `wp-content/mu-plugins/ddv-landing/...`). Har I ikke en `mu-plugins`-mappe,
+   opret den blot (mu = "must use", loader automatisk, ingen aktivering
+   nødvendig — men filen med koden skal altså ligge fladt, se boksen ovenfor).
 2. Åbn jeres bloktemas `theme.json` (Appearance → Editor → Tema, eller i
    temaets filer) og **merge** indholdet af `theme-json-snippet.json` ind i
    de eksisterende `settings.color.palette` og `settings.typography.fontFamilies`
