@@ -1,0 +1,211 @@
+/*
+ * DDV Landing – komponent-CSS
+ * Forudsætter theme.json-paletten fra theme-json-snippet.json er merged ind,
+ * så de her CSS custom properties findes automatisk:
+ *   --wp--preset--color--ddv-cream / ddv-dark-teal / ddv-navy / ddv-red /
+ *   --wp--preset--color--ddv-yellow / ddv-sage / ddv-blue / ddv-tan /
+ *   --wp--preset--color--ddv-text / ddv-muted / ddv-white
+ * Filen styler KUN custom klasser (.ddv-*) – core-blokke (cover, columns,
+ * buttons osv.) styles i stedet via theme.json + Style Variations, se GUIDE.md.
+ */
+
+/* ---------- Tokens (fallback hvis theme.json ikke er merged endnu) ---------- */
+:root {
+	--ddv-radius-card: var(--wp--custom--ddv--radius--card, 16px);
+	--ddv-radius-pill: var(--wp--custom--ddv--radius--pill, 999px);
+	--ddv-section-y: var(--wp--custom--ddv--spacing--section-y, clamp(3rem, 6vw, 6rem));
+}
+
+/* ---------- Eyebrow / pill label ---------- */
+.ddv-eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	padding: 0.35em 1em;
+	border-radius: var(--ddv-radius-pill);
+	border: 1px solid currentColor;
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	opacity: 0.85;
+}
+
+/* ---------- Cards (trin, statistik, kurser) ---------- */
+.ddv-card {
+	border-radius: var(--ddv-radius-card);
+	padding: 2rem;
+	height: 100%;
+}
+.ddv-card--yellow { background: var(--wp--preset--color--ddv-yellow); }
+.ddv-card--sage   { background: var(--wp--preset--color--ddv-sage); }
+.ddv-card--blue   { background: var(--wp--preset--color--ddv-blue); }
+.ddv-card--tan    { background: var(--wp--preset--color--ddv-tan); }
+.ddv-card--cream  { background: var(--wp--preset--color--ddv-cream); border: 1px solid rgba(36,49,44,0.12); }
+.ddv-card--red    { background: var(--wp--preset--color--ddv-red); color: var(--wp--preset--color--ddv-white); }
+.ddv-card--dark   { background: var(--wp--preset--color--ddv-dark-teal); color: var(--wp--preset--color--ddv-white); }
+
+.ddv-card__badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 999px;
+	background: var(--wp--preset--color--ddv-dark-teal);
+	color: var(--wp--preset--color--ddv-white);
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+.ddv-card--red .ddv-card__badge,
+.ddv-card--dark .ddv-card__badge {
+	background: var(--wp--preset--color--ddv-white);
+	color: var(--wp--preset--color--ddv-dark-teal);
+}
+
+.ddv-card__eyebrow {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	opacity: 0.7;
+	margin-bottom: 0.5rem;
+}
+
+.ddv-card__stat {
+	font-size: clamp(2rem, 4vw, 2.75rem);
+	line-height: 1;
+	font-weight: 700;
+	margin: 0 0 0.5rem;
+}
+
+/* ---------- Progress bar (trin-kort) ---------- */
+.ddv-progress {
+	position: relative;
+	height: 6px;
+	border-radius: 999px;
+	background: rgba(36, 49, 44, 0.15);
+	margin-top: 1.5rem;
+	overflow: hidden;
+}
+.ddv-progress__fill {
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: var(--ddv-progress-value, 12%);
+	border-radius: inherit;
+	background: var(--wp--preset--color--ddv-dark-teal);
+}
+
+/* ---------- Floating score badge (hero) ---------- */
+.ddv-floating-badge {
+	position: absolute;
+	top: -1.5rem;
+	right: -1.5rem;
+	width: 8.5rem;
+	height: 8.5rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--ddv-yellow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-weight: 700;
+	font-size: 0.85rem;
+	line-height: 1.2;
+	padding: 1rem;
+	box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+@media (max-width: 782px) {
+	.ddv-floating-badge { position: static; margin-top: 1rem; width: 6rem; height: 6rem; font-size: 0.7rem; }
+}
+
+/* ---------- Link met pil ("Læs historien →") ---------- */
+.ddv-arrow-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	font-weight: 600;
+	text-decoration: none;
+}
+.ddv-arrow-link::after {
+	content: "\2192";
+	transition: transform 0.15s ease;
+}
+.ddv-arrow-link:hover::after { transform: translateX(4px); }
+
+/* ---------- Connector-pil mellem to kort (Barometer vs Analysen) ---------- */
+.ddv-connector {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--ddv-dark-teal);
+	color: var(--wp--preset--color--ddv-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+	flex: 0 0 auto;
+}
+@media (max-width: 782px) {
+	.ddv-connector { transform: rotate(90deg); margin: 0 auto; }
+}
+
+/* ---------- Hero-hjælpeklasser ---------- */
+.ddv-hero-visual { position: relative; }
+.ddv-eyebrow-row { margin-bottom: 1.5rem; }
+.ddv-hero-trust { opacity: 0.75; margin-top: 1rem; }
+.ddv-testimonial-audio {
+	margin-top: 1.5rem;
+	padding: 0.75rem 1.25rem;
+	border-radius: var(--ddv-radius-pill);
+	background: rgba(255,255,255,0.5);
+	display: inline-flex;
+}
+
+/* ---------- Nummereret liste (Datagrundlaget) ---------- */
+.ddv-numbered-item { margin-bottom: 1.5rem; align-items: flex-start; }
+.ddv-numbered-item__index {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--ddv-dark-teal);
+	color: var(--wp--preset--color--ddv-white);
+	font-weight: 700;
+	font-size: 0.85rem;
+	flex: 0 0 auto;
+}
+
+/* ---------- FAQ (core/details som accordion) ---------- */
+.ddv-faq .wp-block-details {
+	border-top: 1px solid rgba(36,49,44,0.12);
+	padding: 1rem 0;
+}
+.ddv-faq .wp-block-details:last-child { border-bottom: 1px solid rgba(36,49,44,0.12); }
+.ddv-faq .wp-block-details > summary {
+	cursor: pointer;
+	font-weight: 600;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.ddv-faq .wp-block-details > summary::-webkit-details-marker { display: none; }
+.ddv-faq .wp-block-details > summary::after {
+	content: "+";
+	font-size: 1.25rem;
+	line-height: 1;
+	flex: 0 0 auto;
+	margin-left: 1rem;
+}
+.ddv-faq .wp-block-details[open] > summary::after { content: "\2212"; }
+
+/* ---------- CTA-bånd ---------- */
+.ddv-cta-banner {
+	border-radius: var(--ddv-radius-card);
+	text-align: center;
+}
+
+/* ---------- Sektion-rytme ---------- */
+.ddv-section { padding-top: var(--ddv-section-y); padding-bottom: var(--ddv-section-y); }

@@ -1,0 +1,46 @@
+{
+  "_comment": "Merge these keys into your block theme's theme.json (settings.color.palette, settings.typography.fontFamilies, settings.custom). Do not overwrite unrelated keys already in your theme.json — merge by hand.",
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "ddv-cream",     "name": "Cream (baggrund)",        "color": "#F3EEE2" },
+        { "slug": "ddv-dark-teal", "name": "Mørk petroleum",          "color": "#2E453F" },
+        { "slug": "ddv-navy",      "name": "Navy (footer)",           "color": "#1D2A26" },
+        { "slug": "ddv-red",       "name": "DDV Rød",                 "color": "#D3382A" },
+        { "slug": "ddv-yellow",    "name": "Sennepsgul",              "color": "#ECBC2E" },
+        { "slug": "ddv-sage",      "name": "Salviegrøn",              "color": "#B9C99C" },
+        { "slug": "ddv-blue",      "name": "Pudderblå",               "color": "#B7D5DC" },
+        { "slug": "ddv-tan",       "name": "Sand/beige",              "color": "#D8CCB3" },
+        { "slug": "ddv-text",      "name": "Tekst mørk",              "color": "#24312C" },
+        { "slug": "ddv-muted",     "name": "Tekst dæmpet",            "color": "#6E756D" },
+        { "slug": "ddv-white",     "name": "Hvid",                    "color": "#FFFFFF" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "ddv-heading",
+          "name": "DDV Heading",
+          "fontFamily": "\"DDV Heading\", \"Georgia\", serif"
+        },
+        {
+          "slug": "ddv-body",
+          "name": "DDV Body",
+          "fontFamily": "\"DDV Body\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif"
+        }
+      ]
+    },
+    "custom": {
+      "ddv": {
+        "radius": {
+          "card": "16px",
+          "pill": "999px"
+        },
+        "spacing": {
+          "sectionY": "clamp(3rem, 6vw, 6rem)"
+        }
+      }
+    }
+  }
+}
