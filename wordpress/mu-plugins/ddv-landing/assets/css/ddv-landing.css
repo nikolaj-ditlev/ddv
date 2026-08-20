@@ -16,43 +16,41 @@
 	--ddv-section-y: var(--wp--custom--ddv--spacing--section-y, clamp(3rem, 6vw, 6rem));
 }
 
-/* ---------- Barometer forside – hero-baggrundsbillede ---------- */
-.ddv-hero-bg-forside {
+/* ---------- Barometer forside – hero-foto ----------
+ * Absolut positioneret i stedet for background-image, så placering/størrelse
+ * er faste tal du kan justere direkte her, i stedet for at gætte på hvordan
+ * background-size:cover beskærer billedet ved forskellige sektionshøjder. */
+.ddv-hero-forside-wrap {
 	position: relative;
-	background-image: url('https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg');
-	background-size: cover;
-	background-position: center right;
-	background-repeat: no-repeat;
+	overflow: hidden;
 }
-/* Læsbarheds-overlay: falmer fra cremefarvet (bag teksten) til gennemsigtig (over motivet) */
-.ddv-hero-bg-forside::before {
-	content: "";
+.ddv-hero-forside-photo {
 	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		to right,
-		rgba(243, 238, 226, 0.94) 0%,
-		rgba(243, 238, 226, 0.6) 50%,
-		rgba(243, 238, 226, 0) 75%
-	);
+	top: 50%;
+	right: -3%;
+	width: 42%;
+	max-width: 620px;
+	transform: translateY(-50%);
+	z-index: 0;
 	pointer-events: none;
 }
-.ddv-hero-bg-forside > .wp-block-columns {
+.ddv-hero-forside-photo img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.ddv-hero-forside-content {
 	position: relative;
 	z-index: 1;
 }
 @media (max-width: 782px) {
-	.ddv-hero-bg-forside {
-		background-position: center 25%;
-	}
-	/* Kolonnerne stakker på mobil, så hele billedet ligger bag alt indhold – stærkere overlay for læsbarhed */
-	.ddv-hero-bg-forside::before {
-		background: linear-gradient(
-			to bottom,
-			rgba(243, 238, 226, 0.96) 0%,
-			rgba(243, 238, 226, 0.9) 55%,
-			rgba(243, 238, 226, 0.82) 100%
-		);
+	.ddv-hero-forside-wrap { overflow: visible; }
+	.ddv-hero-forside-photo {
+		position: static;
+		width: 80%;
+		max-width: 360px;
+		margin: 1.5rem auto 0;
+		transform: none;
 	}
 }
 

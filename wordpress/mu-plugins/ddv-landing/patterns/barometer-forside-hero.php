@@ -4,10 +4,11 @@ return array(
 	'title'      => __( 'Barometer forside – Split-hero med 2 sidekort', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section ddv-hero-bg-forside","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide ddv-section ddv-hero-bg-forside has-ddv-cream-background-color has-background">
-<!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center">
+<!-- wp:group {"align":"wide","className":"ddv-section ddv-hero-forside-wrap","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide ddv-section ddv-hero-forside-wrap has-ddv-cream-background-color has-background">
+
+<!-- wp:columns {"verticalAlignment":"center","className":"ddv-hero-forside-content"} -->
+<div class="wp-block-columns are-vertically-aligned-center ddv-hero-forside-content">
 
 <!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%">
@@ -88,6 +89,15 @@ return array(
 
 </div>
 <!-- /wp:columns -->
+
+<!-- wp:group {"className":"ddv-hero-forside-photo"} -->
+<div class="wp-block-group ddv-hero-forside-photo">
+<!-- wp:image {"sizeSlug":"large"} -->
+<figure class="wp-block-image size-large"><img src="https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg" alt="Hånd der holder telefon med stigende søjlediagram"/></figure>
+<!-- /wp:image -->
+</div>
+<!-- /wp:group -->
+
 </div>
 <!-- /wp:group -->
 HTML
