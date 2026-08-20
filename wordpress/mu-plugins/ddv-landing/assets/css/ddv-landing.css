@@ -18,10 +18,42 @@
 
 /* ---------- Barometer forside – hero-baggrundsbillede ---------- */
 .ddv-hero-bg-forside {
+	position: relative;
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg');
 	background-size: cover;
 	background-position: center right;
 	background-repeat: no-repeat;
+}
+/* Læsbarheds-overlay: falmer fra cremefarvet (bag teksten) til gennemsigtig (over motivet) */
+.ddv-hero-bg-forside::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to right,
+		rgba(243, 238, 226, 0.94) 0%,
+		rgba(243, 238, 226, 0.6) 50%,
+		rgba(243, 238, 226, 0) 75%
+	);
+	pointer-events: none;
+}
+.ddv-hero-bg-forside > .wp-block-columns {
+	position: relative;
+	z-index: 1;
+}
+@media (max-width: 782px) {
+	.ddv-hero-bg-forside {
+		background-position: center 25%;
+	}
+	/* Kolonnerne stakker på mobil, så hele billedet ligger bag alt indhold – stærkere overlay for læsbarhed */
+	.ddv-hero-bg-forside::before {
+		background: linear-gradient(
+			to bottom,
+			rgba(243, 238, 226, 0.96) 0%,
+			rgba(243, 238, 226, 0.9) 55%,
+			rgba(243, 238, 226, 0.82) 100%
+		);
+	}
 }
 
 /* ---------- Eyebrow / pill label ---------- */
