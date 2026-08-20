@@ -4,13 +4,13 @@ return array(
 	'title'      => __( 'Barometer forside – Split-hero med 2 sidekort', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide ddv-section has-ddv-cream-background-color has-background">
+<!-- wp:group {"align":"wide","className":"ddv-section ddv-hero-bg-forside","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide ddv-section ddv-hero-bg-forside has-ddv-cream-background-color has-background">
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center">
 
-<!-- wp:column {"verticalAlignment":"center","width":"42%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:42%">
+<!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%">
 <!-- wp:paragraph {"className":"ddv-eyebrow"} -->
 <p class="ddv-eyebrow">Det danske Vedligeholdsbarometer</p>
 <!-- /wp:paragraph -->
@@ -47,16 +47,8 @@ return array(
 </div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"24%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:24%">
-<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
-<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/460x520/EDE6D6/2E453F?text=H%C3%A5nd+med+telefon+%2B+graf-illustration" alt="Illustration af hånd der holder telefon med graf"/></figure>
-<!-- /wp:image -->
-</div>
-<!-- /wp:column -->
-
-<!-- wp:column {"verticalAlignment":"top","width":"34%"} -->
-<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:34%">
+<!-- wp:column {"verticalAlignment":"top","width":"42%"} -->
+<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:42%">
 
 <!-- wp:group {"className":"ddv-card ddv-card--sage","style":{"spacing":{"blockGap":"1.5rem"}}} -->
 <div class="wp-block-group ddv-card ddv-card--sage">
