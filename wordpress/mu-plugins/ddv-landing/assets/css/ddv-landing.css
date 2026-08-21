@@ -108,6 +108,13 @@
 	   ender her i stedet for at blive fordelt jævnt). */
 	margin-top: auto !important;
 }
+/* WordPress' automatiske block-gap-regel sætter margin-top på alle børn
+   undtagen det første i en "flow"-layout gruppe – det ramte kun det andet
+   knap-element (ikke det første), så de faldt ud af niveau. Nulstillet her,
+   da mellemrummet allerede styres af "gap" på selve rækken. */
+.ddv-hero-forside-cta-row > .ddv-hero-forside-cta-item {
+	margin-top: 0 !important;
+}
 .ddv-hero-forside-cta-item {
 	display: flex;
 	flex-direction: column;
