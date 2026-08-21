@@ -339,6 +339,10 @@
 	border-color: #3f5e5a;
 	border-radius: 999px;
 	color: #3f5e5a;
+	/* Temaets globale is-style-outline-regel sætter 1.58rem top/bund-padding,
+	 * hvilket gør denne knap synligt højere end de solide knapper. */
+	padding-top: 0.667em;
+	padding-bottom: 0.667em;
 }
 .ddv-btn-white-outline .wp-block-button__link {
 	border: 1px solid #ffffff;
