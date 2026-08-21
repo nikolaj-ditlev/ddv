@@ -16,41 +16,63 @@
 	--ddv-section-y: var(--wp--custom--ddv--spacing--section-y, clamp(3rem, 6vw, 6rem));
 }
 
-/* ---------- Barometer forside – hero-foto ----------
- * Absolut positioneret i stedet for background-image, så placering/størrelse
- * er faste tal du kan justere direkte her, i stedet for at gætte på hvordan
- * background-size:cover beskærer billedet ved forskellige sektionshøjder. */
-.ddv-hero-forside-wrap {
+/* ---------- Barometer forside – hero ----------
+ * Venstre boks = fast bredde (1420px), baggrundsbillede med cover, fast
+ * min-height. Højre kolonne (de 2 kort) strækkes til at matche samme højde
+ * via flex, og fordeler højden ligeligt mellem de 2 kort. */
+.ddv-hero-forside-row {
+	align-items: stretch !important;
+	flex-wrap: wrap;
+}
+.ddv-hero-forside-photo-col {
 	position: relative;
-	overflow: hidden;
+	flex: 0 1 1420px !important;
+	max-width: 100% !important;
+	min-height: 640px; /* TODO: erstat med eksakt px-værdi fra Figma */
+	box-sizing: border-box;
+	border-radius: var(--ddv-radius-card);
+	background-image: url('https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding: 40px !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
-.ddv-hero-forside-photo {
-	position: absolute;
-	top: 50%;
-	right: -3%;
-	width: 42%;
-	max-width: 620px;
-	transform: translateY(-50%);
-	z-index: 0;
-	pointer-events: none;
+.ddv-hero-forside-cards-col {
+	flex: 1 1 320px !important;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
-.ddv-hero-forside-photo img {
-	display: block;
-	width: 100%;
-	height: auto;
+.ddv-hero-forside-cards-col > .ddv-card {
+	flex: 1 1 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
 }
-.ddv-hero-forside-content {
-	position: relative;
-	z-index: 1;
+.ddv-hero-forside-cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	margin-top: 1.5rem;
+}
+.ddv-hero-forside-cta-item {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.6rem;
 }
 @media (max-width: 782px) {
-	.ddv-hero-forside-wrap { overflow: visible; }
-	.ddv-hero-forside-photo {
-		position: static;
-		width: 80%;
-		max-width: 360px;
-		margin: 1.5rem auto 0;
-		transform: none;
+	.ddv-hero-forside-photo-col {
+		flex-basis: 100% !important;
+		min-height: 360px;
+		padding: 24px !important;
+	}
+	.ddv-hero-forside-cards-col {
+		flex-basis: 100% !important;
 	}
 }
 

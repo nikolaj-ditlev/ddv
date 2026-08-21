@@ -4,14 +4,14 @@ return array(
 	'title'      => __( 'Barometer forside – Split-hero med 2 sidekort', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section ddv-hero-forside-wrap","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide ddv-section ddv-hero-forside-wrap has-ddv-cream-background-color has-background">
+<!-- wp:group {"align":"full","className":"ddv-section ddv-hero-forside-wrap","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull ddv-section ddv-hero-forside-wrap has-ddv-cream-background-color has-background">
 
-<!-- wp:columns {"verticalAlignment":"center","className":"ddv-hero-forside-content"} -->
-<div class="wp-block-columns are-vertically-aligned-center ddv-hero-forside-content">
+<!-- wp:columns {"className":"ddv-hero-forside-row"} -->
+<div class="wp-block-columns ddv-hero-forside-row">
 
-<!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%">
+<!-- wp:column {"className":"ddv-hero-forside-photo-col"} -->
+<div class="wp-block-column ddv-hero-forside-photo-col">
 <!-- wp:paragraph {"className":"ddv-eyebrow"} -->
 <p class="ddv-eyebrow">Det danske Vedligeholdsbarometer</p>
 <!-- /wp:paragraph -->
@@ -21,35 +21,48 @@ return array(
 <!-- wp:paragraph -->
 <p>Barometeret samler svarene fra <strong>244 danske virksomheder</strong>, der har taget DDV Analysen, til ét nationalt billede. Det viser, hvor branchen reelt står – og hvor pengene typisk tabes.</p>
 <!-- /wp:paragraph -->
+
+<!-- wp:group {"className":"ddv-hero-forside-cta-row"} -->
+<div class="wp-block-group ddv-hero-forside-cta-row">
+
+<!-- wp:group {"className":"ddv-hero-forside-cta-item"} -->
+<div class="wp-block-group ddv-hero-forside-cta-item">
 <!-- wp:buttons -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"ddv-red","textColor":"ddv-white","style":{"border":{"radius":"999px"}}} -->
 <div class="wp-block-button"><a class="wp-block-button__link has-ddv-white-color has-ddv-red-background-color has-text-color has-background wp-element-button" style="border-radius:999px">Læs hvad tallene fortæller</a></div>
 <!-- /wp:button -->
+</div>
+<!-- /wp:buttons -->
+<!-- wp:paragraph {"fontSize":"small"} -->
+<p class="has-small-font-size">Baseret på svarene fra 244 virksomheder.</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"ddv-hero-forside-cta-item"} -->
+<div class="wp-block-group ddv-hero-forside-cta-item">
+<!-- wp:buttons -->
+<div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"ddv-dark-teal","textColor":"ddv-white","style":{"border":{"radius":"999px"}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background wp-element-button" style="border-radius:999px">DDV Analysen</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background wp-element-button" style="border-radius:999px">Hvad er DDV Analysen</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
-<!-- wp:columns {"fontSize":"small"} -->
-<div class="wp-block-columns has-small-font-size">
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph -->
-<p>Baseret på svarene fra 244 virksomheder.</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:paragraph -->
-<p>Få svar på din virksomheds vedligeholdsniveau</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
+<!-- wp:paragraph {"fontSize":"small"} -->
+<p class="has-small-font-size">Få svar på din virksomheds vedligeholdsniveau</p>
+<!-- /wp:paragraph -->
 </div>
-<!-- /wp:columns -->
+<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
 </div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"top","width":"42%"} -->
-<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:42%">
+<!-- wp:column {"className":"ddv-hero-forside-cards-col"} -->
+<div class="wp-block-column ddv-hero-forside-cards-col">
 
 <!-- wp:group {"className":"ddv-card ddv-card--sage","style":{"spacing":{"blockGap":"1.5rem"}}} -->
 <div class="wp-block-group ddv-card ddv-card--sage">
@@ -89,14 +102,6 @@ return array(
 
 </div>
 <!-- /wp:columns -->
-
-<!-- wp:group {"className":"ddv-hero-forside-photo"} -->
-<div class="wp-block-group ddv-hero-forside-photo">
-<!-- wp:image {"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg" alt="Hånd der holder telefon med stigende søjlediagram"/></figure>
-<!-- /wp:image -->
-</div>
-<!-- /wp:group -->
 
 </div>
 <!-- /wp:group -->
