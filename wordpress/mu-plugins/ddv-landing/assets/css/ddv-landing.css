@@ -28,7 +28,7 @@
 	position: relative;
 	flex: 0 1 1420px !important;
 	max-width: 100% !important;
-	min-height: 640px; /* TODO: erstat med eksakt px-værdi fra Figma */
+	min-height: 784px;
 	box-sizing: border-box;
 	border-radius: var(--ddv-radius-card);
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg');
