@@ -46,9 +46,15 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-blend-mode: multiply;
-	padding: 40px !important;
+	/* Ekstra højre-padding holder motivet (hånd/graf) fri af kort-kolonnen;
+	   content-box gør at billedet respekterer paddingen i stedet for at
+	   fylde helt ud til boksens kant. */
+	background-origin: content-box;
+	background-clip: content-box;
+	padding: 40px 140px 40px 40px !important;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
 	justify-content: center;
 	color: #202a28;
 }
@@ -91,6 +97,7 @@
 .ddv-hero-forside-cta-row {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	gap: 2rem;
 	margin-top: 1.5rem;
 }
@@ -99,6 +106,10 @@
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.6rem;
+}
+.ddv-hero-forside-cta-item .wp-block-buttons,
+.ddv-hero-forside-cta-item .wp-block-button {
+	margin: 0 !important;
 }
 @media (max-width: 782px) {
 	.ddv-hero-forside-photo-col {
