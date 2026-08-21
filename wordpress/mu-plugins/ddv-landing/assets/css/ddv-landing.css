@@ -348,6 +348,20 @@
 	border: 1px solid #ffffff;
 	border-radius: 999px;
 }
+.ddv-btn-outline-white .wp-block-button__link {
+	border-color: #ffffff;
+	border-radius: 999px;
+	padding-top: 0.667em;
+	padding-bottom: 0.667em;
+}
+
+/* ---------- DDV Analysen – hero: fuldt baggrundsbillede for hele sektionen ---------- */
+.ddv-analysen-hero-bg {
+	background-color: #2E453F;
+	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddv-analysen-hero-background.jpg');
+	background-size: cover;
+	background-position: center;
+}
 
 /* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content") ---------- */
 .ddv-rounded-image img {
