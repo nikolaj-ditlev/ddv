@@ -330,8 +330,10 @@
 	min-height: 560px;
 	display: flex;
 	align-items: center;
+	padding-left: clamp(1.5rem, 4vw, 3rem);
+	padding-right: clamp(1.5rem, 4vw, 3rem);
 }
-.ddv-barometer-hero-content { max-width: 620px; }
+.ddv-barometer-hero-content { max-width: 620px; margin: 0; }
 @media (max-width: 782px) {
 	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 420px; }
 }
