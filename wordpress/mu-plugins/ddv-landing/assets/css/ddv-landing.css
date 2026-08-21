@@ -16,6 +16,14 @@
 	--ddv-section-y: var(--wp--custom--ddv--spacing--section-y, clamp(3rem, 6vw, 6rem));
 }
 
+/* ---------- Sektionsbredde: fast 1440px uafhængigt af temaets wideSize-indstilling,
+ * så hver sektion fylder korrekt med det samme uden manuel justering. ---------- */
+.ddv-section.alignwide {
+	max-width: 1440px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
 /* ---------- Barometer forside – hero ----------
  * Eksakte mål hentet fra Figma (node 3065:1615) via Figma MCP:
  * - Venstre boks: 1069×784px, hjørner runde 3 steder (top-højre skarp),
@@ -313,19 +321,19 @@
 	border-radius: var(--ddv-radius-card);
 }
 
-/* ---------- Barometer (data-side) hero: billedet fylder fuld sektionshøjde, croppet højre-alignet ---------- */
-.ddv-barometer-hero-row { align-items: stretch; }
-.ddv-barometer-hero-photo { display: flex; }
-.ddv-barometer-hero-photo__img { height: 100%; width: 100%; margin: 0; }
-.ddv-barometer-hero-photo__img img {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-	object-position: right center;
-	border-radius: var(--ddv-radius-card);
+/* ---------- Barometer (data-side) hero: ét samlet baggrundsbillede for hele sektionen ---------- */
+.ddv-barometer-hero-bg {
+	background-color: #2E453F;
+	background-image: url('https://ddv.org/wp-content/uploads/2026/08/REPLACE-hero-ddv-barometeret-full.jpg');
+	background-size: cover;
+	background-position: right center;
+	min-height: 560px;
+	display: flex;
+	align-items: center;
 }
+.ddv-barometer-hero-content { max-width: 620px; }
 @media (max-width: 782px) {
-	.ddv-barometer-hero-photo { min-height: 320px; }
+	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 420px; }
 }
 
 /* ---------- Hero-hjælpeklasser ---------- */
