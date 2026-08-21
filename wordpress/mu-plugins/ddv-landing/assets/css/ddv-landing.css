@@ -324,7 +324,7 @@
 /* ---------- Barometer (data-side) hero: ét samlet baggrundsbillede for hele sektionen ---------- */
 .ddv-barometer-hero-bg {
 	background-color: #2E453F;
-	background-image: url('https://ddv.org/wp-content/uploads/2026/08/REPLACE-hero-ddv-barometeret-full.jpg');
+	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddvbaro-herobackground.jpg');
 	background-size: cover;
 	background-position: right center;
 	min-height: 560px;
