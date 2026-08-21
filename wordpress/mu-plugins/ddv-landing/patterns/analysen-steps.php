@@ -4,7 +4,7 @@ return array(
 	'title'      => __( 'DDV Analysen – 3 trin', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"flow"}} -->
 <div class="wp-block-group alignwide ddv-section">
 
 <!-- wp:columns {"verticalAlignment":"center"} -->

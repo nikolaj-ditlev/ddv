@@ -331,8 +331,6 @@
 	min-height: 560px;
 	display: flex;
 	align-items: center;
-	padding-left: clamp(1.5rem, 4vw, 3rem);
-	padding-right: clamp(1.5rem, 4vw, 3rem);
 }
 .ddv-barometer-hero-content { max-width: 620px; margin: 0; }
 @media (max-width: 782px) {
@@ -403,3 +401,16 @@
 	padding-bottom: var(--ddv-section-y);
 	border-radius: var(--ddv-radius-card);
 }
+/* Sektioner der er skiftet fra WP's "constrained" til "flow"-layout (se nedenfor)
+ * mister temaets automatiske sidepadding ("has-global-padding") og skal derfor
+ * have deres egen – men kun dem; sektioner der stadig er "constrained"
+ * (fx CTA-båndet) beholder temaets egen padding, så de ikke får dobbelt op. */
+.ddv-section:not(.has-global-padding) {
+	padding-left: clamp(1.25rem, 4vw, 3rem);
+	padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ---------- Intro-tekst i sektioner (eyebrow/heading over en fuld-bredde columns-blok):
+ * begrænses selv i bredden, så den ikke strækker sig over hele 1440px-sektionen. ---------- */
+.ddv-intro-text { max-width: 640px; }
+.ddv-intro-text--center { margin-left: auto; margin-right: auto; }

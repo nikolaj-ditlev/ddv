@@ -4,7 +4,7 @@ return array(
 	'title'      => __( 'DDV Analysen – Kursusbånd (3 kort)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white","layout":{"type":"flow"}} -->
 <div class="wp-block-group alignwide ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
 
 <!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
@@ -13,8 +13,8 @@ return array(
 <!-- wp:heading {"level":2} -->
 <h2 class="wp-block-heading">Analysen er gratis. Kurserne er der hvor vi faktisk hjælper jer videre.</h2>
 <!-- /wp:heading -->
-<!-- wp:paragraph -->
-<p>Hver virksomhed får anbefalet de 2-3 kurser der letter deres svageste område hurtigst. Online, praktisk, danskesproget.</p>
+<!-- wp:paragraph {"className":"ddv-intro-text"} -->
+<p class="ddv-intro-text">Hver virksomhed får anbefalet de 2-3 kurser der letter deres svageste område hurtigst. Online, praktisk, danskesproget.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:columns -->

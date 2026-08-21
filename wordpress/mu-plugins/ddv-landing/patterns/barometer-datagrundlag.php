@@ -4,7 +4,7 @@ return array(
 	'title'      => __( 'Barometer – Datagrundlaget (4 punkter)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-tan","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-tan","layout":{"type":"flow"}} -->
 <div class="wp-block-group alignwide ddv-section has-ddv-tan-background-color has-background">
 <!-- wp:columns {"verticalAlignment":"top"} -->
 <div class="wp-block-columns are-vertically-aligned-top">

@@ -4,7 +4,7 @@ return array(
 	'title'      => __( 'Barometer – Sammenligning (Barometer vs. Analysen)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"constrained"}} -->
+<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"flow"}} -->
 <div class="wp-block-group alignwide ddv-section">
 
 <!-- wp:paragraph {"align":"center","className":"ddv-card__eyebrow"} -->
@@ -13,8 +13,8 @@ return array(
 <!-- wp:heading {"level":2,"textAlign":"center","className":"ddv-display-heading"} -->
 <h2 class="wp-block-heading has-text-align-center ddv-display-heading">Barometeret er hele landet,<br/>analysen er Jer!</h2>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Landstallene viser mønstrene. DDV Analysen oversætter dem til jeres egen virksomhed – på få minutter.</p>
+<!-- wp:paragraph {"align":"center","className":"ddv-intro-text ddv-intro-text--center"} -->
+<p class="has-text-align-center ddv-intro-text ddv-intro-text--center">Landstallene viser mønstrene. DDV Analysen oversætter dem til jeres egen virksomhed – på få minutter.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:columns {"verticalAlignment":"center"} -->
