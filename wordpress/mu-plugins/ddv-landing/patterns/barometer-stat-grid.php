@@ -9,8 +9,8 @@ return array(
 
 <!-- wp:columns -->
 <div class="wp-block-columns">
-<!-- wp:column -->
-<div class="wp-block-column">
+<!-- wp:column {"width":"55%"} -->
+<div class="wp-block-column" style="flex-basis:55%">
 <!-- wp:group {"className":"ddv-card ddv-card--blue"} -->
 <div class="wp-block-group ddv-card ddv-card--blue">
 <!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
@@ -23,7 +23,7 @@ return array(
 <h3 class="wp-block-heading has-medium-font-size">Alarmerende tal: kan føre til milliardtab i nedetid hos danske virksomheder</h3>
 <!-- /wp:heading -->
 <!-- wp:paragraph -->
-<p>Over 40 procent af virksomhederne klarer sig dårligt eller meget dårligt på området. Når man ikke planlægger sit vedligehold, går maskiner i stykker oftere og på uventede tidspunkter.</p>
+<p>Over 40 procent af virksomhederne klarer sig dårligt eller meget dårligt på området. Når man ikke planlægger sit vedligehold, går maskiner i stykker oftere og på uventede tidspunkter. Det koster dyrt i tabt produktion.</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph -->
 <p><a class="ddv-arrow-link" href="#">Læs historien</a></p>
@@ -33,8 +33,8 @@ return array(
 </div>
 <!-- /wp:column -->
 
-<!-- wp:column -->
-<div class="wp-block-column">
+<!-- wp:column {"width":"45%"} -->
+<div class="wp-block-column" style="flex-basis:45%">
 <!-- wp:group {"className":"ddv-card ddv-card--sage"} -->
 <div class="wp-block-group ddv-card ddv-card--sage">
 <!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
@@ -47,7 +47,7 @@ return array(
 <h3 class="wp-block-heading has-medium-font-size">Kun 13 procent har styr på udstyrets leveomkostninger</h3>
 <!-- /wp:heading -->
 <!-- wp:paragraph -->
-<p>Kun 13 procent holder øje med de samlede udgifter til en maskine fra den bliver købt, til den skal skrottes. 69 procent har slet ikke styr på det – det er det dårligste resultat i hele rapporten.</p>
+<p>Kun 13 procent holder øje med de samlede udgifter til en maskine fra den bliver købt, til den skal skrottes. Hele 69 procent har slet ikke styr på det – det er det dårligste resultat i hele rapporten.</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph -->
 <p><a class="ddv-arrow-link" href="#">Læs historien</a></p>

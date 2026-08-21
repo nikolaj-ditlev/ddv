@@ -169,6 +169,25 @@
 	text-transform: uppercase;
 	opacity: 0.85;
 }
+/* Udfyldt variant af eyebrow-pillen (matcher Figma: solid baggrund, ingen
+   kant), brugt fx på Barometer-hero'en i stedet for outline-varianten. */
+.ddv-eyebrow--solid {
+	border: none;
+	background-color: #496f6a;
+	color: #ffffff;
+	opacity: 1;
+}
+/* Store display-overskrifter (Figma: 70px Bold), genbrugt på "Sådan
+   fungerer det" og "Datagrundlaget"-sektionerne. */
+.ddv-display-heading {
+	font-size: clamp(2.2rem, 1.6rem + 2.6vw, 4.375rem) !important;
+	line-height: 1.1 !important;
+}
+/* Barometer-hero'ens H1 (Figma: 60px Bold). */
+.ddv-hero-heading-60 {
+	font-size: clamp(2rem, 1.5rem + 2.2vw, 3.75rem) !important;
+	line-height: 1.15 !important;
+}
 
 /* ---------- Cards (trin, statistik, kurser) ---------- */
 .ddv-card {
