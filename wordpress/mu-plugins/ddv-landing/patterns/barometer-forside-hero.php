@@ -4,8 +4,8 @@ return array(
 	'title'      => __( 'Barometer forside – Split-hero med 2 sidekort', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"full","className":"ddv-section ddv-hero-forside-wrap","backgroundColor":"ddv-cream","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull ddv-section ddv-hero-forside-wrap has-ddv-cream-background-color has-background">
+<!-- wp:group {"align":"full","className":"ddv-section ddv-hero-forside-wrap"} -->
+<div class="wp-block-group alignfull ddv-section ddv-hero-forside-wrap">
 
 <!-- wp:columns {"className":"ddv-hero-forside-row"} -->
 <div class="wp-block-columns ddv-hero-forside-row">
@@ -16,7 +16,7 @@ return array(
 <p class="ddv-eyebrow">Det danske Vedligeholdsbarometer</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":1,"fontSize":"x-large"} -->
-<h1 class="wp-block-heading has-x-large-font-size">Sådan står det til med Dansk vedligehold</h1>
+<h1 class="wp-block-heading has-x-large-font-size">Sådan står det til med dansk vedligehold</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Barometeret samler svarene fra <strong>244 danske virksomheder</strong>, der har taget DDV Analysen, til ét nationalt billede. Det viser, hvor branchen reelt står – og hvor pengene typisk tabes.</p>
@@ -64,7 +64,7 @@ return array(
 <!-- wp:column {"className":"ddv-hero-forside-cards-col"} -->
 <div class="wp-block-column ddv-hero-forside-cards-col">
 
-<!-- wp:group {"className":"ddv-card ddv-card--sage","style":{"spacing":{"blockGap":"1.5rem"}}} -->
+<!-- wp:group {"className":"ddv-card ddv-card--sage"} -->
 <div class="wp-block-group ddv-card ddv-card--sage">
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Få et nyt perspektiv på hverdagens udfordringer</h3>
@@ -79,7 +79,7 @@ return array(
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"ddv-card ddv-card--blue","style":{"spacing":{"blockGap":"1.5rem"}}} -->
+<!-- wp:group {"className":"ddv-card ddv-card--blue"} -->
 <div class="wp-block-group ddv-card ddv-card--blue">
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Bliv medlem af DDV</h3>

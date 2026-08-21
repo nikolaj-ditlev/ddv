@@ -17,41 +17,76 @@
 }
 
 /* ---------- Barometer forside – hero ----------
- * Venstre boks = fast bredde (1420px), baggrundsbillede med cover, fast
- * min-height. Højre kolonne (de 2 kort) strækkes til at matche samme højde
- * via flex, og fordeler højden ligeligt mellem de 2 kort. */
+ * Eksakte mål hentet fra Figma (node 3065:1615) via Figma MCP:
+ * - Venstre boks: 1069×784px, hjørner runde 3 steder (top-højre skarp),
+ *   baggrund #fbf7eb + foto med background-blend-mode:multiply (matcher
+ *   Figmas "mix-blend-multiply" på billedlaget).
+ * - Højre kolonne: 2 kort á 330×376px + 32px mellemrum = 784px, så det
+ *   matcher boksens højde præcist. Indhold i kortene er space-between
+ *   (tekst øverst, knap presset til bunds), samme hjørnemønster.
+ * - Mellemrum boks→kort-kolonne: 37px. */
+.ddv-hero-forside-wrap {
+	background-color: #efe8d7 !important;
+}
 .ddv-hero-forside-row {
 	align-items: stretch !important;
 	flex-wrap: wrap;
+	gap: 37px !important;
 }
 .ddv-hero-forside-photo-col {
 	position: relative;
-	flex: 0 1 1420px !important;
+	flex: 0 0 1069px !important;
 	max-width: 100% !important;
 	min-height: 784px;
 	box-sizing: border-box;
-	border-radius: var(--ddv-radius-card);
+	border-radius: 30px 0 30px 30px;
+	background-color: #fbf7eb;
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/forside-hero-bagggrund.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-blend-mode: multiply;
 	padding: 40px !important;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	color: #202a28;
+}
+.ddv-hero-forside-photo-col h1 {
+	color: #3f5e5a !important;
+}
+.ddv-hero-forside-photo-col .ddv-eyebrow {
+	color: #3f5e5a;
+	border-color: #243c39;
+}
+.ddv-hero-forside-cta-item p {
+	color: #243c39;
 }
 .ddv-hero-forside-cards-col {
-	flex: 1 1 320px !important;
+	flex: 1 1 330px !important;
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 32px;
 }
 .ddv-hero-forside-cards-col > .ddv-card {
 	flex: 1 1 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	margin: 0;
+	padding: 32px;
+	box-sizing: border-box;
+	border-radius: 30px 0 30px 30px;
+}
+.ddv-hero-forside-cards-col .ddv-card--sage {
+	background-color: #98bb78 !important;
+}
+.ddv-hero-forside-cards-col .ddv-card--blue {
+	background-color: #81c0d3 !important;
+}
+.ddv-hero-forside-cards-col h3,
+.ddv-hero-forside-cards-col p {
+	color: #243c39 !important;
 }
 .ddv-hero-forside-cta-row {
 	display: flex;
@@ -68,7 +103,7 @@
 @media (max-width: 782px) {
 	.ddv-hero-forside-photo-col {
 		flex-basis: 100% !important;
-		min-height: 360px;
+		min-height: 480px;
 		padding: 24px !important;
 	}
 	.ddv-hero-forside-cards-col {
