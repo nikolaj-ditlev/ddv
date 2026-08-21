@@ -4,7 +4,7 @@ return array(
 	'title'      => __( 'Barometer (data-side) – Hero', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section ddv-barometer-hero-bg","textColor":"ddv-white","layout":{"type":"flow"}} -->
+<!-- wp:group {"align":"wide","className":"ddv-section ddv-barometer-hero-bg","textColor":"ddv-white"} -->
 <div class="wp-block-group alignwide ddv-section ddv-barometer-hero-bg has-ddv-white-color has-text-color">
 
 <!-- wp:group {"className":"ddv-barometer-hero-content"} -->

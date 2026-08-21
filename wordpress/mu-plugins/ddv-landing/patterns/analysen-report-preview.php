@@ -4,7 +4,7 @@ return array(
 	'title'      => __( 'DDV Analysen – Rapport-preview', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","layout":{"type":"flow"}} -->
+<!-- wp:group {"align":"wide","className":"ddv-section"} -->
 <div class="wp-block-group alignwide ddv-section">
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center">
