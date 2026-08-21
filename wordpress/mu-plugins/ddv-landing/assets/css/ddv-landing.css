@@ -60,6 +60,10 @@
 }
 .ddv-hero-forside-photo-col h1 {
 	color: #3f5e5a !important;
+	/* Justér dette tal for at ændre størrelsen på forsidens H1 – uafhængigt
+	   af temaets globale "x-large" skriftstørrelse. Nuværende værdi er ca.
+	   50% større end temaets x-large (2.5rem max) som udgangspunkt. */
+	font-size: clamp(2.4rem, 2rem + 2vw, 3.75rem) !important;
 }
 .ddv-hero-forside-photo-col .ddv-eyebrow {
 	color: #3f5e5a;
@@ -99,7 +103,10 @@
 	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: 2rem;
-	margin-top: 1.5rem;
+	/* margin-top:auto presser knap-rækken helt ned mod bunden af boksen
+	   (kolonnen er flex, så den ledige plads mellem brødtekst og knapper
+	   ender her i stedet for at blive fordelt jævnt). */
+	margin-top: auto !important;
 }
 .ddv-hero-forside-cta-item {
 	display: flex;
