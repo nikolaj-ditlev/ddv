@@ -6,11 +6,11 @@ return array(
 	'content'    => <<<'HTML'
 <!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
-<!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center">
+<!-- wp:columns {"className":"ddv-barometer-hero-row"} -->
+<div class="wp-block-columns ddv-barometer-hero-row">
 
-<!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
+<!-- wp:column {"verticalAlignment":"center","width":"55%","className":"ddv-barometer-hero-text"} -->
+<div class="wp-block-column is-vertically-aligned-center ddv-barometer-hero-text" style="flex-basis:55%">
 <!-- wp:paragraph {"className":"ddv-eyebrow ddv-eyebrow--solid"} -->
 <p class="ddv-eyebrow ddv-eyebrow--solid">Det Danske Vedligeholdsbarometer</p>
 <!-- /wp:paragraph -->
@@ -23,10 +23,10 @@ return array(
 </div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%">
-<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
-<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://ddv.org/wp-content/uploads/2026/08/hero-ddv-barometeret.jpg" alt="Hånd der bruger tablet med data og grafer fra Vedligeholdsbarometeret"/></figure>
+<!-- wp:column {"width":"45%","className":"ddv-barometer-hero-photo"} -->
+<div class="wp-block-column ddv-barometer-hero-photo" style="flex-basis:45%">
+<!-- wp:image {"sizeSlug":"large","className":"ddv-barometer-hero-photo__img"} -->
+<figure class="wp-block-image size-large ddv-barometer-hero-photo__img"><img src="https://ddv.org/wp-content/uploads/2026/08/hero-ddv-barometeret.jpg" alt="Hånd der bruger tablet med data og grafer fra Vedligeholdsbarometeret"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->

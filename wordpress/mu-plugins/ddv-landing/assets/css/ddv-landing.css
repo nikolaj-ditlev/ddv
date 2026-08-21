@@ -313,6 +313,21 @@
 	border-radius: var(--ddv-radius-card);
 }
 
+/* ---------- Barometer (data-side) hero: billedet fylder fuld sektionshøjde, croppet højre-alignet ---------- */
+.ddv-barometer-hero-row { align-items: stretch; }
+.ddv-barometer-hero-photo { display: flex; }
+.ddv-barometer-hero-photo__img { height: 100%; width: 100%; margin: 0; }
+.ddv-barometer-hero-photo__img img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: right center;
+	border-radius: var(--ddv-radius-card);
+}
+@media (max-width: 782px) {
+	.ddv-barometer-hero-photo { min-height: 320px; }
+}
+
 /* ---------- Hero-hjælpeklasser ---------- */
 .ddv-hero-visual { position: relative; }
 .ddv-eyebrow-row { margin-bottom: 1.5rem; }
