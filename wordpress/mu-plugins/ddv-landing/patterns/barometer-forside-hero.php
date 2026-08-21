@@ -18,8 +18,8 @@ return array(
 <!-- wp:heading {"level":1,"fontSize":"x-large"} -->
 <h1 class="wp-block-heading has-x-large-font-size">Sådan står det til med dansk vedligehold</h1>
 <!-- /wp:heading -->
-<!-- wp:paragraph -->
-<p>Barometeret samler svarene fra <strong>244 danske virksomheder</strong>, der har taget DDV Analysen, til ét nationalt billede. Det viser, hvor branchen reelt står – og hvor pengene typisk tabes.</p>
+<!-- wp:paragraph {"className":"ddv-hero-forside-lead"} -->
+<p class="ddv-hero-forside-lead">Barometeret samler svarene fra <strong>244 danske virksomheder</strong>, der har taget DDV Analysen, til ét nationalt billede. Det viser, hvor branchen reelt står – og hvor pengene typisk tabes.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"ddv-hero-forside-cta-row"} -->

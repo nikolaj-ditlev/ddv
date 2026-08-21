@@ -46,17 +46,17 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-blend-mode: multiply;
-	/* Ekstra højre-padding holder motivet (hånd/graf) fri af kort-kolonnen;
-	   content-box gør at billedet respekterer paddingen i stedet for at
-	   fylde helt ud til boksens kant. */
-	background-origin: content-box;
-	background-clip: content-box;
-	padding: 40px 140px 40px 40px !important;
+	padding: 40px !important;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	justify-content: center;
+	justify-content: flex-start;
 	color: #202a28;
+}
+/* Kun selve brødteksten begrænses i bredde, så den ikke løber ind over
+   motivet i billedet til højre – overskriften må gerne fylde bredere. */
+.ddv-hero-forside-lead {
+	max-width: 500px;
 }
 .ddv-hero-forside-photo-col h1 {
 	color: #3f5e5a !important;
