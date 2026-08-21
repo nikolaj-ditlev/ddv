@@ -14,8 +14,8 @@ return array(
 <!-- wp:paragraph {"className":"ddv-eyebrow ddv-eyebrow--solid"} -->
 <p class="ddv-eyebrow ddv-eyebrow--solid">Det Danske Vedligeholdsbarometer</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"fontSize":"x-large","className":"ddv-hero-heading-60"} -->
-<h1 class="wp-block-heading has-x-large-font-size ddv-hero-heading-60">Bag hvert tal ligger en problemstilling, du måske kender</h1>
+<!-- wp:heading {"level":1,"textColor":"ddv-white","fontSize":"x-large","className":"ddv-hero-heading-60"} -->
+<h1 class="wp-block-heading has-ddv-white-color has-text-color has-x-large-font-size ddv-hero-heading-60">Bag hvert tal ligger en problemstilling, du måske kender</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Vi gennemgår barometerets data fra forskellige vinkler. Hver historie ender samme sted: ved spørgsmålet "hvordan ser det så ud hos os?"</p>
