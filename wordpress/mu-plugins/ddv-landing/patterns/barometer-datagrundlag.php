@@ -14,8 +14,8 @@ return array(
 <!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
 <p class="ddv-card__eyebrow">DATAGRUNDLAGET</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":2,"className":"ddv-display-heading"} -->
-<h2 class="wp-block-heading ddv-display-heading">Tal du kan stole på og bruge i en bestyrelse</h2>
+<!-- wp:heading {"level":2,"fontSize":"x-large"} -->
+<h2 class="wp-block-heading has-x-large-font-size">Tal du kan stole på og bruge i en bestyrelse</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Barometeret bygger udelukkende på besvarelser fra DDV Analysen. Jo flere virksomheder, der svarer, jo skarpere bliver billedet – og jo bedre kan I sammenligne jer med jeres egen branche.</p>

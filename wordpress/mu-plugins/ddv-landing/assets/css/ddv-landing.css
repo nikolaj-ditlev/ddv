@@ -317,6 +317,34 @@
 	.ddv-connector { transform: rotate(90deg); margin: 0 auto; }
 }
 
+/* ---------- Sammenligning (Barometer vs. Analysen): pil-kolonnen skal have en fast,
+ * lille bredde uanset sektionens fylde, ellers bliver mellemrummet mellem kortene
+ * uforholdsmæssigt stort på en fuld 1440px-bred sektion. Kort-kolonnerne deler i
+ * stedet resten af pladsen ligeligt. ---------- */
+.ddv-comparison-arrow-col {
+	flex: 0 0 96px !important;
+	max-width: 96px !important;
+	display: flex;
+	justify-content: center;
+}
+.ddv-comparison-card-col {
+	flex: 1 1 0 !important;
+	max-width: none !important;
+}
+
+/* ---------- Knapper: farve/kant flyttet fra inline block-style til klasser, så
+ * hånd-skrevet HTML ikke risikerer at afvige fra style-engine's output ("invalid
+ * content"). ---------- */
+.ddv-btn-outline-petrol .wp-block-button__link {
+	border-color: #3f5e5a;
+	border-radius: 999px;
+	color: #3f5e5a;
+}
+.ddv-btn-white-outline .wp-block-button__link {
+	border: 1px solid #ffffff;
+	border-radius: 999px;
+}
+
 /* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content") ---------- */
 .ddv-rounded-image img {
 	border-radius: var(--ddv-radius-card);

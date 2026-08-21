@@ -20,8 +20,8 @@ return array(
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center">
 
-<!-- wp:column {"verticalAlignment":"center","width":"44%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:44%">
+<!-- wp:column {"verticalAlignment":"center","width":"44%","className":"ddv-comparison-card-col"} -->
+<div class="wp-block-column is-vertically-aligned-center ddv-comparison-card-col" style="flex-basis:44%">
 <!-- wp:group {"className":"ddv-card ddv-card--cream"} -->
 <div class="wp-block-group ddv-card ddv-card--cream">
 <!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
@@ -39,8 +39,8 @@ return array(
 <!-- /wp:list -->
 <!-- wp:buttons -->
 <div class="wp-block-buttons">
-<!-- wp:button {"className":"is-style-outline","style":{"color":{"text":"#3f5e5a"},"border":{"color":"#3f5e5a","radius":"999px"}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color wp-element-button" style="border-color:#3f5e5a;border-radius:999px;color:#3f5e5a">Læs mere fakta</a></div>
+<!-- wp:button {"className":"is-style-outline ddv-btn-outline-petrol"} -->
+<div class="wp-block-button is-style-outline ddv-btn-outline-petrol"><a class="wp-block-button__link wp-element-button">Læs mere fakta</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
@@ -49,16 +49,16 @@ return array(
 </div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"12%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:12%">
+<!-- wp:column {"verticalAlignment":"center","width":"12%","className":"ddv-comparison-arrow-col"} -->
+<div class="wp-block-column is-vertically-aligned-center ddv-comparison-arrow-col" style="flex-basis:12%">
 <!-- wp:paragraph {"className":"ddv-connector","align":"center"} -->
 <p class="ddv-connector has-text-align-center">→</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"44%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:44%">
+<!-- wp:column {"verticalAlignment":"center","width":"44%","className":"ddv-comparison-card-col"} -->
+<div class="wp-block-column is-vertically-aligned-center ddv-comparison-card-col" style="flex-basis:44%">
 <!-- wp:group {"className":"ddv-card ddv-card--red"} -->
 <div class="wp-block-group ddv-card ddv-card--red">
 <!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
@@ -77,8 +77,8 @@ return array(
 <!-- /wp:list -->
 <!-- wp:buttons -->
 <div class="wp-block-buttons">
-<!-- wp:button {"backgroundColor":"ddv-red","textColor":"ddv-white","style":{"border":{"color":"#ffffff","width":"1px","radius":"999px"}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-ddv-white-color has-ddv-red-background-color has-text-color has-background wp-element-button" style="border-color:#ffffff;border-width:1px;border-radius:999px">Tag DDV Analysen</a></div>
+<!-- wp:button {"backgroundColor":"ddv-red","textColor":"ddv-white","className":"ddv-btn-white-outline"} -->
+<div class="wp-block-button ddv-btn-white-outline"><a class="wp-block-button__link has-ddv-white-color has-ddv-red-background-color has-text-color has-background wp-element-button">Tag DDV Analysen</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
