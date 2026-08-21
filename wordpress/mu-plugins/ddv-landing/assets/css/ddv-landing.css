@@ -11,7 +11,8 @@
 
 /* ---------- Tokens (fallback hvis theme.json ikke er merged endnu) ---------- */
 :root {
-	--ddv-radius-card: var(--wp--custom--ddv--radius--card, 16px);
+	/* DDV's signature hjørne-facon (Figma): runde alle hjørner undtagen øverst til højre. */
+	--ddv-radius-card: 30px 0 30px 30px;
 	--ddv-radius-pill: var(--wp--custom--ddv--radius--pill, 999px);
 	--ddv-section-y: var(--wp--custom--ddv--spacing--section-y, clamp(3rem, 6vw, 6rem));
 }
@@ -397,4 +398,8 @@
 }
 
 /* ---------- Sektion-rytme ---------- */
-.ddv-section { padding-top: var(--ddv-section-y); padding-bottom: var(--ddv-section-y); }
+.ddv-section {
+	padding-top: var(--ddv-section-y);
+	padding-bottom: var(--ddv-section-y);
+	border-radius: var(--ddv-radius-card);
+}
