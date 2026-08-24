@@ -49,17 +49,18 @@
 	}
 }
 
-/* ---------- Hero-sektioner (alle 4: DDV Analysen, Barometer data-side, Barometer forside,
- * Kursuskatalog): bredere end resten af sektionerne (1840px i stedet for standardens 1440px).
- * Overskriver kun disse specifikke heroer via deres egne baggrunds-klasser, ikke
- * .ddv-section.alignwide globalt. ---------- */
+/* ---------- Hero-sektioner (alle 5: DDV Analysen, Barometer data-side, Barometer forside,
+ * Kursuskatalog, Kursus-side): bredere end resten af sektionerne (1840px i stedet for
+ * standardens 1440px). Overskriver kun disse specifikke heroer via deres egne
+ * baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
 .ddv-analysen-hero-bg.alignwide,
 .ddv-barometer-hero-bg.alignwide,
 .ddv-hero-forside-wrap.alignwide,
-.ddv-kursuskatalog-hero-bg.alignwide {
+.ddv-kursuskatalog-hero-bg.alignwide,
+.ddv-kursus-hero-bg.alignwide {
 	max-width: 1840px !important;
 }
-/* Samme 4 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
+/* Samme 5 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
  * --ddv-section-y (i stedet for at ændre variablen selv, som ville gøre ALLE sektioner
  * højere) - 50px ekstra top + 50px ekstra bund. Indholdet er allerede lodret centreret
  * (enten via flex align-items:center eller fordi top-/bundpadding er symmetrisk), så det
@@ -67,9 +68,15 @@
 .ddv-analysen-hero-bg.ddv-section,
 .ddv-barometer-hero-bg.ddv-section,
 .ddv-hero-forside-wrap.ddv-section,
-.ddv-kursuskatalog-hero-bg.ddv-section {
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-kursus-hero-bg.ddv-section {
 	padding-top: calc(var(--ddv-section-y) + 50px) !important;
 	padding-bottom: calc(var(--ddv-section-y) + 50px) !important;
+}
+
+/* ---------- Kursus-side – hero: egen baggrundsfarve (afviger fra ddv-dark-teal-tokenet). ---------- */
+.ddv-kursus-hero-bg {
+	background-color: #3C5956;
 }
 
 /* ---------- Barometer forside – hero ----------

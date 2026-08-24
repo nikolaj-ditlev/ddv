@@ -9,8 +9,8 @@ return array(
 	'title'      => __( 'Kursus-side – Hero (titel + tjekliste-kort)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white"} -->
-<div class="wp-block-group alignwide ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
+<!-- wp:group {"align":"wide","className":"ddv-section ddv-kursus-hero-bg","textColor":"ddv-white"} -->
+<div class="wp-block-group alignwide ddv-section ddv-kursus-hero-bg has-ddv-white-color has-text-color">
 
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center">
