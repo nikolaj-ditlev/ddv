@@ -1,0 +1,53 @@
+name: Deploy DDV Landing til FTP
+
+# Kører kun når der pushes til main, og kun når noget under
+# wordpress/mu-plugins/ ændres - så workflowet ikke kører unødigt
+# på ændringer der ikke vedrører WordPress-mu-plugin'et.
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'wordpress/mu-plugins/**'
+
+jobs:
+  ftp-deploy:
+    name: Upload til server via FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hent repo
+        uses: actions/checkout@v4
+
+      # Selve ddv-landing-mappen (patterns, css, php).
+      # server-dir SKAL rettes til jeres rigtige sti før første kørsel -
+      # den varierer efter hosting-udbyder (fx /public_html/wp-content/mu-plugins/ddv-landing/
+      # eller /httpdocs/wp-content/mu-plugins/ddv-landing/).
+      - name: Deploy ddv-landing/
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./wordpress/mu-plugins/ddv-landing/
+          server-dir: /public_html/wp-content/mu-plugins/ddv-landing/
+          # Slår IKKE sletning af filer på serveren til, der ikke findes i repoet -
+          # kun upload/opdatering. Sæt aldrig denne til true medmindre du er 100%
+          # sikker på at server-dir kun indeholder filer fra dette repo.
+          dangerous-clean-slate: false
+
+      # ddv-landing-loader.php ligger FLADT i mu-plugins/ (ikke inde i ddv-landing/-mappen,
+      # se GUIDE.md) - ændres sjældent, men synkroniseres med for en sikkerheds skyld.
+      - name: Deploy ddv-landing-loader.php
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./wordpress/mu-plugins/
+          server-dir: /public_html/wp-content/mu-plugins/
+          include: |
+            ddv-landing-loader.php
+          exclude: |
+            ddv-landing/**
+          dangerous-clean-slate: false
