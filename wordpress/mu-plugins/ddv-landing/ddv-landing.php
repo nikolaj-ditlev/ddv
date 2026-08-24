@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'DDV_LANDING_DIR', __DIR__ );
 define( 'DDV_LANDING_URL', plugin_dir_url( __FILE__ ) );
 
+require_once DDV_LANDING_DIR . '/includes/cpt-indsigt.php';
+
 /**
  * Enqueue komponent-CSS på både forside og i Site Editor / post-editor,
  * så patterns ser rigtige ud mens du redigerer.
