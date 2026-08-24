@@ -5,7 +5,7 @@
     "color": {
       "palette": [
         { "slug": "ddv-cream",     "name": "Cream (baggrund)",        "color": "#F3EEE2" },
-        { "slug": "ddv-dark-teal", "name": "Mørk petroleum",          "color": "#2E453F" },
+        { "slug": "ddv-dark-teal", "name": "Mørk petroleum",          "color": "#3c5956" },
         { "slug": "ddv-navy",      "name": "Navy (footer)",           "color": "#1D2A26" },
         { "slug": "ddv-red",       "name": "DDV Rød",                 "color": "#D3382A" },
         { "slug": "ddv-yellow",    "name": "Sennepsgul",              "color": "#E7D57A" },

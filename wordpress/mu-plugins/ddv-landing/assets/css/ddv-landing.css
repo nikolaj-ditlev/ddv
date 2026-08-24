@@ -411,7 +411,7 @@
 
 /* ---------- DDV Analysen – hero: fuldt baggrundsbillede for hele sektionen ---------- */
 .ddv-analysen-hero-bg {
-	background-color: #2E453F;
+	background-color: #3c5956;
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddv-analysen-hero-background.jpg');
 	background-size: cover;
 	background-position: center;
@@ -436,7 +436,7 @@
 
 /* ---------- Barometer (data-side) hero: ét samlet baggrundsbillede for hele sektionen ---------- */
 .ddv-barometer-hero-bg {
-	background-color: #2E453F;
+	background-color: #3c5956;
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddvbaro-herobackground.jpg');
 	background-size: cover;
 	background-position: right center;
