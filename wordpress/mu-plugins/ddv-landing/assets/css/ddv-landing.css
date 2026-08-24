@@ -49,18 +49,19 @@
 	}
 }
 
-/* ---------- Hero-sektioner (alle 5: DDV Analysen, Barometer data-side, Barometer forside,
- * Kursuskatalog, Kursus-side): bredere end resten af sektionerne (1840px i stedet for
- * standardens 1440px). Overskriver kun disse specifikke heroer via deres egne
+/* ---------- Hero-sektioner (alle 6: DDV Analysen, Barometer data-side, Barometer forside,
+ * Kursuskatalog, Kursus-side, Indsigt): bredere end resten af sektionerne (1840px i stedet
+ * for standardens 1440px). Overskriver kun disse specifikke heroer via deres egne
  * baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
 .ddv-analysen-hero-bg.alignwide,
 .ddv-barometer-hero-bg.alignwide,
 .ddv-hero-forside-wrap.alignwide,
 .ddv-kursuskatalog-hero-bg.alignwide,
-.ddv-kursus-hero-bg.alignwide {
+.ddv-kursus-hero-bg.alignwide,
+.ddv-indsigt-hero-bg.alignwide {
 	max-width: 1840px !important;
 }
-/* Samme 5 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
+/* Samme 6 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
  * --ddv-section-y (i stedet for at ændre variablen selv, som ville gøre ALLE sektioner
  * højere) - 50px ekstra top + 50px ekstra bund. Indholdet er allerede lodret centreret
  * (enten via flex align-items:center eller fordi top-/bundpadding er symmetrisk), så det
@@ -69,7 +70,8 @@
 .ddv-barometer-hero-bg.ddv-section,
 .ddv-hero-forside-wrap.ddv-section,
 .ddv-kursuskatalog-hero-bg.ddv-section,
-.ddv-kursus-hero-bg.ddv-section {
+.ddv-kursus-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
 	padding-top: calc(var(--ddv-section-y) + 50px) !important;
 	padding-bottom: calc(var(--ddv-section-y) + 50px) !important;
 }
@@ -620,4 +622,47 @@
 .ddv-kursus-subsection h3,
 .ddv-kursus-subsection h4 {
 	margin-bottom: 0.5rem;
+}
+
+/* ---------- Indsigt: styling af WP's indbyggede Forespørgsel (Query Loop)-blok, så
+ * artikelkortene matcher sitets øvrige kort. Sæt "ddv-post-card" som ekstra CSS-klasse
+ * (Avanceret-panelet) på den Gruppe-blok du lægger post-felterne i inde i Indlægsskabelonen -
+ * se GUIDE.md for fremgangsmåden. */
+.ddv-post-card {
+	border-radius: var(--ddv-radius-card);
+	background: var(--wp--preset--color--ddv-cream);
+	overflow: hidden;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.ddv-post-card .wp-block-post-featured-image {
+	margin: 0;
+}
+.ddv-post-card .wp-block-post-featured-image img {
+	display: block;
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+.ddv-post-card > :not(.wp-block-post-featured-image) {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+.ddv-post-card > :last-child {
+	padding-bottom: 1.5rem;
+}
+.ddv-post-card .wp-block-post-featured-image + * {
+	margin-top: 1.25rem;
+}
+.ddv-post-card .wp-block-post-terms {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	opacity: 0.7;
+	text-decoration: none;
+}
+.ddv-post-card .wp-block-post-terms a {
+	text-decoration: none;
+	color: inherit;
 }
