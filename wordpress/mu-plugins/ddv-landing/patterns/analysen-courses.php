@@ -4,8 +4,10 @@ return array(
 	'title'      => __( 'DDV Analysen – Kursusbånd (3 kort)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"full","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white"} -->
-<div class="wp-block-group alignfull ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
+<!-- wp:group {"align":"full","className":"ddv-bleed-1440"} -->
+<div class="wp-block-group alignfull ddv-bleed-1440">
+<!-- wp:group {"className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white"} -->
+<div class="wp-block-group ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
 <!-- wp:group {"className":"ddv-section-inner"} -->
 <div class="wp-block-group ddv-section-inner">
 
@@ -104,6 +106,8 @@ return array(
 <p class="has-text-align-right has-ddv-white-color has-text-color"><a href="#">Se alle kurser →</a></p>
 <!-- /wp:paragraph -->
 
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 </div>

@@ -25,24 +25,36 @@
 	margin-right: auto !important;
 }
 
-/* ---------- Sektioner hvor selve baggrunden (farve/foto) skal skalere næsten helt ud til
- * viewportets kant (Figma: kun ca. 50px luft i hver side på et 1920px-lærred), mens indholdet
- * stadig skal holde sig inden for det normale 1440px grid. Opskrift: sæt align="full" på
- * sektionen (så alignwide's 1440px-loft ovenfor IKKE gælder – .ddv-section's egen sidepadding,
- * clamp(1.25rem, 4vw, 3rem), giver derved den luft der er tilbage), og pak selve indholdet ind i
- * en .ddv-section-inner så det ikke strækker sig ud i baggrundens fulde bredde. Brugt på
- * DDV Analysen: testimonial, rapport-preview og kursusbånd. */
+/* ---------- Sektioner hvor selve baggrunden (farve) skal fylde bredden ud, mens indholdet
+ * holder sig inden for det normale 1440px grid. Tre lag pr. sektion:
+ * 1) .ddv-bleed-1440 (align="full"): ingen farve/padding under 1440px viewport (så baggrunden
+ *    ligger helt ud til kanten der) – over 1440px får DEN et fast 50px sidepadding, se
+ *    media-query-reglen nedenfor. Selve farven ligger IKKE her, så paddingen skaber et rigtigt
+ *    mellemrum til browserkanten (ikke bare luft inden i farvefeltet).
+ * 2) .ddv-section (nestet indeni, har selve backgroundColor): bliver dermed automatisk 100px
+ *    smallere end sit forældre-lag, når paddingen er aktiv – det ER farvefeltet. Beholder sin
+ *    egen sidepadding (clamp) til selve teksten/indholdet, uafhængigt af lag 1.
+ * 3) .ddv-section-inner (nestet i #2): begrænser selve indholdet (kolonner) til 1440px, centreret,
+ *    uanset hvor bred baggrunden er.
+ * Brugt på DDV Analysen: testimonial, rapport-preview og kursusbånd. */
 .ddv-section-inner {
 	max-width: 1440px;
 	margin-left: auto;
 	margin-right: auto;
+}
+@media (min-width: 1440px) {
+	.ddv-bleed-1440.alignfull {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
 }
 
 /* ---------- Hero-sektioner (DDV Analysen + Barometer data-side): bredere end resten af
  * sektionerne (1640px i stedet for standardens 1440px). Overskriver kun disse to specifikke
  * heroer via deres egne baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
 .ddv-analysen-hero-bg.alignwide,
-.ddv-barometer-hero-bg.alignwide {
+.ddv-barometer-hero-bg.alignwide,
+.ddv-hero-forside-wrap.alignwide {
 	max-width: 1640px !important;
 }
 
