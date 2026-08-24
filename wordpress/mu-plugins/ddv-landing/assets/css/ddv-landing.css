@@ -54,7 +54,8 @@
  * heroer via deres egne baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
 .ddv-analysen-hero-bg.alignwide,
 .ddv-barometer-hero-bg.alignwide,
-.ddv-hero-forside-wrap.alignwide {
+.ddv-hero-forside-wrap.alignwide,
+.ddv-kursuskatalog-hero-bg.alignwide {
 	max-width: 1640px !important;
 }
 
