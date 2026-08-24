@@ -49,14 +49,27 @@
 	}
 }
 
-/* ---------- Hero-sektioner (DDV Analysen + Barometer data-side): bredere end resten af
- * sektionerne (1640px i stedet for standardens 1440px). Overskriver kun disse to specifikke
- * heroer via deres egne baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
+/* ---------- Hero-sektioner (alle 4: DDV Analysen, Barometer data-side, Barometer forside,
+ * Kursuskatalog): bredere end resten af sektionerne (1840px i stedet for standardens 1440px).
+ * Overskriver kun disse specifikke heroer via deres egne baggrunds-klasser, ikke
+ * .ddv-section.alignwide globalt. ---------- */
 .ddv-analysen-hero-bg.alignwide,
 .ddv-barometer-hero-bg.alignwide,
 .ddv-hero-forside-wrap.alignwide,
 .ddv-kursuskatalog-hero-bg.alignwide {
-	max-width: 1640px !important;
+	max-width: 1840px !important;
+}
+/* Samme 4 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
+ * --ddv-section-y (i stedet for at ændre variablen selv, som ville gøre ALLE sektioner
+ * højere) - 50px ekstra top + 50px ekstra bund. Indholdet er allerede lodret centreret
+ * (enten via flex align-items:center eller fordi top-/bundpadding er symmetrisk), så det
+ * følger automatisk med og forbliver centreret i den højere boks. */
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-barometer-hero-bg.ddv-section,
+.ddv-hero-forside-wrap.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section {
+	padding-top: calc(var(--ddv-section-y) + 50px) !important;
+	padding-bottom: calc(var(--ddv-section-y) + 50px) !important;
 }
 
 /* ---------- Barometer forside – hero ----------
@@ -420,13 +433,13 @@
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddvbaro-herobackground.jpg');
 	background-size: cover;
 	background-position: right center;
-	min-height: 560px;
+	min-height: 660px;
 	display: flex;
 	align-items: center;
 }
 .ddv-barometer-hero-content { max-width: 620px; margin: 0; }
 @media (max-width: 782px) {
-	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 420px; }
+	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 520px; }
 }
 
 /* ---------- Hero-hjælpeklasser ---------- */
