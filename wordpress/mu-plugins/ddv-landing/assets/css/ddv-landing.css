@@ -510,6 +510,11 @@
 .ddv-cta-banner {
 	border-radius: var(--ddv-radius-card);
 	text-align: center;
+	/* Selve den røde kasse (ikke kun teksten inden i) tvinges til en fast bredde
+	 * og centreres, i stedet for at fylde hele sektionens brede. */
+	max-width: 1180px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* ---------- Sektion-rytme ---------- */
