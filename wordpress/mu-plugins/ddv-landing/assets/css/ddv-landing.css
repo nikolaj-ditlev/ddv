@@ -524,3 +524,88 @@
  * begrænses selv i bredden, så den ikke strækker sig over hele 1440px-sektionen. ---------- */
 .ddv-intro-text { max-width: 640px; }
 .ddv-intro-text--center { margin-left: auto; margin-right: auto; }
+
+/* ---------- Kursus-side (skabelon til de 11 kursus-undersider) ---------- */
+
+/* "Kurset handler om"-tjekliste i hero-kortet: flueben i stedet for prikker. */
+.ddv-check-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.ddv-check-list li {
+	position: relative;
+	padding-left: 1.75em;
+	margin-bottom: 0.6em;
+}
+.ddv-check-list li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	font-weight: 700;
+}
+.ddv-kursus-duration {
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(36, 49, 44, 0.15);
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+/* Lydklip-kort under underviser-fotoet: afspilknap + "waveform" + varighed. */
+.ddv-audio-card {
+	background: var(--wp--preset--color--ddv-white);
+	border-radius: var(--ddv-radius-card);
+	padding: 1.25rem 1.5rem;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+	margin-top: 1.5rem;
+}
+.ddv-audio-card__title {
+	font-weight: 600;
+	margin: 0 0 0.75rem;
+}
+.ddv-audio-card__row {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+.ddv-audio-card__playbtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--ddv-red);
+	color: var(--wp--preset--color--ddv-white);
+	flex: 0 0 auto;
+	font-size: 0.9rem;
+}
+.ddv-audio-card__waveform {
+	display: flex;
+	align-items: flex-end;
+	gap: 3px;
+	height: 24px;
+	flex: 1 1 auto;
+}
+.ddv-audio-card__waveform span {
+	display: block;
+	width: 3px;
+	border-radius: 2px;
+	background: rgba(36, 49, 44, 0.25);
+}
+.ddv-audio-card__duration {
+	margin: 0.75rem 0 0;
+	font-size: 0.8rem;
+	opacity: 0.7;
+}
+
+/* "Vi vil arbejde med"-underoverskrifter: lidt mindre luft end en almindelig H3/H4. */
+.ddv-kursus-subsection {
+	margin-bottom: 2rem;
+}
+.ddv-kursus-subsection h3,
+.ddv-kursus-subsection h4 {
+	margin-bottom: 0.5rem;
+}
