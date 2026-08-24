@@ -7,11 +7,8 @@ return array(
 <!-- wp:group {"align":"wide","className":"ddv-section ddv-analysen-hero-bg","textColor":"ddv-white"} -->
 <div class="wp-block-group alignwide ddv-section ddv-analysen-hero-bg has-ddv-white-color has-text-color">
 
-<!-- wp:columns {"verticalAlignment":"center"} -->
-<div class="wp-block-columns are-vertically-aligned-center">
-
-<!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%">
+<!-- wp:group {"className":"ddv-hero-lead"} -->
+<div class="wp-block-group ddv-hero-lead">
 
 <!-- wp:group {"className":"ddv-eyebrow-row","layout":{"type":"flex","flexWrap":"wrap"}} -->
 <div class="wp-block-group ddv-eyebrow-row">
@@ -48,27 +45,7 @@ return array(
 <!-- /wp:paragraph -->
 
 </div>
-<!-- /wp:column -->
-
-<!-- wp:column {"verticalAlignment":"center","width":"42%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:42%">
-
-<!-- wp:group {"className":"ddv-hero-visual"} -->
-<div class="wp-block-group ddv-hero-visual">
-<!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
-<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://ddv.org/wp-content/uploads/2026/08/ddv-analysen-scorecard.png" alt="Mockup af DDV Analysens resultatside med samlet score 62/100"/></figure>
-<!-- /wp:image -->
-<!-- wp:paragraph {"className":"ddv-floating-badge"} -->
-<p class="ddv-floating-badge">Tager ca. 30-45 minutter<br/>Kan spare millioner</p>
-<!-- /wp:paragraph -->
-</div>
 <!-- /wp:group -->
-
-</div>
-<!-- /wp:column -->
-
-</div>
-<!-- /wp:columns -->
 
 </div>
 <!-- /wp:group -->

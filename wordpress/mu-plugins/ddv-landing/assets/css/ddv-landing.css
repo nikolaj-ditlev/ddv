@@ -38,6 +38,14 @@
 	margin-right: auto;
 }
 
+/* ---------- Hero-sektioner (DDV Analysen + Barometer data-side): bredere end resten af
+ * sektionerne (1640px i stedet for standardens 1440px). Overskriver kun disse to specifikke
+ * heroer via deres egne baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
+.ddv-analysen-hero-bg.alignwide,
+.ddv-barometer-hero-bg.alignwide {
+	max-width: 1640px !important;
+}
+
 /* ---------- Barometer forside – hero ----------
  * Eksakte mål hentet fra Figma (node 3065:1615) via Figma MCP:
  * - Venstre boks: 1069×784px, hjørner runde 3 steder (top-højre skarp),
@@ -398,6 +406,11 @@
 
 /* ---------- Hero-hjælpeklasser ---------- */
 .ddv-hero-visual { position: relative; }
+/* DDV Analysen-heroen har ikke længere et separat billede (motivet ligger i
+ * baggrundsbilledet) - begræns i stedet selve teksten i bredden, så den ikke
+ * strækker sig ud over den nu 1640px-brede sektion. Samme bredde som
+ * .ddv-barometer-hero-content, så de to heroer matcher. */
+.ddv-hero-lead { max-width: 620px; }
 .ddv-eyebrow-row { margin-bottom: 1.5rem; }
 .ddv-hero-trust { opacity: 0.75; margin-top: 1rem; }
 .ddv-testimonial-audio {
