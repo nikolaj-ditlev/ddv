@@ -4,8 +4,10 @@ return array(
 	'title'      => __( 'DDV Analysen – Rapport-preview', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section"} -->
-<div class="wp-block-group alignwide ddv-section">
+<!-- wp:group {"align":"full","className":"ddv-section","backgroundColor":"ddv-cream"} -->
+<div class="wp-block-group alignfull ddv-section has-ddv-cream-background-color has-background">
+<!-- wp:group {"className":"ddv-section-inner"} -->
+<div class="wp-block-group ddv-section-inner">
 <!-- wp:columns {"verticalAlignment":"center"} -->
 <div class="wp-block-columns are-vertically-aligned-center">
 
@@ -59,6 +61,8 @@ return array(
 
 </div>
 <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 HTML

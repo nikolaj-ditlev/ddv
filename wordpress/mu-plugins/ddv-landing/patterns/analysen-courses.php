@@ -4,17 +4,19 @@ return array(
 	'title'      => __( 'DDV Analysen – Kursusbånd (3 kort)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white"} -->
-<div class="wp-block-group alignwide ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
+<!-- wp:group {"align":"full","className":"ddv-section","backgroundColor":"ddv-dark-teal","textColor":"ddv-white"} -->
+<div class="wp-block-group alignfull ddv-section has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background">
+<!-- wp:group {"className":"ddv-section-inner"} -->
+<div class="wp-block-group ddv-section-inner">
 
-<!-- wp:paragraph {"className":"ddv-card__eyebrow"} -->
-<p class="ddv-card__eyebrow">KURSERNE DER LØFTER JER VIDERE</p>
+<!-- wp:paragraph {"className":"ddv-card__eyebrow","textColor":"ddv-white"} -->
+<p class="ddv-card__eyebrow has-ddv-white-color has-text-color">KURSERNE DER LØFTER JER VIDERE</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":2} -->
-<h2 class="wp-block-heading">Analysen er gratis. Kurserne er der hvor vi faktisk hjælper jer videre.</h2>
+<!-- wp:heading {"level":2,"textColor":"ddv-white"} -->
+<h2 class="wp-block-heading has-ddv-white-color has-text-color">Analysen er gratis. Kurserne er der hvor vi faktisk hjælper jer videre.</h2>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"className":"ddv-intro-text"} -->
-<p class="ddv-intro-text">Hver virksomhed får anbefalet de 2-3 kurser der letter deres svageste område hurtigst. Online, praktisk, danskesproget.</p>
+<!-- wp:paragraph {"className":"ddv-intro-text","textColor":"ddv-white"} -->
+<p class="ddv-intro-text has-ddv-white-color has-text-color">Hver virksomhed får anbefalet de 2-3 kurser der letter deres svageste område hurtigst. Online, praktisk, danskesproget.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:columns -->
@@ -98,10 +100,12 @@ return array(
 </div>
 <!-- /wp:columns -->
 
-<!-- wp:paragraph {"align":"right"} -->
-<p class="has-text-align-right"><a href="#">Se alle kurser →</a></p>
+<!-- wp:paragraph {"align":"right","textColor":"ddv-white"} -->
+<p class="has-text-align-right has-ddv-white-color has-text-color"><a href="#">Se alle kurser →</a></p>
 <!-- /wp:paragraph -->
 
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 HTML

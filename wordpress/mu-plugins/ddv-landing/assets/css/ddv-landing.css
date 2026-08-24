@@ -25,6 +25,19 @@
 	margin-right: auto !important;
 }
 
+/* ---------- Sektioner hvor selve baggrunden (farve/foto) skal skalere næsten helt ud til
+ * viewportets kant (Figma: kun ca. 50px luft i hver side på et 1920px-lærred), mens indholdet
+ * stadig skal holde sig inden for det normale 1440px grid. Opskrift: sæt align="full" på
+ * sektionen (så alignwide's 1440px-loft ovenfor IKKE gælder – .ddv-section's egen sidepadding,
+ * clamp(1.25rem, 4vw, 3rem), giver derved den luft der er tilbage), og pak selve indholdet ind i
+ * en .ddv-section-inner så det ikke strækker sig ud i baggrundens fulde bredde. Brugt på
+ * DDV Analysen: testimonial, rapport-preview og kursusbånd. */
+.ddv-section-inner {
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /* ---------- Barometer forside – hero ----------
  * Eksakte mål hentet fra Figma (node 3065:1615) via Figma MCP:
  * - Venstre boks: 1069×784px, hjørner runde 3 steder (top-højre skarp),
