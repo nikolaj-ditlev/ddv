@@ -629,6 +629,7 @@
  * (Avanceret-panelet) på den Gruppe-blok du lægger post-felterne i inde i Indlægsskabelonen -
  * se GUIDE.md for fremgangsmåden. */
 .ddv-post-card {
+	position: relative;
 	border-radius: var(--ddv-radius-card);
 	background: var(--wp--preset--color--ddv-cream);
 	overflow: hidden;
@@ -642,7 +643,8 @@
 .ddv-post-card .wp-block-post-featured-image img {
 	display: block;
 	width: 100%;
-	height: 200px;
+	aspect-ratio: 4 / 3;
+	height: auto;
 	object-fit: cover;
 }
 .ddv-post-card > :not(.wp-block-post-featured-image) {
@@ -652,17 +654,29 @@
 .ddv-post-card > :last-child {
 	padding-bottom: 1.5rem;
 }
-.ddv-post-card .wp-block-post-featured-image + * {
+.ddv-post-card .wp-block-post-title {
 	margin-top: 1.25rem;
 }
+/* Kategori-mærkat: lagt oven på billedet (øverst til venstre) i stedet for som
+ * almindelig tekst under billedet - outline-badge med sitets signatur-hjørnefacon,
+ * blot i mindre skala (6px i stedet for de 30px kort/knapper bruger). */
 .ddv-post-card .wp-block-post-terms {
-	font-size: 0.75rem;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 2;
+	display: inline-block;
+	padding: 0.4em 0.9em;
+	border: 1px solid #ffffff;
+	border-radius: 6px 0 6px 6px;
+	background: rgba(0, 0, 0, 0.15);
+	font-size: 0.7rem;
+	font-weight: 700;
 	text-transform: uppercase;
-	letter-spacing: 0.06em;
-	opacity: 0.7;
-	text-decoration: none;
+	letter-spacing: 0.04em;
 }
+.ddv-post-card .wp-block-post-terms,
 .ddv-post-card .wp-block-post-terms a {
+	color: #ffffff;
 	text-decoration: none;
-	color: inherit;
 }
