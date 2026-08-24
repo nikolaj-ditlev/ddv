@@ -646,6 +646,11 @@
 	aspect-ratio: 4 / 3 !important;
 	height: auto !important;
 	object-fit: cover !important;
+	/* Billedblokken kan sætte sin egen (som regel ensartede) border-radius via
+	 * Stil → Kant - det giver et rundet hjørne foroven til højre, selvom selve
+	 * kortet (.ddv-post-card) er klippet med den skarpe facon. Tving billedet
+	 * til at følge kortets facon i stedet. */
+	border-radius: 0 !important;
 }
 .ddv-post-card > :not(.wp-block-post-featured-image) {
 	padding-left: 1.5rem;
