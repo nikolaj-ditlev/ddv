@@ -396,8 +396,20 @@
 	background-position: center;
 }
 
-/* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content") ---------- */
+/* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content").
+ * Eksplicit bredde-/højde-begrænsning i stedet for kun at stole på temaets/core's egen
+ * .wp-block-image-styling: uden den kan et højtopløst originalbillede presse sin egen
+ * flex-kolonne bredere end sektionen (og dermed poppe ud over sektionens højre/nederste kant
+ * uden hverken padding eller runding), fordi flex-items som udgangspunkt ikke skrumper under
+ * deres indholds naturlige (min-content) størrelse. */
+.ddv-rounded-image {
+	min-width: 0;
+	max-width: 100%;
+}
 .ddv-rounded-image img {
+	display: block;
+	width: 100%;
+	height: auto;
 	border-radius: var(--ddv-radius-card);
 }
 
