@@ -56,7 +56,7 @@ return array(
 <!-- wp:group {"className":"ddv-hero-visual"} -->
 <div class="wp-block-group ddv-hero-visual">
 <!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
-<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://placehold.co/560x420/F3EEE2/2E453F?text=Samlet+score+62%2F100" alt="Mockup af DDV Analysens resultatside med samlet score 62/100"/></figure>
+<figure class="wp-block-image size-large ddv-rounded-image"><img src="https://ddv.org/wp-content/uploads/2026/08/ddv-analysen-scorecard.png" alt="Mockup af DDV Analysens resultatside med samlet score 62/100"/></figure>
 <!-- /wp:image -->
 <!-- wp:paragraph {"className":"ddv-floating-badge"} -->
 <p class="ddv-floating-badge">Tager ca. 30-45 minutter<br/>Kan spare millioner</p>
