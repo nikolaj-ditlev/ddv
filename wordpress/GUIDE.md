@@ -112,7 +112,7 @@ virker uafhængigt af om workflowet er sat op.
 | Rødt CTA-bånd (fast 1180px, centreret) | Group (bg-farve, centreret indhold) → Heading/Paragraph/Buttons | `ddv-cta-banner ddv-card--red` |
 | Tjekliste med flueben (kursus-hero-kort) | List | `ddv-check-list` |
 | Lydklip-kort (afspilknap + waveform + varighed) | Group + Paragraph + `wp:html` (waveform-bars) | `ddv-audio-card` og undertyper, se `kursus-content.php` |
-| Artikelkort (Indsigt, Query Loop) | `core/query` → `core/post-template` → Group (Featured Image/Terms/Title/Excerpt) | `ddv-post-card`, sat som ekstra CSS-klasse på gruppen i Indlægsskabelonen |
+| Artikelkort (Indsigt, Query Loop) | `core/query` → `core/post-template` (Featured Image/Terms/Title/Excerpt) | Rammer strukturen direkte (`.wp-block-post-template`), ingen ekstra CSS-klasse nødvendig |
 | Sektion hvor kun baggrunden skal fylde bredden ud, indhold i grid | 3 lag: Group (align=full, `ddv-bleed-1440`) → Group (`ddv-section`, bg-farve) → Group (`ddv-section-inner`) | `ddv-bleed-1440` / `ddv-section-inner` — se kommentar i CSS-filen |
 
 Alle farve-/afstands-værdier hentes fra `theme.json` via CSS custom
@@ -202,11 +202,12 @@ Indlæg (Post) som allerede er i brug til andet indhold — se
    **"Indsigt – Hero"**.
 4. Under hero'en: indsæt en **Query Loop-blok** (+ → søg "Forespørgsel").
    I blokkens indstillinger: sæt **Posttype: Indsigt** (ikke Indlæg),
-   **Kolonner: 3**. Klik ind i Indlægsskabelonen, marker den yderste
-   Gruppe-blok, og tilføj CSS-klassen **`ddv-post-card`**
-   (Avanceret → Ekstra CSS-klasse(r)) — det er den, der giver kortene samme
-   look som resten af sitet. Sørg for at skabelonen indeholder Fremhævet
-   billede, Post-termer (kategori), Titel og Uddrag.
+   **Kolonner: 3**. Sørg for at Indlægsskabelonen indeholder Fremhævet
+   billede, Post-termer (kategori), Titel og Uddrag — CSS'en rammer
+   Query Loop-strukturen direkte (`.wp-block-post-template`,
+   `.wp-block-post-terms` osv.), ingen ekstra CSS-klasse nødvendig.
+   Kategori-mærkatet lægger sig automatisk oven på billedet og er
+   ikke-klikbart.
 5. **Filtrering på kategori** (senere): Query Loop kan låses til én kategori
    ad gangen (nyttigt til fx `/indsigt/analyser/`-undersider). Et
    klik-og-filtrér-UI på samme side kræver mere (flere Query Loop-blokke bag

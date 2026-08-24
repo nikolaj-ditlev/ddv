@@ -624,48 +624,30 @@
 	margin-bottom: 0.5rem;
 }
 
-/* ---------- Indsigt: styling af WP's indbyggede Forespørgsel (Query Loop)-blok, så
- * artikelkortene matcher sitets øvrige kort. Sæt "ddv-post-card" som ekstra CSS-klasse
- * (Avanceret-panelet) på den Gruppe-blok du lægger post-felterne i inde i Indlægsskabelonen -
- * se GUIDE.md for fremgangsmåden. */
-.ddv-post-card {
+/* ---------- Indsigt: styling af WP's indbyggede Forespørgsel (Query Loop)-blok.
+ * Rammer selve Query Loop-strukturen direkte (li.wp-block-post, .wp-block-post-terms osv.)
+ * i stedet for en manuelt tilføjet "ddv-post-card"-klasse - kortudseendet (rundet, cremefarvet
+ * boks) kommer allerede fra temaets egen standard-styling, så her rettes kun det der mangler:
+ * kategori-badge oven på billedet, og at billedet ikke bliver forvrænget. */
+.wp-block-post-template li.wp-block-post {
 	position: relative;
-	border-radius: var(--ddv-radius-card);
-	background: var(--wp--preset--color--ddv-cream);
-	overflow: hidden;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
 }
-.ddv-post-card .wp-block-post-featured-image {
-	margin: 0;
-}
-.ddv-post-card .wp-block-post-featured-image img {
+.wp-block-post-template .wp-block-post-featured-image img {
 	display: block;
 	width: 100% !important;
 	aspect-ratio: 4 / 3 !important;
 	height: auto !important;
 	object-fit: cover !important;
 	/* Billedblokken kan sætte sin egen (som regel ensartede) border-radius via
-	 * Stil → Kant - det giver et rundet hjørne foroven til højre, selvom selve
-	 * kortet (.ddv-post-card) er klippet med den skarpe facon. Tving billedet
-	 * til at følge kortets facon i stedet. */
+	 * Stil → Kant, hvilket giver et rundet hjørne foroven til højre, selvom kortet
+	 * ellers er klippet med sitets skarpe signatur-facon. Nulstil den her. */
 	border-radius: 0 !important;
-}
-.ddv-post-card > :not(.wp-block-post-featured-image) {
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-}
-.ddv-post-card > :last-child {
-	padding-bottom: 1.5rem;
-}
-.ddv-post-card .wp-block-post-title {
-	margin-top: 1.25rem;
 }
 /* Kategori-mærkat: lagt oven på billedet (øverst til venstre) i stedet for som
  * almindelig tekst under billedet - outline-badge med sitets signatur-hjørnefacon,
- * blot i mindre skala (6px i stedet for de 30px kort/knapper bruger). */
-.ddv-post-card .wp-block-post-terms {
+ * blot i mindre skala (6px i stedet for de 30px kort/knapper bruger). pointer-events:none
+ * gør den ikke-klikbar, så man ikke kan hoppe videre til kategori-arkivet fra kortet. */
+.wp-block-post-template .wp-block-post-terms {
 	position: absolute;
 	top: 1rem;
 	left: 1rem;
@@ -679,9 +661,11 @@
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
+	pointer-events: none;
 }
-.ddv-post-card .wp-block-post-terms,
-.ddv-post-card .wp-block-post-terms a {
+.wp-block-post-template .wp-block-post-terms,
+.wp-block-post-template .wp-block-post-terms a {
 	color: #ffffff;
 	text-decoration: none;
+	cursor: default;
 }
