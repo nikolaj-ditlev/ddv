@@ -33,7 +33,9 @@ wordpress/
 │           ├── indsigt-hero.php         ← hero til Indsigt-oversigten (selve artikellisten
 │           │                               indsættes som en Query Loop-blok direkte i editoren,
 │           │                               se afsnit 4.6)
-│           ├── indsigt-artikel-*.php    ← skabelon til den enkelte Indsigt-artikelside (afsnit 4.7)
+│           ├── indsigt-artikel-*.php    ← indhold til den enkelte Indsigt-artikelside (afsnit 4.7)
+│           │                               - titel/billede kommer fra en Site
+│           │                               Editor-skabelon, ikke herfra
 │           ├── faq.php, cta-banner.php  ← delte sektioner (bruges på flere sider)
 │           └── page-*.php               ← "fuld side"-patterns, der samler sektionerne
 └── GUIDE.md
@@ -216,24 +218,43 @@ Indlæg (Post) som allerede er i brug til andet indhold — se
 
 ### 4.7 Indsigt-artikel (skabelon til den enkelte artikelside)
 Skabelon til selve artiklen, som man klikker sig ind på fra et af kortene i
-Indsigt-oversigten (afsnit 4.6). Består af tre patterns:
-**"Indsigt-artikel – Hero"** (centreret overskrift uden farvet baggrund,
-efterfulgt af et stort billede i sitets rundede facon),
-**"Indsigt-artikel – Brødtekst"** (artikeltekst i venstre spalte + et
-fremhævet citat i højre spalte, samt en opsummerings-sektion i bunden), og
-det delte `cta-banner.php`. Sæt alle tre ind ad gangen via
-**"FULD SIDE – Indsigt-artikel (skabelon)"**.
+Indsigt-oversigten (afsnit 4.6). Titel og udvalgt billede trækkes
+**automatisk** ind fra en dedikeret Site Editor-skabelon (én gang, gælder
+alle artikler); resten af indholdet (eyebrow, underrubrik, brødtekst, citat,
+opsummering) indsætter du selv som blokke pr. artikel.
 
-1. Opret en ny **Indsigt**-artikel (Indsigt → Tilføj ny), indsæt
-   **"FULD SIDE – Indsigt-artikel (skabelon)"**.
-2. Erstat eyebrow, overskrift, underrubrik og billede i hero'en med
-   artiklens eget indhold.
-3. Erstat Lorem ipsum-teksten i brødteksten med den rigtige artikel, og
-   citatet (klassen `ddv-indsigt-quote`) med et rigtigt citat fra artiklen
-   (eller slet citat-spalten, hvis artiklen ikke har et).
-4. Opsummerings-overskriften og de to afsnit i bunden er valgfrie — slet
+**Trin A — opret skabelonen "Enkelt Indsigt" (kun én gang):**
+1. Opret/åbn en Indsigt-artikel → i sidepanelet under **Skabelon**, klik
+   dropdown-pilen → **Opret ny skabelon**, kald den fx "Enkelt Indsigt".
+2. Byggetema-skabelonen åbner i Site Editor. Byg den op som:
+   Header (arves automatisk) → **Udvalgt billede**-blok → **Titel**-blok →
+   **Indhold**-blok (Post Content) → Footer (arves automatisk).
+3. Marker **Udvalgt billede**-blokken → indstil bredde til **Bred** →
+   Avanceret-panelet → **Ekstra CSS-klasse(r)**: skriv
+   `ddv-rounded-image ddv-indsigt-artikel-image` (giver sitets runde facon +
+   ensartet 16:9-beskæring, uanset hvilket billedformat der uploades).
+4. Marker **Titel**-blokken → sæt justering til **Centreret** og
+   skriftstørrelse til **X-large** i sidepanelet. Tilføj derudover
+   **Ekstra CSS-klasse(r)**: `ddv-indsigt-artikel-title` (sikrer det holder,
+   hvis temaets egne standardværdier ellers vinder).
+5. Gem skabelonen. Den bruges nu automatisk til alle artikler under
+   indholdstypen "Indsigt".
+
+**Trin B — pr. artikel:**
+1. Opret en ny **Indsigt**-artikel, udfyld **Titel**-feltet og sæt
+   **Udvalgt billede** i sidepanelet som normalt — de vises nu automatisk
+   via skabelonen fra Trin A.
+2. Indsæt **"FULD SIDE – Indsigt-artikel (skabelon)"** i selve
+   indholdsområdet — den sætter eyebrow/underrubrik
+   (**"Indsigt-artikel – Eyebrow + underrubrik"**), brødtekst med citat
+   (**"Indsigt-artikel – Brødtekst"**) og det delte CTA-bånd ind på én gang.
+3. Erstat eyebrow og underrubrik med artiklens egne.
+4. Erstat Lorem ipsum-teksten med den rigtige artikel, og citatet (klassen
+   `ddv-indsigt-quote`) med et rigtigt citat fra artiklen (eller slet
+   citat-spalten, hvis artiklen ikke har et).
+5. Opsummerings-overskriften og de to afsnit i bunden er valgfrie — slet
    dem hvis artiklen ikke skal have en opsummering.
-5. CTA-båndet i bunden er det delte `cta-banner.php` — ingen ændring
+6. CTA-båndet i bunden er det delte `cta-banner.php` — ingen ændring
    nødvendig.
 
 ## 5. Vedligehold og videre arbejde

@@ -741,17 +741,31 @@
 	cursor: default;
 }
 
-/* ---------- Indsigt-artikel: skabelon til de enkelte artikelsider (hero uden
- * farvet baggrund + brødtekst med fremhævet citat i højre spalte). */
+/* ---------- Indsigt-artikel: skabelon til de enkelte artikelsider (titel +
+ * udvalgt billede trækkes automatisk ind af skabelonen "Enkelt Indsigt" i
+ * Site Editor, brødtekst med fremhævet citat i højre spalte indsættes manuelt). */
 .ddv-indsigt-artikel-hero .ddv-intro-text {
 	margin-top: 0.75rem;
 	margin-bottom: 2.5rem;
 }
-/* Artikelbilledet: bredt/lavt format (16:9) og beskåret ensartet, uanset
+/* Klassen tilføjes på Udvalgt billede-blokken i selve skabelonen (Site
+ * Editor → Skabeloner → Enkelt Indsigt → marker blokken → Avanceret →
+ * Ekstra CSS-klasse(r)): giver billedet sitets runde facon (fra
+ * .ddv-rounded-image) og et ensartet bredt/lavt format (16:9), uanset
  * hvilket billedformat der uploades pr. artikel. */
 .ddv-indsigt-artikel-image img {
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
+}
+/* Samme metode som ovenfor, men til Post-titel-blokken i skabelonen: sikrer
+ * centreret, stor overskrift uanset temaets egne standardværdier (som
+ * tidligere har vist sig at vinde over blok-editorens indstillinger). */
+.ddv-indsigt-artikel-title {
+	text-align: center !important;
+	font-size: var(--wp--preset--font-size--x-large) !important;
+	max-width: 900px;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 /* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
  * farve, med en tynd venstre-streg der markerer det som et citat. */
