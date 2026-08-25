@@ -633,9 +633,18 @@
 	position: relative;
 	/* Sitets signatur-hjørnefacon (runde alle hjørner undtagen øverst til højre) tvunget
 	 * igennem her, da temaet ellers runder alle fire hjørner ens - overflow:hidden sørger
-	 * for at billedet (som har border-radius:0, se nedenfor) også bliver klippet til facon. */
-	border-radius: var(--ddv-radius-card) !important;
+	 * for at billedet (som har border-radius:0, se nedenfor) også bliver klippet til facon.
+	 * Værdien er hardcodet (i stedet for var(--ddv-radius-card)) for at udelukke at en
+	 * CSS-variabel ikke bliver opløst korrekt i denne kontekst. */
+	border-radius: 30px 0 30px 30px !important;
 	overflow: hidden !important;
+	/* mask-image tvinger browseren til at klippe hjørnerne via maskering i stedet for via
+	 * GPU-kompositeringslag. Uden dette "mister" nogle browsere (kendt Chrome/WebKit-kvirk)
+	 * overflow:hidden-klipningen, når samme element også har en transition/transform - præcis
+	 * det vi har herunder til hover-effekten. Gradienten er 100% hvid = ingen visuel ændring,
+	 * den tvinger bare beskæringen til at blive udført korrekt. */
+	-webkit-mask-image: -webkit-radial-gradient(circle, #fff 100%, #fff 100%);
+	mask-image: radial-gradient(circle, #fff 100%, #fff 100%);
 	/* Hover: hele kortet skalerer 3% op fra midten. */
 	transition: transform 0.25s ease;
 	transform-origin: center;
@@ -669,6 +678,11 @@
  * denne margin og gør mellemrummet større end de tiltænkte 32px - nulstillet herunder. */
 .wp-block-post-template .wp-block-post-featured-image {
 	padding-bottom: 0 !important;
+	/* Sikkerhedsnet: klip også billedet i sig selv til de to øverste hjørner (kun toppen,
+	 * da billedbokse sidder øverst i kortet) - hvis kortets egen klipning et sted fejler,
+	 * er billedet stadig rundet korrekt foroven til venstre og skarpt foroven til højre. */
+	border-radius: 30px 0 0 0 !important;
+	overflow: hidden !important;
 }
 .wp-block-post-template .wp-block-post-featured-image + * {
 	margin-top: clamp(1.25rem, 4vw, 2rem) !important;
