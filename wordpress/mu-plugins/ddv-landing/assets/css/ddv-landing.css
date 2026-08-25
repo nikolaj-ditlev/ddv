@@ -667,8 +667,19 @@
 .wp-block-post-template .wp-block-post-featured-image + * {
 	margin-top: clamp(1.25rem, 4vw, 2rem) !important;
 }
-/* Afstand overskrift → uddrag: fast 24px. Hvis der ligger en manuel Spacer-blok mellem
- * titel og uddrag i Indlægsskabelonen, læg den til/fjern den, ellers lægges afstandene sammen. */
+/* Afstand overskrift → uddrag: fast 24px, og KUN 24px. Nulstiller to andre kilder til
+ * mellemrum der ellers lægger sig oveni: temaets egen "ddv.css"-regel
+ * (.entry-content h2 { margin-block-end: 25px !important }), og WP's flex-gap på gruppen der
+ * wrapper overskrift+uddrag (is-layout-flex, gap sat pr. blok-instans). Hvis der ligger en
+ * manuel Spacer-blok mellem titel og uddrag i Indlægsskabelonen, fjern den, ellers lægges
+ * dens højde oveni de 24px. */
+.wp-block-post-template .wp-block-post-title {
+	margin-block-end: 0 !important;
+	margin-bottom: 0 !important;
+}
+.wp-block-post-template .is-layout-flex {
+	gap: 0 !important;
+}
 .wp-block-post-template .wp-block-post-excerpt {
 	margin-top: 24px !important;
 }
