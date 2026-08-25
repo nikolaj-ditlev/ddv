@@ -636,12 +636,12 @@
 	 * for at billedet (som har border-radius:0, se nedenfor) også bliver klippet til facon. */
 	border-radius: var(--ddv-radius-card) !important;
 	overflow: hidden !important;
-	/* Hover: hele kortet skalerer 10% op fra midten. */
+	/* Hover: hele kortet skalerer 3% op fra midten. */
 	transition: transform 0.25s ease;
 	transform-origin: center;
 }
 .wp-block-post-template li.wp-block-post:hover {
-	transform: scale(1.1);
+	transform: scale(1.03);
 	z-index: 3;
 }
 /* Gør hele kortet klikbart ("stretched link"): usynligt lag oven på hele kortet, knyttet
@@ -650,6 +650,10 @@
  * til kort-linket i stedet for at ramme badgen. */
 .wp-block-post-template li.wp-block-post .wp-block-post-title a {
 	position: static;
+	text-decoration: none !important;
+}
+.wp-block-post-template li.wp-block-post .wp-block-post-title a:hover {
+	text-decoration: none !important;
 }
 .wp-block-post-template li.wp-block-post .wp-block-post-title a::after {
 	content: "";
