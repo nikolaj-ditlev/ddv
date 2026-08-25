@@ -663,16 +663,22 @@
 }
 /* Afstand billede → overskrift: 32px på desktop, skalerer ned mod mobil. Rammer den
  * direkte næste blok efter billedet, uanset om det er titlen selv eller en gruppe der
- * indeholder den, og vinder over evt. inline spacing-preset fra temaet. */
+ * indeholder den, og vinder over evt. inline spacing-preset fra temaet. Billedblokken
+ * (figure.wp-block-post-featured-image) har selv en indbygget padding-bottom
+ * (var(--wp--preset--spacing--20), beregnet til billedtekster) som ellers lægger sig oveni
+ * denne margin og gør mellemrummet større end de tiltænkte 32px - nulstillet herunder. */
+.wp-block-post-template .wp-block-post-featured-image {
+	padding-bottom: 0 !important;
+}
 .wp-block-post-template .wp-block-post-featured-image + * {
 	margin-top: clamp(1.25rem, 4vw, 2rem) !important;
 }
-/* Afstand overskrift → uddrag: fast 24px, og KUN 24px. Nulstiller to andre kilder til
+/* Afstand overskrift → uddrag: fast 16px, og KUN 16px. Nulstiller to andre kilder til
  * mellemrum der ellers lægger sig oveni: temaets egen "ddv.css"-regel
  * (.entry-content h2 { margin-block-end: 25px !important }), og WP's flex-gap på gruppen der
  * wrapper overskrift+uddrag (is-layout-flex, gap sat pr. blok-instans). Hvis der ligger en
  * manuel Spacer-blok mellem titel og uddrag i Indlægsskabelonen, fjern den, ellers lægges
- * dens højde oveni de 24px. */
+ * dens højde oveni de 16px. */
 .wp-block-post-template .wp-block-post-title {
 	margin-block-end: 0 !important;
 	margin-bottom: 0 !important;
@@ -681,7 +687,7 @@
 	gap: 0 !important;
 }
 .wp-block-post-template .wp-block-post-excerpt {
-	margin-top: 24px !important;
+	margin-top: 16px !important;
 }
 .wp-block-post-template .wp-block-post-featured-image img {
 	display: block;
