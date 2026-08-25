@@ -33,6 +33,7 @@ wordpress/
 │           ├── indsigt-hero.php         ← hero til Indsigt-oversigten (selve artikellisten
 │           │                               indsættes som en Query Loop-blok direkte i editoren,
 │           │                               se afsnit 4.6)
+│           ├── indsigt-artikel-*.php    ← skabelon til den enkelte Indsigt-artikelside (afsnit 4.7)
 │           ├── faq.php, cta-banner.php  ← delte sektioner (bruges på flere sider)
 │           └── page-*.php               ← "fuld side"-patterns, der samler sektionerne
 └── GUIDE.md
@@ -212,6 +213,28 @@ Indlæg (Post) som allerede er i brug til andet indhold — se
    ad gangen (nyttigt til fx `/indsigt/analyser/`-undersider). Et
    klik-og-filtrér-UI på samme side kræver mere (flere Query Loop-blokke bag
    et filter, eller en kategori-arkiv-skabelon) — tag fat når I når dertil.
+
+### 4.7 Indsigt-artikel (skabelon til den enkelte artikelside)
+Skabelon til selve artiklen, som man klikker sig ind på fra et af kortene i
+Indsigt-oversigten (afsnit 4.6). Består af tre patterns:
+**"Indsigt-artikel – Hero"** (centreret overskrift uden farvet baggrund,
+efterfulgt af et stort billede i sitets rundede facon),
+**"Indsigt-artikel – Brødtekst"** (artikeltekst i venstre spalte + et
+fremhævet citat i højre spalte, samt en opsummerings-sektion i bunden), og
+det delte `cta-banner.php`. Sæt alle tre ind ad gangen via
+**"FULD SIDE – Indsigt-artikel (skabelon)"**.
+
+1. Opret en ny **Indsigt**-artikel (Indsigt → Tilføj ny), indsæt
+   **"FULD SIDE – Indsigt-artikel (skabelon)"**.
+2. Erstat eyebrow, overskrift, underrubrik og billede i hero'en med
+   artiklens eget indhold.
+3. Erstat Lorem ipsum-teksten i brødteksten med den rigtige artikel, og
+   citatet (klassen `ddv-indsigt-quote`) med et rigtigt citat fra artiklen
+   (eller slet citat-spalten, hvis artiklen ikke har et).
+4. Opsummerings-overskriften og de to afsnit i bunden er valgfrie — slet
+   dem hvis artiklen ikke skal have en opsummering.
+5. CTA-båndet i bunden er det delte `cta-banner.php` — ingen ændring
+   nødvendig.
 
 ## 5. Vedligehold og videre arbejde
 

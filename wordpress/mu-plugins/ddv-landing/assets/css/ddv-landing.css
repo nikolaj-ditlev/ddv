@@ -740,3 +740,26 @@
 	text-decoration: none;
 	cursor: default;
 }
+
+/* ---------- Indsigt-artikel: skabelon til de enkelte artikelsider (hero uden
+ * farvet baggrund + brødtekst med fremhævet citat i højre spalte). */
+.ddv-indsigt-artikel-hero .ddv-intro-text {
+	margin-top: 0.75rem;
+	margin-bottom: 2.5rem;
+}
+/* Artikelbilledet: bredt/lavt format (16:9) og beskåret ensartet, uanset
+ * hvilket billedformat der uploades pr. artikel. */
+.ddv-indsigt-artikel-image img {
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+/* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
+ * farve, med en tynd venstre-streg der markerer det som et citat. */
+.ddv-indsigt-quote {
+	border-left: 3px solid var(--wp--preset--color--ddv-dark-teal);
+	padding-left: 1.25rem;
+	font-size: 1.375rem;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wp--preset--color--ddv-dark-teal);
+}
