@@ -218,17 +218,25 @@ Indlæg (Post) som allerede er i brug til andet indhold — se
 
 ### 4.7 Indsigt-artikel (skabelon til den enkelte artikelside)
 Skabelon til selve artiklen, som man klikker sig ind på fra et af kortene i
-Indsigt-oversigten (afsnit 4.6). Titel og udvalgt billede trækkes
-**automatisk** ind fra en dedikeret Site Editor-skabelon (én gang, gælder
-alle artikler); resten af indholdet (eyebrow, underrubrik, brødtekst, citat,
+Indsigt-oversigten (afsnit 4.6). Titel, underrubrik (uddrag) og udvalgt
+billede trækkes **automatisk** ind fra en dedikeret Site Editor-skabelon (én
+gang, gælder alle artikler); resten af indholdet (eyebrow, brødtekst, citat,
 opsummering) indsætter du selv som blokke pr. artikel.
+
+> **OBS – eyebrow'ens placering:** fordi Titel/Uddrag/Udvalgt billede nu
+> ligger i selve *skabelonen* og "Indhold" (hvor eyebrow-patternet indsættes)
+> altid kommer *efter* dem, kan eyebrow'en ("ALARMERENDE TAL:") ikke længere
+> ligge over overskriften som i det oprindelige Figma-oplæg — den lander i
+> stedet lige under billedet, øverst i selve artikelteksten. Sig til hvis I
+> hellere vil have eyebrow'en helt væk, eller vil bruge kategorien
+> (Post-termer) som eyebrow i stedet — det kan også gøres automatisk.
 
 **Trin A — opret skabelonen "Enkelt Indsigt" (kun én gang):**
 1. Opret/åbn en Indsigt-artikel → i sidepanelet under **Skabelon**, klik
    dropdown-pilen → **Opret ny skabelon**, kald den fx "Enkelt Indsigt".
-2. Byggetema-skabelonen åbner i Site Editor. Byg den op som:
-   Header (arves automatisk) → **Udvalgt billede**-blok → **Titel**-blok →
-   **Indhold**-blok (Post Content) → Footer (arves automatisk).
+2. Skabelonen åbner i Site Editor. Byg den op som: Header (arves
+   automatisk) → **Udvalgt billede**-blok → **Titel**-blok → **Uddrag**-blok
+   → **Indhold**-blok (Post Content) → Footer (arves automatisk).
 3. Marker **Udvalgt billede**-blokken → indstil bredde til **Bred** →
    Avanceret-panelet → **Ekstra CSS-klasse(r)**: skriv
    `ddv-rounded-image ddv-indsigt-artikel-image` (giver sitets runde facon +
@@ -237,24 +245,31 @@ opsummering) indsætter du selv som blokke pr. artikel.
    skriftstørrelse til **X-large** i sidepanelet. Tilføj derudover
    **Ekstra CSS-klasse(r)**: `ddv-indsigt-artikel-title` (sikrer det holder,
    hvis temaets egne standardværdier ellers vinder).
-5. Gem skabelonen. Den bruges nu automatisk til alle artikler under
+5. Marker **Uddrag**-blokken → Avanceret-panelet → **Ekstra CSS-klasse(r)**:
+   skriv `ddv-indsigt-artikel-excerpt` (centreret, dæmpet, maks-bredde —
+   ligesom underrubrikken i Figma-oplægget).
+6. Gem skabelonen. Den bruges nu automatisk til alle artikler under
    indholdstypen "Indsigt".
 
 **Trin B — pr. artikel:**
 1. Opret en ny **Indsigt**-artikel, udfyld **Titel**-feltet og sæt
    **Udvalgt billede** i sidepanelet som normalt — de vises nu automatisk
    via skabelonen fra Trin A.
-2. Indsæt **"FULD SIDE – Indsigt-artikel (skabelon)"** i selve
-   indholdsområdet — den sætter eyebrow/underrubrik
-   (**"Indsigt-artikel – Eyebrow + underrubrik"**), brødtekst med citat
-   (**"Indsigt-artikel – Brødtekst"**) og det delte CTA-bånd ind på én gang.
-3. Erstat eyebrow og underrubrik med artiklens egne.
-4. Erstat Lorem ipsum-teksten med den rigtige artikel, og citatet (klassen
+2. **Underrubrik:** i sidepanelet, klik **"Tilføj et uddrag..."** og skriv
+   den ønskede underrubrik-tekst. Gør du ikke det, genererer WordPress selv
+   et uddrag ud fra de første ord i brødteksten — så skriv altid uddraget
+   manuelt, hvis I vil styre ordlyden præcist.
+3. Indsæt **"FULD SIDE – Indsigt-artikel (skabelon)"** i selve
+   indholdsområdet — den sætter eyebrow (**"Indsigt-artikel – Eyebrow"**),
+   brødtekst med citat (**"Indsigt-artikel – Brødtekst"**) og det delte
+   CTA-bånd ind på én gang.
+4. Erstat eyebrow-teksten med artiklens egen.
+5. Erstat Lorem ipsum-teksten med den rigtige artikel, og citatet (klassen
    `ddv-indsigt-quote`) med et rigtigt citat fra artiklen (eller slet
    citat-spalten, hvis artiklen ikke har et).
-5. Opsummerings-overskriften og de to afsnit i bunden er valgfrie — slet
+6. Opsummerings-overskriften og de to afsnit i bunden er valgfrie — slet
    dem hvis artiklen ikke skal have en opsummering.
-6. CTA-båndet i bunden er det delte `cta-banner.php` — ingen ændring
+7. CTA-båndet i bunden er det delte `cta-banner.php` — ingen ændring
    nødvendig.
 
 ## 5. Vedligehold og videre arbejde

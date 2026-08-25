@@ -767,6 +767,16 @@
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
+/* Samme metode til Uddrag-blokken (Post Excerpt) i skabelonen, brugt som
+ * underrubrik lige under titlen: centreret, dæmpet og med en fast
+ * maks-bredde så den ikke løber ud til hele sidens bredde. */
+.ddv-indsigt-artikel-excerpt {
+	text-align: center !important;
+	max-width: 640px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	opacity: 0.75;
+}
 /* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
  * farve, med en tynd venstre-streg der markerer det som et citat. */
 .ddv-indsigt-quote {
