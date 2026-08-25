@@ -631,6 +631,42 @@
  * kategori-badge oven på billedet, og at billedet ikke bliver forvrænget. */
 .wp-block-post-template li.wp-block-post {
 	position: relative;
+	/* Sitets signatur-hjørnefacon (runde alle hjørner undtagen øverst til højre) tvunget
+	 * igennem her, da temaet ellers runder alle fire hjørner ens - overflow:hidden sørger
+	 * for at billedet (som har border-radius:0, se nedenfor) også bliver klippet til facon. */
+	border-radius: var(--ddv-radius-card) !important;
+	overflow: hidden !important;
+	/* Hover: hele kortet skalerer 10% op fra midten. */
+	transition: transform 0.25s ease;
+	transform-origin: center;
+}
+.wp-block-post-template li.wp-block-post:hover {
+	transform: scale(1.1);
+	z-index: 3;
+}
+/* Gør hele kortet klikbart ("stretched link"): usynligt lag oven på hele kortet, knyttet
+ * til titlens eget link, i stedet for at kun titel-teksten er klikbar. Kategori-badgen
+ * ligger over dette lag (z-index:2 > 1) men har pointer-events:none, så klik "falder igennem"
+ * til kort-linket i stedet for at ramme badgen. */
+.wp-block-post-template li.wp-block-post .wp-block-post-title a {
+	position: static;
+}
+.wp-block-post-template li.wp-block-post .wp-block-post-title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+/* Afstand billede → overskrift: 32px på desktop, skalerer ned mod mobil. Rammer den
+ * direkte næste blok efter billedet, uanset om det er titlen selv eller en gruppe der
+ * indeholder den, og vinder over evt. inline spacing-preset fra temaet. */
+.wp-block-post-template .wp-block-post-featured-image + * {
+	margin-top: clamp(1.25rem, 4vw, 2rem) !important;
+}
+/* Afstand overskrift → uddrag: fast 24px. Hvis der ligger en manuel Spacer-blok mellem
+ * titel og uddrag i Indlægsskabelonen, læg den til/fjern den, ellers lægges afstandene sammen. */
+.wp-block-post-template .wp-block-post-excerpt {
+	margin-top: 24px !important;
 }
 .wp-block-post-template .wp-block-post-featured-image img {
 	display: block;
