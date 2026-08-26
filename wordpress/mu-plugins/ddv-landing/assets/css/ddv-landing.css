@@ -750,13 +750,16 @@
 }
 /* Smallere indhold på Indsigt-artikler end sitets almindelige 1440px
  * (.ddv-section.alignwide) - kun tekstsektionerne, IKKE det udvalgte billede
- * (det bruger ikke disse klasser og beholder sin nuværende bredde). Tre
- * klasser i selektoren for at være sikker på at vinde over den bredere regel
- * uanset rækkefølge i filen (samme specificitet ville ellers afgøres af
- * hvilken regel der står sidst). */
-.ddv-indsigt-artikel-hero.ddv-section.alignwide,
-.ddv-indsigt-artikel-body.ddv-section.alignwide {
+ * (det bruger ikke disse klasser og beholder sin nuværende bredde). Rammer
+ * KUN den ene distinkte klasse (ikke kombineret med .ddv-section.alignwide),
+ * da den på nogle artikler sidder alene direkte på Indhold-blokken uden de
+ * to andre klasser ved siden af - en kombineret selector ville da aldrig
+ * matche. !important sikrer den stadig vinder over den bredere 1440px-regel. */
+.ddv-indsigt-artikel-hero,
+.ddv-indsigt-artikel-body {
 	max-width: 1200px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 /* Klassen tilføjes på Udvalgt billede-blokken i selve skabelonen (Site
  * Editor → Skabeloner → Enkelt Indsigt → marker blokken → Avanceret →
