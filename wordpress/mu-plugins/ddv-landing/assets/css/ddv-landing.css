@@ -780,6 +780,11 @@ body .ddv-indsigt-artikel-image {
 	max-width: 1440px !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
+	/* Standard-afstanden ned til teksten under billedet er ca. 19px (temaets
+	 * globale 1.2rem margin-top på næste element). Sat til 40px her (margin
+	 * vinder over næste elements margin-top ved kollaps, da vores er størst),
+	 * så der samlet er ca. 20px MERE end før. */
+	margin-bottom: 40px !important;
 }
 /* Samme metode som ovenfor, men til Post-titel-blokken i skabelonen: sikrer
  * centreret, stor overskrift uanset temaets egne standardværdier (som
@@ -844,12 +849,19 @@ body.single-indsigt .wp-block-post-content p,
 body.single-indsigt .wp-block-post-content ul,
 body.single-indsigt .wp-block-post-content ol {
 	margin-top: 0 !important;
-	margin-bottom: 2.5rem !important;
 	/* Temaets standard-linjeafstand i brødteksten virkede dobbelt så luftig
 	 * som normal læsevenlig tekst - sat ned til 1.5 (almindeligt, læsevenligt
 	 * niveau for brødtekst). Sig til med et konkret px-tal, hvis 1.5 stadig
 	 * er for meget/for lidt, så rammer vi det præcist. */
 	line-height: 1.5 !important;
+}
+/* margin-bottom sættes IKKE på <p> - temaets egen ".entry-content p"-regel
+ * (15px) styrer afstanden mellem afsnit, og skal ikke overskrives. Lister
+ * har ingen tilsvarende tema-regel, så de beholder deres egen bund-margin,
+ * ellers ville de mangle luft under sig helt. */
+body.single-indsigt .wp-block-post-content ul,
+body.single-indsigt .wp-block-post-content ol {
+	margin-bottom: 2.5rem !important;
 }
 /* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
 body.single-indsigt .wp-block-post-content li + li {
