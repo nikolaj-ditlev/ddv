@@ -750,17 +750,15 @@
 }
 /* Smallere indhold på Indsigt-artikler end sitets almindelige 1440px
  * (.ddv-section.alignwide) - kun tekstsektionerne, IKKE det udvalgte billede
- * (det bruger ikke disse klasser og beholder sin nuværende bredde). Rammer
- * KUN den ene distinkte klasse (ikke kombineret med .ddv-section.alignwide),
- * da den på nogle artikler sidder alene direkte på Indhold-blokken uden de
- * to andre klasser ved siden af - en kombineret selector ville da aldrig
- * matche. "body" foran løfter specificiteten forbi ".ddv-section.alignwide"
- * (2 klasser = højere specificitet end vores 1), som ellers ville vinde på
- * artikler hvor alle klasserne SIDDER sammen (dvs. bygget med selve
- * patternet) - !important alene er ikke nok når modstanderen har flere
- * klasser og også bruger !important. */
-body .ddv-indsigt-artikel-hero,
-body .ddv-indsigt-artikel-body {
+ * (det ligger uden for .wp-block-post-content i skabelonen og rammes ikke
+ * her). Skoped via body.single-indsigt (sættes automatisk af WordPress på
+ * alle Indsigt-artikler) + .wp-block-post-content > .alignwide, så reglen
+ * IKKE er afhængig af at vi selv har husket at tilføje en klasse korrekt på
+ * den enkelte artikel - det har givet problemer flere gange. Rammer alle
+ * direkte alignwide-sektioner i artiklens indhold (eyebrow, brødtekst,
+ * CTA-bånd), hvilket er fint: CTA-boksen er alligevel selv låst til 1180px
+ * via .ddv-cta-banner. */
+body.single-indsigt .wp-block-post-content > .alignwide {
 	max-width: 1200px !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
@@ -822,31 +820,32 @@ body .ddv-indsigt-quote {
 }
 
 /* ---------- Indsigt-artikel: luft over/under alle tekstelementer i
- * brødteksten, efter almindelig typografisk praksis - mere luft OVER en
- * overskrift end under den (overskriften hører til afsnittet den
- * indleder), og ingen dobbelt-margin mellem to afsnit i træk (kun bund-
- * margin, ikke top). "html body" foran hver selector er ikke pynt - to
- * ekstra elementer i selectoren løfter specificiteten højere end enhver
- * realistisk tema-regel (fx en 2-klasses ".entry-content.is-layout-flow"),
- * uanset hvilket stylesheet der indlæses sidst. Værdierne er sat højt og i
- * faste rem (ikke clamp) med vilje lige nu, så ændringen er umulig at
- * overse - kan strammes til mere afdæmpede tal senere, når vi har
- * bekræftet at reglerne rent faktisk slår igennem. */
-html body .ddv-indsigt-artikel-body p,
-html body .ddv-indsigt-artikel-body ul,
-html body .ddv-indsigt-artikel-body ol {
+ * brødteksten. Skoped via "body.single-indsigt" i stedet for (kun) vores
+ * egen klasse ddv-indsigt-artikel-body - den klasse skal tilføjes manuelt
+ * pr. artikel og er derfor let at glemme eller placere forkert, hvilket har
+ * givet problemer flere gange. body.single-indsigt sættes DERIMOD
+ * automatisk af WordPress selv (kernefunktionalitet, body_class()) på
+ * enhver Indsigt-artikel, uden nogen manuel handling - reglerne rammer
+ * derfor med sikkerhed alle artikler, uanset om vores egen klasse mangler.
+ * Kombineret med .wp-block-post-content (Indhold-blokkens egen faste
+ * klasse) er specificiteten desuden høj nok til at vinde over enhver
+ * realistisk tema-regel. Værdierne er sat højt med vilje, så ændringen er
+ * umulig at overse. */
+body.single-indsigt .wp-block-post-content p,
+body.single-indsigt .wp-block-post-content ul,
+body.single-indsigt .wp-block-post-content ol {
 	margin-top: 0 !important;
 	margin-bottom: 2.5rem !important;
 }
 /* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
-html body .ddv-indsigt-artikel-body li + li {
+body.single-indsigt .wp-block-post-content li + li {
 	margin-top: 0.75rem !important;
 }
-html body .ddv-indsigt-artikel-body h2 {
+body.single-indsigt .wp-block-post-content h2 {
 	margin-top: 4.5rem !important;
 	margin-bottom: 1.5rem !important;
 }
-html body .ddv-indsigt-artikel-body h3 {
+body.single-indsigt .wp-block-post-content h3 {
 	margin-top: 3rem !important;
 	margin-bottom: 1.25rem !important;
 }
