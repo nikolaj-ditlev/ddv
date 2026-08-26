@@ -801,6 +801,8 @@ body .ddv-indsigt-artikel-title {
 body .ddv-indsigt-artikel-excerpt {
 	text-align: center !important;
 	max-width: 640px;
+	margin-top: 0.75rem !important;
+	margin-bottom: 2.5rem !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
 	opacity: 0.75;
