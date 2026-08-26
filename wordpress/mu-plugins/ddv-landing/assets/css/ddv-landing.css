@@ -748,6 +748,16 @@
 	margin-top: 0.75rem;
 	margin-bottom: 2.5rem;
 }
+/* Smallere indhold på Indsigt-artikler end sitets almindelige 1440px
+ * (.ddv-section.alignwide) - kun tekstsektionerne, IKKE det udvalgte billede
+ * (det bruger ikke disse klasser og beholder sin nuværende bredde). Tre
+ * klasser i selektoren for at være sikker på at vinde over den bredere regel
+ * uanset rækkefølge i filen (samme specificitet ville ellers afgøres af
+ * hvilken regel der står sidst). */
+.ddv-indsigt-artikel-hero.ddv-section.alignwide,
+.ddv-indsigt-artikel-body.ddv-section.alignwide {
+	max-width: 1200px !important;
+}
 /* Klassen tilføjes på Udvalgt billede-blokken i selve skabelonen (Site
  * Editor → Skabeloner → Enkelt Indsigt → marker blokken → Avanceret →
  * Ekstra CSS-klasse(r)): giver billedet sitets runde facon (fra
@@ -766,6 +776,11 @@
 	max-width: 900px;
 	margin-left: auto !important;
 	margin-right: auto !important;
+	/* Ombryder til linjer af nogenlunde samme længde, i stedet for fx en lang
+	 * linje + et enkelt ord på linje to. Understøttes af alle moderne
+	 * browsere (Chrome/Edge/Safari) - falder blot tilbage til normal
+	 * ombrydning i de få der endnu ikke understøtter det. */
+	text-wrap: balance;
 }
 /* Samme metode til Uddrag-blokken (Post Excerpt) i skabelonen, brugt som
  * underrubrik lige under titlen: centreret, dæmpet og med en fast
@@ -776,6 +791,7 @@
 	margin-left: auto !important;
 	margin-right: auto !important;
 	opacity: 0.75;
+	text-wrap: balance;
 }
 /* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
  * farve, med en tynd venstre-streg der markerer det som et citat. */

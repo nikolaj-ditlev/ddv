@@ -11,8 +11,8 @@ return array(
 	'title'      => __( 'Indsigt-artikel – Brødtekst (tekst, citat, opsummering)', 'ddv-landing' ),
 	'categories' => array( 'ddv-landing' ),
 	'content'    => <<<'HTML'
-<!-- wp:group {"align":"wide","className":"ddv-section"} -->
-<div class="wp-block-group alignwide ddv-section">
+<!-- wp:group {"align":"wide","className":"ddv-section ddv-indsigt-artikel-body"} -->
+<div class="wp-block-group alignwide ddv-section ddv-indsigt-artikel-body">
 
 <!-- wp:columns {"verticalAlignment":"top"} -->
 <div class="wp-block-columns are-vertically-aligned-top">
