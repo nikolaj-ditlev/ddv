@@ -853,16 +853,20 @@ body.single-indsigt .wp-block-post-content h3 {
 /* ---------- Fremhævet citat i løbende brødtekst (WordPress' indbyggede
  * "Pullquote"-blok). Tilføj klassen "ddv-pullquote" på blokken via
  * Avanceret → Ekstra CSS-klasse(r), så den kan genbruges på alle fremtidige
- * artikler. font-family: inherit betyder den ALTID matcher brødtekstens
- * skrifttype - vi behøver ikke kende det eksakte navn på sitets skrifttype,
- * den arves bare fra samme sted resten af teksten allerede gør, i stedet
- * for temaets kursiverede serif-standard til citat-blokken. */
+ * artikler. Citatteksten skal bruge sitets Bai Jamjuree, kilde-linjen Plus
+ * Jakarta Sans - begge er allerede indlæst af temaet (bruges til
+ * overskrifter/brødtekst andre steder), så de er tilgængelige uden ekstra
+ * @font-face. var(...) forsøger først temaets egen preset-variabel (det
+ * navn, WordPress selv genererer ud fra skrifttypens slug i theme.json);
+ * lykkes det ikke (forkert gættet slug), falder den tilbage til at skrive
+ * fontnavnet direkte - fonten er stadig indlæst på siden, så den virker
+ * under alle omstændigheder. */
 body .ddv-pullquote {
 	margin-top: clamp(2.5rem, 5vw, 3.5rem) !important;
 	margin-bottom: clamp(2.5rem, 5vw, 3.5rem) !important;
 }
 body .ddv-pullquote blockquote {
-	font-family: inherit !important;
+	font-family: var(--wp--preset--font-family--bai-jamjuree, "Bai Jamjuree", sans-serif) !important;
 	font-style: normal !important;
 	font-weight: 600;
 	font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -878,13 +882,13 @@ body .ddv-pullquote blockquote {
 	margin-right: auto;
 }
 body .ddv-pullquote blockquote p {
-	font-family: inherit !important;
+	font-family: var(--wp--preset--font-family--bai-jamjuree, "Bai Jamjuree", sans-serif) !important;
 	font-style: normal !important;
 	margin: 0 0 0.75rem;
 }
 body .ddv-pullquote blockquote cite {
 	display: block;
-	font-family: inherit !important;
+	font-family: var(--wp--preset--font-family--plus-jakarta-sans, "Plus Jakarta Sans", sans-serif) !important;
 	font-style: normal !important;
 	font-weight: 500;
 	font-size: 1rem;
