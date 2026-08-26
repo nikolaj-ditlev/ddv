@@ -813,8 +813,8 @@
 	font-weight: 600;
 	line-height: 1.4;
 	color: var(--wp--preset--color--ddv-dark-teal);
-	margin-top: 0;
-	margin-bottom: 1.5rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 
 /* ---------- Indsigt-artikel: luft over/under alle tekstelementer i
@@ -826,13 +826,17 @@
 .ddv-indsigt-artikel-body ul,
 .ddv-indsigt-artikel-body ol {
 	margin-top: 0 !important;
-	margin-bottom: clamp(1.25rem, 3vw, 1.75rem) !important;
+	margin-bottom: clamp(1.5rem, 3.5vw, 2rem) !important;
+}
+/* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
+.ddv-indsigt-artikel-body li + li {
+	margin-top: 0.5rem !important;
 }
 .ddv-indsigt-artikel-body h2 {
-	margin-top: clamp(2.5rem, 5vw, 3.5rem) !important;
-	margin-bottom: clamp(1rem, 2vw, 1.25rem) !important;
+	margin-top: clamp(3rem, 6vw, 4rem) !important;
+	margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem) !important;
 }
 .ddv-indsigt-artikel-body h3 {
-	margin-top: clamp(1.75rem, 3.5vw, 2.25rem) !important;
-	margin-bottom: 0.75rem !important;
+	margin-top: clamp(2rem, 4vw, 2.75rem) !important;
+	margin-bottom: 1rem !important;
 }
