@@ -754,9 +754,13 @@
  * KUN den ene distinkte klasse (ikke kombineret med .ddv-section.alignwide),
  * da den på nogle artikler sidder alene direkte på Indhold-blokken uden de
  * to andre klasser ved siden af - en kombineret selector ville da aldrig
- * matche. !important sikrer den stadig vinder over den bredere 1440px-regel. */
-.ddv-indsigt-artikel-hero,
-.ddv-indsigt-artikel-body {
+ * matche. "body" foran løfter specificiteten forbi ".ddv-section.alignwide"
+ * (2 klasser = højere specificitet end vores 1), som ellers ville vinde på
+ * artikler hvor alle klasserne SIDDER sammen (dvs. bygget med selve
+ * patternet) - !important alene er ikke nok når modstanderen har flere
+ * klasser og også bruger !important. */
+body .ddv-indsigt-artikel-hero,
+body .ddv-indsigt-artikel-body {
 	max-width: 1200px !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
@@ -766,14 +770,14 @@
  * Ekstra CSS-klasse(r)): giver billedet sitets runde facon (fra
  * .ddv-rounded-image) og et ensartet bredt/lavt format (16:9), uanset
  * hvilket billedformat der uploades pr. artikel. */
-.ddv-indsigt-artikel-image img {
+body .ddv-indsigt-artikel-image img {
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
 }
 /* Billedet skal "stikke ud" og være bredere end tekstspalten (1200px) -
  * bruger sitets almindelige sektionsbredde (1440px), så det ikke er et nyt,
  * tilfældigt tal, men genbruger en værdi der allerede findes andre steder. */
-.ddv-indsigt-artikel-image {
+body .ddv-indsigt-artikel-image {
 	max-width: 1440px !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
@@ -781,7 +785,7 @@
 /* Samme metode som ovenfor, men til Post-titel-blokken i skabelonen: sikrer
  * centreret, stor overskrift uanset temaets egne standardværdier (som
  * tidligere har vist sig at vinde over blok-editorens indstillinger). */
-.ddv-indsigt-artikel-title {
+body .ddv-indsigt-artikel-title {
 	text-align: center !important;
 	font-size: var(--wp--preset--font-size--x-large) !important;
 	max-width: 900px;
@@ -796,7 +800,7 @@
 /* Samme metode til Uddrag-blokken (Post Excerpt) i skabelonen, brugt som
  * underrubrik lige under titlen: centreret, dæmpet og med en fast
  * maks-bredde så den ikke løber ud til hele sidens bredde. */
-.ddv-indsigt-artikel-excerpt {
+body .ddv-indsigt-artikel-excerpt {
 	text-align: center !important;
 	max-width: 640px;
 	margin-left: auto !important;
@@ -806,7 +810,7 @@
 }
 /* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
  * farve, med en tynd venstre-streg der markerer det som et citat. */
-.ddv-indsigt-quote {
+body .ddv-indsigt-quote {
 	border-left: 3px solid var(--wp--preset--color--ddv-dark-teal);
 	padding-left: 1.25rem;
 	font-size: 1.375rem;
@@ -821,22 +825,26 @@
  * brødteksten, efter almindelig typografisk praksis - mere luft OVER en
  * overskrift end under den (overskriften hører til afsnittet den
  * indleder), og ingen dobbelt-margin mellem to afsnit i træk (kun bund-
- * margin, ikke top). Skalerer lidt ned på mobil via clamp(). */
-.ddv-indsigt-artikel-body p,
-.ddv-indsigt-artikel-body ul,
-.ddv-indsigt-artikel-body ol {
+ * margin, ikke top). Skalerer lidt ned på mobil via clamp(). "body" foran
+ * hver selector er ikke pynt - det løfter specificiteten forbi temaets
+ * egen ".entry-content h2 { margin-block-end:25px !important }"-regel
+ * (samme specificitet som en almindelig "1 klasse + 1 element"-selector),
+ * så vi vinder uanset hvilket stylesheet der indlæses sidst. */
+body .ddv-indsigt-artikel-body p,
+body .ddv-indsigt-artikel-body ul,
+body .ddv-indsigt-artikel-body ol {
 	margin-top: 0 !important;
 	margin-bottom: clamp(1.5rem, 3.5vw, 2rem) !important;
 }
 /* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
-.ddv-indsigt-artikel-body li + li {
+body .ddv-indsigt-artikel-body li + li {
 	margin-top: 0.5rem !important;
 }
-.ddv-indsigt-artikel-body h2 {
+body .ddv-indsigt-artikel-body h2 {
 	margin-top: clamp(3rem, 6vw, 4rem) !important;
 	margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem) !important;
 }
-.ddv-indsigt-artikel-body h3 {
+body .ddv-indsigt-artikel-body h3 {
 	margin-top: clamp(2rem, 4vw, 2.75rem) !important;
 	margin-bottom: 1rem !important;
 }
