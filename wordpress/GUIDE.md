@@ -271,6 +271,13 @@ opsummering) indsætter du selv som blokke pr. artikel.
    dem hvis artiklen ikke skal have en opsummering.
 7. CTA-båndet i bunden er det delte `cta-banner.php` — ingen ændring
    nødvendig.
+8. **Fremhævet citat midt i brødteksten** (fx et citat fra en kilde, ikke
+   sidespalte-citatet fra Brødtekst-patternet): indsæt WordPress' egen
+   **"Fremhævet citat"**-blok (Pullquote) hvor som helst i teksten → marker
+   blokken → Avanceret → **Ekstra CSS-klasse(r)**: skriv `ddv-pullquote`.
+   Den arver automatisk sitets egen skrifttype (ikke temaets kursiverede
+   standard-citatskrift), og kan bruges igen og igen på alle fremtidige
+   artikler.
 
 ## 5. Vedligehold og videre arbejde
 

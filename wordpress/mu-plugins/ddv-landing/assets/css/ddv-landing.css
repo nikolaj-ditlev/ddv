@@ -848,3 +848,45 @@ body .ddv-indsigt-artikel-body h3 {
 	margin-top: clamp(2rem, 4vw, 2.75rem) !important;
 	margin-bottom: 1rem !important;
 }
+
+/* ---------- Fremhævet citat i løbende brødtekst (WordPress' indbyggede
+ * "Pullquote"-blok). Tilføj klassen "ddv-pullquote" på blokken via
+ * Avanceret → Ekstra CSS-klasse(r), så den kan genbruges på alle fremtidige
+ * artikler. font-family: inherit betyder den ALTID matcher brødtekstens
+ * skrifttype - vi behøver ikke kende det eksakte navn på sitets skrifttype,
+ * den arves bare fra samme sted resten af teksten allerede gør, i stedet
+ * for temaets kursiverede serif-standard til citat-blokken. */
+body .ddv-pullquote {
+	margin-top: clamp(2.5rem, 5vw, 3.5rem) !important;
+	margin-bottom: clamp(2.5rem, 5vw, 3.5rem) !important;
+}
+body .ddv-pullquote blockquote {
+	font-family: inherit !important;
+	font-style: normal !important;
+	font-weight: 600;
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	line-height: 1.4;
+	text-align: center;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	border: none;
+	border-top: 3px solid var(--wp--preset--color--ddv-dark-teal);
+	border-bottom: 3px solid var(--wp--preset--color--ddv-dark-teal);
+	padding: 2rem 1rem;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+body .ddv-pullquote blockquote p {
+	font-family: inherit !important;
+	font-style: normal !important;
+	margin: 0 0 0.75rem;
+}
+body .ddv-pullquote blockquote cite {
+	display: block;
+	font-family: inherit !important;
+	font-style: normal !important;
+	font-weight: 500;
+	font-size: 1rem;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	opacity: 0.75;
+}
