@@ -825,28 +825,30 @@ body .ddv-indsigt-quote {
  * brødteksten, efter almindelig typografisk praksis - mere luft OVER en
  * overskrift end under den (overskriften hører til afsnittet den
  * indleder), og ingen dobbelt-margin mellem to afsnit i træk (kun bund-
- * margin, ikke top). Skalerer lidt ned på mobil via clamp(). "body" foran
- * hver selector er ikke pynt - det løfter specificiteten forbi temaets
- * egen ".entry-content h2 { margin-block-end:25px !important }"-regel
- * (samme specificitet som en almindelig "1 klasse + 1 element"-selector),
- * så vi vinder uanset hvilket stylesheet der indlæses sidst. */
-body .ddv-indsigt-artikel-body p,
-body .ddv-indsigt-artikel-body ul,
-body .ddv-indsigt-artikel-body ol {
+ * margin, ikke top). "html body" foran hver selector er ikke pynt - to
+ * ekstra elementer i selectoren løfter specificiteten højere end enhver
+ * realistisk tema-regel (fx en 2-klasses ".entry-content.is-layout-flow"),
+ * uanset hvilket stylesheet der indlæses sidst. Værdierne er sat højt og i
+ * faste rem (ikke clamp) med vilje lige nu, så ændringen er umulig at
+ * overse - kan strammes til mere afdæmpede tal senere, når vi har
+ * bekræftet at reglerne rent faktisk slår igennem. */
+html body .ddv-indsigt-artikel-body p,
+html body .ddv-indsigt-artikel-body ul,
+html body .ddv-indsigt-artikel-body ol {
 	margin-top: 0 !important;
-	margin-bottom: clamp(1.5rem, 3.5vw, 2rem) !important;
+	margin-bottom: 2.5rem !important;
 }
 /* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
-body .ddv-indsigt-artikel-body li + li {
-	margin-top: 0.5rem !important;
+html body .ddv-indsigt-artikel-body li + li {
+	margin-top: 0.75rem !important;
 }
-body .ddv-indsigt-artikel-body h2 {
-	margin-top: clamp(3rem, 6vw, 4rem) !important;
-	margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem) !important;
+html body .ddv-indsigt-artikel-body h2 {
+	margin-top: 4.5rem !important;
+	margin-bottom: 1.5rem !important;
 }
-body .ddv-indsigt-artikel-body h3 {
-	margin-top: clamp(2rem, 4vw, 2.75rem) !important;
-	margin-bottom: 1rem !important;
+html body .ddv-indsigt-artikel-body h3 {
+	margin-top: 3rem !important;
+	margin-bottom: 1.25rem !important;
 }
 
 /* ---------- Fremhævet citat i løbende brødtekst (WordPress' indbyggede
