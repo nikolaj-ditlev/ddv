@@ -751,14 +751,15 @@
 /* Smallere indhold på Indsigt-artikler end sitets almindelige 1440px
  * (.ddv-section.alignwide) - kun tekstsektionerne, IKKE det udvalgte billede
  * (det ligger uden for .wp-block-post-content i skabelonen og rammes ikke
- * her). Skoped via body.single-indsigt (sættes automatisk af WordPress på
- * alle Indsigt-artikler) + .wp-block-post-content > .alignwide, så reglen
- * IKKE er afhængig af at vi selv har husket at tilføje en klasse korrekt på
- * den enkelte artikel - det har givet problemer flere gange. Rammer alle
- * direkte alignwide-sektioner i artiklens indhold (eyebrow, brødtekst,
- * CTA-bånd), hvilket er fint: CTA-boksen er alligevel selv låst til 1180px
- * via .ddv-cta-banner. */
-body.single-indsigt .wp-block-post-content > .alignwide {
+ * her). Rammer .wp-block-post-content DIREKTE (Indhold-blokkens faste egen
+ * klasse - virker uanset om klassen ddv-indsigt-artikel-body sidder på den
+ * SELV eller på et barn af den), samt vores egne klasser overalt hvor de
+ * måtte optræde - IKKE med en ">"-barn-selector, som tidligere fejlede når
+ * klassen sad et andet sted i markup'et end antaget. Flere selectorer, ingen
+ * antagelser om nøjagtig struktur = virker under alle omstændigheder. */
+body.single-indsigt .wp-block-post-content,
+body .ddv-indsigt-artikel-hero,
+body .ddv-indsigt-artikel-body {
 	max-width: 1200px !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
@@ -787,6 +788,8 @@ body .ddv-indsigt-artikel-title {
 	text-align: center !important;
 	font-size: var(--wp--preset--font-size--x-large) !important;
 	max-width: 900px;
+	margin-top: 12px !important;
+	margin-bottom: 12px !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
 	/* Ombryder til linjer af nogenlunde samme længde, i stedet for fx en lang
@@ -807,6 +810,10 @@ body .ddv-indsigt-artikel-excerpt {
 	margin-right: auto !important;
 	opacity: 0.75;
 	text-wrap: balance;
+	/* Temaets egen linjeafstand for uddrag er 1.6 (unitless, dvs. 1.6 gange
+	 * skriftstørrelsen) - lægger 4px fast oveni via calc(), uanset hvad den
+	 * faktiske skriftstørrelse er. */
+	line-height: calc(1.6em + 4px) !important;
 }
 /* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
  * farve, med en tynd venstre-streg der markerer det som et citat. */
@@ -838,6 +845,11 @@ body.single-indsigt .wp-block-post-content ul,
 body.single-indsigt .wp-block-post-content ol {
 	margin-top: 0 !important;
 	margin-bottom: 2.5rem !important;
+	/* Temaets standard-linjeafstand i brødteksten virkede dobbelt så luftig
+	 * som normal læsevenlig tekst - sat ned til 1.5 (almindeligt, læsevenligt
+	 * niveau for brødtekst). Sig til med et konkret px-tal, hvis 1.5 stadig
+	 * er for meget/for lidt, så rammer vi det præcist. */
+	line-height: 1.5 !important;
 }
 /* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
 body.single-indsigt .wp-block-post-content li + li {
@@ -867,32 +879,40 @@ body .ddv-pullquote {
 	margin-top: clamp(2.5rem, 5vw, 3.5rem) !important;
 	margin-bottom: clamp(2.5rem, 5vw, 3.5rem) !important;
 }
+/* Ingen linjer over/under citatet - kun tekst. */
 body .ddv-pullquote blockquote {
 	font-family: var(--wp--preset--font-family--bai-jamjuree, "Bai Jamjuree", sans-serif) !important;
 	font-style: normal !important;
-	font-weight: 600;
+	font-weight: 700;
 	font-size: clamp(1.5rem, 2.5vw, 2rem);
 	line-height: 1.4;
 	text-align: center;
 	color: var(--wp--preset--color--ddv-dark-teal);
-	border: none;
-	border-top: 3px solid var(--wp--preset--color--ddv-dark-teal);
-	border-bottom: 3px solid var(--wp--preset--color--ddv-dark-teal);
-	padding: 2rem 1rem;
+	border: none !important;
+	padding: 1rem;
 	max-width: 900px;
 	margin-left: auto;
 	margin-right: auto;
 }
+/* Selve citatteksten: fed, Bai Jamjuree. */
 body .ddv-pullquote blockquote p {
 	font-family: var(--wp--preset--font-family--bai-jamjuree, "Bai Jamjuree", sans-serif) !important;
 	font-style: normal !important;
+	font-weight: 700 !important;
 	margin: 0 0 0.75rem;
 }
-body .ddv-pullquote blockquote cite {
+/* Forfatter-linjen: almindelig (ikke fed) paragraf-tekst i Plus Jakarta
+ * Sans. To selectorer dækker begge de mulige måder, blokken kan være bygget
+ * på: enten det indbyggede "cite"-felt (Tilføj citation), ELLER en ekstra
+ * linje skrevet direkte ind som endnu et afsnit i citatet - sidste afsnit
+ * rammes KUN, hvis der er mere end ét afsnit, så en almindelig ét-afsnits-
+ * citat ikke ved et uheld bliver ramt. */
+body .ddv-pullquote blockquote cite,
+body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	display: block;
 	font-family: var(--wp--preset--font-family--plus-jakarta-sans, "Plus Jakarta Sans", sans-serif) !important;
 	font-style: normal !important;
-	font-weight: 500;
+	font-weight: 400 !important;
 	font-size: 1rem;
 	color: var(--wp--preset--color--ddv-dark-teal);
 	opacity: 0.75;
