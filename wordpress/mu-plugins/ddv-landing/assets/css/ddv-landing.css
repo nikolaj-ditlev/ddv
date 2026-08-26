@@ -767,6 +767,14 @@
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
 }
+/* Billedet skal "stikke ud" og være bredere end tekstspalten (1200px) -
+ * bruger sitets almindelige sektionsbredde (1440px), så det ikke er et nyt,
+ * tilfældigt tal, men genbruger en værdi der allerede findes andre steder. */
+.ddv-indsigt-artikel-image {
+	max-width: 1440px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
 /* Samme metode som ovenfor, men til Post-titel-blokken i skabelonen: sikrer
  * centreret, stor overskrift uanset temaets egne standardværdier (som
  * tidligere har vist sig at vinde over blok-editorens indstillinger). */
@@ -802,4 +810,26 @@
 	font-weight: 600;
 	line-height: 1.4;
 	color: var(--wp--preset--color--ddv-dark-teal);
+	margin-top: 0;
+	margin-bottom: 1.5rem;
+}
+
+/* ---------- Indsigt-artikel: luft over/under alle tekstelementer i
+ * brødteksten, efter almindelig typografisk praksis - mere luft OVER en
+ * overskrift end under den (overskriften hører til afsnittet den
+ * indleder), og ingen dobbelt-margin mellem to afsnit i træk (kun bund-
+ * margin, ikke top). Skalerer lidt ned på mobil via clamp(). */
+.ddv-indsigt-artikel-body p,
+.ddv-indsigt-artikel-body ul,
+.ddv-indsigt-artikel-body ol {
+	margin-top: 0 !important;
+	margin-bottom: clamp(1.25rem, 3vw, 1.75rem) !important;
+}
+.ddv-indsigt-artikel-body h2 {
+	margin-top: clamp(2.5rem, 5vw, 3.5rem) !important;
+	margin-bottom: clamp(1rem, 2vw, 1.25rem) !important;
+}
+.ddv-indsigt-artikel-body h3 {
+	margin-top: clamp(1.75rem, 3.5vw, 2.25rem) !important;
+	margin-bottom: 0.75rem !important;
 }
