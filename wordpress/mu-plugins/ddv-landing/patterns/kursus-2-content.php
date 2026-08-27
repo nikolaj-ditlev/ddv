@@ -162,6 +162,9 @@ return array(
 <!-- wp:column {"verticalAlignment":"top","width":"42%"} -->
 <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:42%">
 
+<!-- wp:group {"className":"ddv-card ddv-card--cream"} -->
+<div class="wp-block-group ddv-card ddv-card--cream">
+
 <!-- wp:image {"sizeSlug":"large","className":"ddv-rounded-image"} -->
 <figure class="wp-block-image size-large ddv-rounded-image"><img src="https://ddv.org/wp-content/uploads/2026/08/Jonas-Bek-Jensen_Profil.png" alt="Foto af underviser Jonas Bek Jensen"/></figure>
 <!-- /wp:image -->
@@ -212,6 +215,9 @@ return array(
 <!-- wp:paragraph {"className":"ddv-audio-card__duration"} -->
 <p class="ddv-audio-card__duration">🎧 2 min og 14 sek</p>
 <!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+
 </div>
 <!-- /wp:group -->
 
