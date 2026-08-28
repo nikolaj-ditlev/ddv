@@ -13,6 +13,7 @@ define( 'DDV_LANDING_DIR', __DIR__ );
 define( 'DDV_LANDING_URL', plugin_dir_url( __FILE__ ) );
 
 require_once DDV_LANDING_DIR . '/includes/cpt-indsigt.php';
+require_once DDV_LANDING_DIR . '/includes/indsigt-filter.php';
 
 /**
  * Enqueue komponent-CSS på både forside og i Site Editor / post-editor,
@@ -28,6 +29,22 @@ function ddv_landing_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'ddv_landing_enqueue_assets' );
 add_action( 'enqueue_block_editor_assets', 'ddv_landing_enqueue_assets' );
+
+/**
+ * Kategori-filter til Indsigt-oversigten (kun forsiden, ikke editoren -
+ * det er en ren front-end klik-interaktion). Scriptet er et no-op på alle
+ * andre sider, da det selv tjekker om .ddv-filter-bar findes på siden.
+ */
+function ddv_landing_enqueue_indsigt_filter() {
+	wp_enqueue_script(
+		'ddv-indsigt-filter',
+		DDV_LANDING_URL . 'assets/js/ddv-indsigt-filter.js',
+		array(),
+		filemtime( DDV_LANDING_DIR . '/assets/js/ddv-indsigt-filter.js' ),
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'ddv_landing_enqueue_indsigt_filter' );
 
 /**
  * Egen kategori i pattern-inserteren, så de 12 DDV-patterns er nemme at finde.

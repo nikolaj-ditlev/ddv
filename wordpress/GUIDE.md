@@ -22,8 +22,11 @@ wordpress/
 │       ├── ddv-landing.php              ← loaderen: enqueuer CSS, registrerer patterns + CPT
 │       ├── theme-json-snippet.json      ← farver/fonte du merger ind i temaets theme.json
 │       ├── includes/
-│       │   └── cpt-indsigt.php          ← custom post type + kategori-taksonomi til "Indsigt"
-│       ├── assets/css/ddv-landing.css   ← styling af custom komponenter (kort, FAQ, badges...)
+│       │   ├── cpt-indsigt.php          ← custom post type + kategori-taksonomi til "Indsigt"
+│       │   └── indsigt-filter.php       ← [ddv_indsigt_filter]-shortcode (kategori-filterknapper)
+│       ├── assets/
+│       │   ├── css/ddv-landing.css      ← styling af custom komponenter (kort, FAQ, badges...)
+│       │   └── js/ddv-indsigt-filter.js ← klik-og-filtrér-logik til Indsigt-oversigten
 │       └── patterns/
 │           ├── analysen-*.php           ← sektioner til DDV Analysen
 │           ├── barometer-*.php          ← sektioner til Vedligeholdsbarometer
@@ -211,10 +214,20 @@ Indlæg (Post) som allerede er i brug til andet indhold — se
    `.wp-block-post-terms` osv.), ingen ekstra CSS-klasse nødvendig.
    Kategori-mærkatet lægger sig automatisk oven på billedet og er
    ikke-klikbart.
-5. **Filtrering på kategori** (senere): Query Loop kan låses til én kategori
-   ad gangen (nyttigt til fx `/indsigt/analyser/`-undersider). Et
-   klik-og-filtrér-UI på samme side kræver mere (flere Query Loop-blokke bag
-   et filter, eller en kategori-arkiv-skabelon) — tag fat når I når dertil.
+5. **Filtrering på kategori (klik-og-filtrér, uden sideskift):** indsæt en
+   **"Kortkode"**-blok (søg "Kortkode"/"Shortcode" i blok-inserteren) lige
+   **over** Query Loop-blokken, med indholdet:
+   ```
+   [ddv_indsigt_filter]
+   ```
+   Den bygger automatisk en "Alle"-knap + én knap pr. eksisterende
+   Indsigt-kategori (se `includes/indsigt-filter.php`) — i modsætning til
+   vores patterns er dette en **levende** shortcode: opretter/sletter I en
+   kategori under Indsigt → Kategorier, opdaterer knapperne sig selv ved
+   næste sidevisning, uden at I skal genindsætte noget. Selve
+   filtreringen (`assets/js/ddv-indsigt-filter.js`) skjuler/viser Query
+   Loop-kortene ved klik, uden sideskift — den kræver ingen ekstra klasse
+   på kortene, da den læser kategorien direkte fra kategori-mærkatets link.
 
 ### 4.7 Indsigt-artikel (skabelon til den enkelte artikelside)
 Skabelon til selve artiklen, som man klikker sig ind på fra et af kortene i

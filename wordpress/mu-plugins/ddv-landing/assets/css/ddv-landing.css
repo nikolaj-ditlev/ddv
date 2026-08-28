@@ -929,3 +929,34 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	color: var(--wp--preset--color--ddv-dark-teal);
 	opacity: 0.75;
 }
+
+/* ---------- Indsigt: kategori-filterknapper (se includes/indsigt-filter.php
+ * + assets/js/ddv-indsigt-filter.js). ---------- */
+.ddv-filter-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-bottom: 2rem;
+}
+.ddv-filter-btn {
+	font: inherit;
+	cursor: pointer;
+	padding: 0.5em 1.25em;
+	border-radius: var(--ddv-radius-pill);
+	border: 1px solid var(--wp--preset--color--ddv-dark-teal);
+	background: transparent;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	font-size: 0.9rem;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+.ddv-filter-btn:hover {
+	background: rgba(60, 89, 86, 0.1);
+}
+.ddv-filter-btn.is-active {
+	background: var(--wp--preset--color--ddv-dark-teal);
+	color: var(--wp--preset--color--ddv-white);
+}
+/* Kort skjult af filteret. */
+.ddv-filtered-out {
+	display: none !important;
+}
