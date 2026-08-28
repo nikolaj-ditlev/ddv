@@ -65,7 +65,7 @@
  * luft NED til filterknapperne/kortene under, i stedet for at filterknap-
  * baren selv skulle stå for afstanden op til heroen. */
 .ddv-indsigt-hero-bg {
-	margin-bottom: 3rem !important;
+	margin-bottom: 20px !important;
 }
 /* Samme 6 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
  * --ddv-section-y (i stedet for at ændre variablen selv, som ville gøre ALLE sektioner
@@ -943,7 +943,7 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	flex-wrap: wrap;
 	gap: 0.75rem;
 	margin-top: 0;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 }
 .ddv-filter-btn {
 	font: inherit;
