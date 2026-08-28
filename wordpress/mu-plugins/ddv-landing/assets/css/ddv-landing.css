@@ -945,6 +945,15 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	margin-top: 0;
 	margin-bottom: 50px;
 }
+/* Query Loop-blokken har fået sat sin egen padding-top (~104px, et
+ * blok-niveau spacing-preset valgt i editorens Dimensions-panel) på den
+ * gruppe der wrapper selve kortene - det lægger sig oveni margin-bottom
+ * herover og gjorde den samlede afstand langt større end tilsigtet.
+ * Nulstillet her, kun for Query Loop'en der følger lige efter vores
+ * filterbar (rammer ikke evt. andre Query Loop-blokke på sitet). */
+.ddv-filter-bar + .wp-block-query > .wp-block-group {
+	padding-top: 0 !important;
+}
 .ddv-filter-btn {
 	font: inherit;
 	cursor: pointer;
