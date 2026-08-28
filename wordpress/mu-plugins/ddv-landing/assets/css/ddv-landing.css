@@ -61,6 +61,12 @@
 .ddv-indsigt-hero-bg.alignwide {
 	max-width: 1840px !important;
 }
+/* Kun Indsigt-heroen (ikke de 5 andre, som deler padding-reglen nedenfor):
+ * luft NED til filterknapperne/kortene under, i stedet for at filterknap-
+ * baren selv skulle stå for afstanden op til heroen. */
+.ddv-indsigt-hero-bg {
+	margin-bottom: 3rem !important;
+}
 /* Samme 6 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
  * --ddv-section-y (i stedet for at ændre variablen selv, som ville gøre ALLE sektioner
  * højere) - 50px ekstra top + 50px ekstra bund. Indholdet er allerede lodret centreret
@@ -936,7 +942,8 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.75rem;
-	margin-bottom: 2rem;
+	margin-top: 0;
+	margin-bottom: 20px;
 }
 .ddv-filter-btn {
 	font: inherit;
