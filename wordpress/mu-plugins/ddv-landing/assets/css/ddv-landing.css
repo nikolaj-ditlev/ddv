@@ -55,12 +55,14 @@
  * baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
 .ddv-analysen-hero-bg.alignwide,
 .ddv-barometer-hero-bg.alignwide,
-.ddv-hero-forside-wrap.alignwide,
 .ddv-kursuskatalog-hero-bg.alignwide,
 .ddv-kursus-hero-bg.alignwide,
 .ddv-indsigt-hero-bg.alignwide {
 	max-width: 1840px !important;
 }
+/* Barometer forside-heroen skal IKKE være bredere end sitets almindelige
+ * 1440px (.ddv-section.alignwide) - derfor bevidst udeladt af listen
+ * ovenfor. */
 /* Kun Indsigt-heroen (ikke de 5 andre, som deler padding-reglen nedenfor):
  * luft NED til filterknapperne/kortene under, i stedet for at filterknap-
  * baren selv skulle stå for afstanden op til heroen. */
@@ -97,7 +99,7 @@
  *   (tekst øverst, knap presset til bunds), samme hjørnemønster.
  * - Mellemrum boks→kort-kolonne: 37px. */
 .ddv-hero-forside-wrap {
-	background-color: #efe8d7 !important;
+	background-color: transparent !important;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -148,6 +150,7 @@
 }
 .ddv-hero-forside-cta-item p {
 	color: #243c39;
+	margin-right: 10px;
 }
 .ddv-hero-forside-cards-col {
 	/* grow:0 shrink:0 – holder sin bredde (330px) uændret, indtil hele
