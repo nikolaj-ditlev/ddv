@@ -977,8 +977,9 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	display: none !important;
 }
 
-/* ---------- WordPress' indbyggede Lyd-blok (core/audio): 50px luft til
- * højre, så den ikke støder direkte op ad næste element ved siden af. */
+/* ---------- WordPress' indbyggede Lyd-blok (core/audio): luft til højre
+ * (30% af forældre-elementets bredde), så den ikke støder direkte op ad
+ * næste element ved siden af. */
 .wp-block-audio {
-	margin-right: 50px;
+	margin-right: 30%;
 }
