@@ -85,6 +85,25 @@
 	padding-top: 50px !important;
 	padding-bottom: 50px !important;
 }
+/* Samme 5 heroer (Barometer data-side har allerede sin egen 660px
+ * min-height + centreret indhold, se ".ddv-barometer-hero-bg" nedenfor, og
+ * er bevidst udeladt her): mindst 550px høj, og selve sektionen er
+ * display:flex så dens indholds-wrapper (.ddv-hero-lead) automatisk
+ * strækker sig til at udfylde hele højden - det er det der gør det muligt
+ * at skubbe en evt. knap-række til bunds med margin-top:auto nedenfor,
+ * uafhængigt af hvor meget tekst der er ovenover. */
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-hero-forside-wrap.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-kursus-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
+	min-height: 550px;
+}
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
+	display: flex;
+}
 
 /* ---------- Kursus-side – hero: egen baggrundsfarve (afviger fra ddv-dark-teal-tokenet). ---------- */
 .ddv-kursus-hero-bg {
@@ -502,6 +521,18 @@ body .wp-block-button__link:active {
  * strækker sig ud over den nu 1640px-brede sektion. Samme bredde som
  * .ddv-barometer-hero-content, så de to heroer matcher. */
 .ddv-hero-lead { max-width: 620px; }
+/* Fylder heroens fulde (flex-strakte) højde og bliver selv en lodret
+ * flex-kolonne, så en evt. knap-række inde i den kan skubbes til bunds
+ * med margin-top:auto - se ".ddv-analysen-hero-bg.ddv-section" m.fl.
+ * ovenfor. Ingen synlig effekt på heroer uden knapper (Kursuskatalog,
+ * Indsigt). */
+.ddv-hero-lead {
+	display: flex;
+	flex-direction: column;
+}
+.ddv-hero-lead .wp-block-buttons {
+	margin-top: auto;
+}
 .ddv-eyebrow-row { margin-bottom: 1.5rem; }
 .ddv-hero-trust { opacity: 0.75; margin-top: 1rem; }
 .ddv-testimonial-audio {
