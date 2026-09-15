@@ -325,12 +325,16 @@ body .ddv-kursus-hero-bg .wp-block-column {
 }
 /* Barometer (data-side) og DDV Analysen's hero-overskrifter skal have
  * samme størrelse - en mellemstørrelse mellem Barometerets tidligere
- * 60px og Analysens (temaets "x-large"-token, som var mindre). Rammer
- * Analysen via element-selector (h1) i stedet for en klasse, da dens
- * pattern ikke har .ddv-hero-heading-60 - så begge er garanteret ens
- * uanset hvilken font-size-klasse editoren måtte have sat. */
+ * 60px og Analysens (temaets "x-large"-token, som var mindre).
+ * Forrige version (kun 1 klasse + h1) slog ikke igennem på den live side -
+ * temaets egen font-size-regel er formentlig en compound-selector med 2+
+ * klasser (fx ".wp-block-heading.has-x-large-font-size"), som vinder over
+ * en enkelt klasse uanset !important. Her er specificiteten skruet kunstigt
+ * op (samme klasse gentaget) så den er garanteret højere end noget
+ * realistisk tema-selector kan matche. */
 .ddv-hero-heading-60,
-.ddv-analysen-hero-bg h1 {
+.ddv-section.ddv-analysen-hero-bg.ddv-analysen-hero-bg h1,
+.ddv-section.ddv-barometer-hero-bg.ddv-barometer-hero-bg h1 {
 	font-size: clamp(2rem, 1.5rem + 2.2vw, 3.25rem) !important;
 	line-height: 1.15 !important;
 }
@@ -543,13 +547,14 @@ body .wp-block-button__link:active {
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddvbaro-herobackground.jpg');
 	background-size: cover;
 	background-position: right center;
-	min-height: 660px;
+	/* Ensrettet med de øvrige 5 heroer (var 660px). */
+	min-height: 500px;
 	display: flex;
 	align-items: center;
 }
 .ddv-barometer-hero-content { max-width: 620px; margin: 0; }
 @media (max-width: 782px) {
-	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 520px; }
+	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 500px; }
 }
 
 /* ---------- Hero-hjælpeklasser ---------- */
