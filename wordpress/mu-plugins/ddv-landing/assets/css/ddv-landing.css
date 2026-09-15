@@ -109,6 +109,14 @@
 .ddv-kursus-hero-bg {
 	background-color: #3C5956;
 }
+/* ---------- Kursuskatalog – hero: egen baggrundsfarve. Blokken har sin
+ * egen backgroundColor-attribut sat til "ddv-dark-teal"-tokenet
+ * (#3c5956), som WordPress' style-engine sætter med !important via
+ * .has-ddv-dark-teal-background-color - derfor skal denne overstyring
+ * også have !important for at slå igennem. ---------- */
+.ddv-kursuskatalog-hero-bg {
+	background-color: #3B5957 !important;
+}
 /* Kursus-heroens to kolonner er sat op med core's "centrer lodret"
  * (verticalAlignment:center), hvilket giver tekst-kolonnen et stort,
  * skævt luftrum ovenover, når faktaboks-kolonnen er højere. Overstyrer her
@@ -294,6 +302,12 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	opacity: 0.85;
+	/* Forhindrer at pillen bliver strukket til fuld bredde når den (eller
+	 * .ddv-eyebrow-row) sidder som direkte flex-barn af .ddv-hero-lead
+	 * (som er en lodret flex-kolonne, se "hero-lead"-reglen) - uden dette
+	 * ville align-items:stretch fra forælderen tvinge pillen til at fylde
+	 * hele heroens bredde i stedet for kun teksten. */
+	align-self: flex-start;
 }
 /* Udfyldt variant af eyebrow-pillen (matcher Figma: solid baggrund, ingen
    kant), brugt fx på Barometer-hero'en i stedet for outline-varianten. */
@@ -551,7 +565,7 @@ body .wp-block-button__link:active {
 .ddv-hero-lead .wp-block-buttons {
 	margin-top: auto;
 }
-.ddv-eyebrow-row { margin-bottom: 1.5rem; }
+.ddv-eyebrow-row { margin-bottom: 1.5rem; align-self: flex-start; }
 .ddv-hero-trust { opacity: 0.75; margin-top: 1rem; }
 .ddv-testimonial-audio {
 	margin-top: 1.5rem;
