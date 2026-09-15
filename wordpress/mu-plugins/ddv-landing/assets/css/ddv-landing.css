@@ -69,19 +69,21 @@
 .ddv-indsigt-hero-bg {
 	margin-bottom: 20px !important;
 }
-/* Samme 6 heroer: 100px højere end almindelige sektioner. Lægges oveni den fælles
- * --ddv-section-y (i stedet for at ændre variablen selv, som ville gøre ALLE sektioner
- * højere) - 50px ekstra top + 50px ekstra bund. Indholdet er allerede lodret centreret
- * (enten via flex align-items:center eller fordi top-/bundpadding er symmetrisk), så det
- * følger automatisk med og forbliver centreret i den højere boks. */
+/* Samme 6 heroer: fast 50px luft foroven og forneden (i stedet for
+ * --ddv-section-y + 50px, som på store skærme gav helt op til ca. 150px og
+ * skubbede knapperne unødigt langt fra bunden). position:relative gør heroen
+ * til ankerpunktet for scroll-indikatoren (.ddv-scroll-indicator) nedenfor,
+ * så den kan sidde fast ved hero-bunden uafhængigt af hvor meget tekst/
+ * knapper der er ovenover. */
 .ddv-analysen-hero-bg.ddv-section,
 .ddv-barometer-hero-bg.ddv-section,
 .ddv-hero-forside-wrap.ddv-section,
 .ddv-kursuskatalog-hero-bg.ddv-section,
 .ddv-kursus-hero-bg.ddv-section,
 .ddv-indsigt-hero-bg.ddv-section {
-	padding-top: calc(var(--ddv-section-y) + 50px) !important;
-	padding-bottom: calc(var(--ddv-section-y) + 50px) !important;
+	position: relative;
+	padding-top: 50px !important;
+	padding-bottom: 50px !important;
 }
 
 /* ---------- Kursus-side – hero: egen baggrundsfarve (afviger fra ddv-dark-teal-tokenet). ---------- */
@@ -1035,16 +1037,22 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
  * animeret streg der bevæger sig nedad. Indsættes LIVE via kortkoden
  * [ddv_scroll_indicator] (se includes/scroll-indicator.php) - ét centralt
  * element I selv sætter ind i hver hero, uden at skulle genopbygge/erstatte
- * de rettelser der allerede er lavet direkte på siderne. Farven arver som
- * udgangspunkt currentColor fra den sektion den står i (fungerer automatisk
- * i både lyse og mørke heroer), men kan overstyres via shortcodens
- * "color"-attribut. ---------- */
+ * de rettelser der allerede er lavet direkte på siderne. Position: absolute,
+ * centreret og fastgjort til hero-bunden (ankeret er position:relative på
+ * selve hero-sektionen, sat i "6 heroer"-reglen ovenfor) - dermed er den
+ * IKKE afhængig af hvor i heroen kortkode-blokken indsættes, eller hvor
+ * knapperne/teksten ender. Farven arver som udgangspunkt currentColor fra
+ * den sektion den står i (fungerer automatisk i både lyse og mørke heroer),
+ * men kan overstyres via shortcodens "color"-attribut. ---------- */
 .ddv-scroll-indicator {
-	display: flex;
-	justify-content: center;
-	margin-top: 40px;
+	position: absolute;
+	left: 50%;
+	bottom: 28px;
+	transform: translateX(-50%);
 	color: currentColor;
 	opacity: 0.8;
+	pointer-events: none;
+	z-index: 2;
 }
 .ddv-scroll-indicator--white {
 	color: #ffffff;

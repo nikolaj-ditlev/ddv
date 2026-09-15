@@ -149,13 +149,21 @@ heroer allerede er rettet direkte på de live sider og er løbet fra deres
 oprindelige pattern.
 
 Sådan tilføjes den:
-1. Åbn heroen i editoren og indsæt en **"Kortkode"**-blok som det SIDSTE
-   element i hero-sektionen (efter tekst/knapper).
+1. Åbn heroen i editoren og indsæt en **"Kortkode"**-blok et sted inde i
+   hero-sektionen (det er ligegyldigt hvor - den er position:absolute og
+   sidder derfor altid fast centreret ved hero-bunden, uafhængigt af hvor
+   meget tekst eller hvor mange knapper der er ovenover).
 2. Skriv `[ddv_scroll_indicator]` i blokken.
 3. Farven følger automatisk hero'ens egen tekstfarve (hvid på de mørke
    heroer, mørk på de lyse som Barometer forside). Rammer den forkert i en
    given hero, kan den overstyres: `[ddv_scroll_indicator color="white"]`
    eller `[ddv_scroll_indicator color="dark"]`.
+
+Bemærk: den absolutte positionering forudsætter at hero-sektionen selv har
+`position: relative` - det er allerede sat på de 6 faste heroer (se
+"Hero-bredde/-højde" ovenfor). Skal den bruges på en hero der IKKE er en af
+de 6, skal `position: relative` tilføjes til dens baggrundsklasse i
+`ddv-landing.css` først.
 
 Selve elementet og animationen styres centralt i
 `includes/scroll-indicator.php` og `ddv-landing.css` (søg efter
