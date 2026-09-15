@@ -109,6 +109,16 @@
 .ddv-kursus-hero-bg {
 	background-color: #3C5956;
 }
+/* Kursus-heroens to kolonner er sat op med core's "centrer lodret"
+ * (verticalAlignment:center), hvilket giver tekst-kolonnen et stort,
+ * skævt luftrum ovenover, når faktaboks-kolonnen er højere. Overstyrer her
+ * (kun inde i Kursus-heroen) til top-justering i stedet - faktaboksen
+ * fylder allerede rækkens fulde højde, så den rykker sig ikke synligt,
+ * mens teksten nu starter i toppen. Gælder alle 11 kursus-sider + Kursus 2,
+ * da de deler samme markup-struktur. */
+.ddv-kursus-hero-bg .wp-block-column.is-vertically-aligned-center {
+	align-self: flex-start !important;
+}
 
 /* ---------- Barometer forside – hero ----------
  * Eksakte mål hentet fra Figma (node 3065:1615) via Figma MCP:
