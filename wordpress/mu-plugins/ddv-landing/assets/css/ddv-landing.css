@@ -115,8 +115,16 @@
  * (kun inde i Kursus-heroen) til top-justering i stedet - faktaboksen
  * fylder allerede rækkens fulde højde, så den rykker sig ikke synligt,
  * mens teksten nu starter i toppen. Gælder alle 11 kursus-sider + Kursus 2,
- * da de deler samme markup-struktur. */
-.ddv-kursus-hero-bg .wp-block-column.is-vertically-aligned-center {
+ * da de deler samme markup-struktur.
+ * Rammer BÅDE rækkens egen align-items (are-vertically-aligned-center) og
+ * hver enkelt kolonnes align-self (is-vertically-aligned-center) - og også
+ * uden disse klasser, i tilfælde af at den centrering på nogle af de 11
+ * sider reelt kommer fra en anden kilde end antaget. body-præfiks + bred
+ * (ikke klasse-afhængig) selector sikrer at den slår igennem uanset. */
+body .ddv-kursus-hero-bg .wp-block-columns {
+	align-items: flex-start !important;
+}
+body .ddv-kursus-hero-bg .wp-block-column {
 	align-self: flex-start !important;
 }
 
