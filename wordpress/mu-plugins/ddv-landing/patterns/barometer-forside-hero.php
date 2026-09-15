@@ -97,6 +97,21 @@ return array(
 </div>
 <!-- /wp:group -->
 
+<!-- wp:group {"className":"ddv-card ddv-card--yellow"} -->
+<div class="wp-block-group ddv-card ddv-card--yellow">
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Deltag i fagligt relevante tilbud</h3>
+<!-- /wp:heading -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons">
+<!-- wp:button {"backgroundColor":"ddv-dark-teal","textColor":"ddv-white","style":{"border":{"radius":"999px"}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-ddv-white-color has-ddv-dark-teal-background-color has-text-color has-background wp-element-button" style="border-radius:999px">Bliv medlem</a></div>
+<!-- /wp:button -->
+</div>
+<!-- /wp:buttons -->
+</div>
+<!-- /wp:group -->
+
 </div>
 <!-- /wp:column -->
 

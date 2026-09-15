@@ -100,6 +100,13 @@
  * - Mellemrum boks→kort-kolonne: 37px. */
 .ddv-hero-forside-wrap {
 	background-color: transparent !important;
+	/* Figma: boks (1069px) + mellemrum (37px) + kort-kolonne (330px) = 1436px,
+	 * dvs. den skal fylde stort set hele den 1440px brede wrapper uden ekstra
+	 * indramning - .ddv-section's egen sidepadding (clamp 1.25rem-3rem) gjorde
+	 * ellers den ledige plads mindre end de 1436px, indholdet blev klemt/
+	 * skævt fordelt, og hele sektionen fremstod ikke justeret til sidens grid. */
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -139,10 +146,13 @@
 }
 .ddv-hero-forside-photo-col h1 {
 	color: #3f5e5a !important;
-	/* Justér dette tal for at ændre størrelsen på forsidens H1 – uafhængigt
-	   af temaets globale "x-large" skriftstørrelse. Nuværende værdi er ca.
-	   50% større end temaets x-large (2.5rem max) som udgangspunkt. */
-	font-size: clamp(2.4rem, 2rem + 2vw, 3.75rem) !important;
+	/* Figma (node 3065:1622): 80px Bai Jamjuree Bold, tracking -1.6px,
+	 * linjehøjde 75px (≈0.9375). Justér clamp-loftet (5rem = 80px) for at
+	 * ændre størrelsen på forsidens H1 – uafhængigt af temaets globale
+	 * "x-large" skriftstørrelse. */
+	font-size: clamp(2.4rem, 1.8rem + 3vw, 5rem) !important;
+	letter-spacing: -1.6px !important;
+	line-height: 0.9375 !important;
 }
 .ddv-hero-forside-photo-col .ddv-eyebrow {
 	color: #3f5e5a;
@@ -177,6 +187,9 @@
 }
 .ddv-hero-forside-cards-col .ddv-card--blue {
 	background-color: #81c0d3 !important;
+}
+.ddv-hero-forside-cards-col .ddv-card--yellow {
+	background-color: #f1d372 !important;
 }
 .ddv-hero-forside-cards-col h3,
 .ddv-hero-forside-cards-col p {
