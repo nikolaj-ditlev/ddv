@@ -1030,3 +1030,45 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 .wp-block-audio {
 	margin-right: 50px;
 }
+
+/* ---------- Scroll-indikator til hero-sektioner: outline-mus med en
+ * animeret streg der bevæger sig nedad. Indsættes LIVE via kortkoden
+ * [ddv_scroll_indicator] (se includes/scroll-indicator.php) - ét centralt
+ * element I selv sætter ind i hver hero, uden at skulle genopbygge/erstatte
+ * de rettelser der allerede er lavet direkte på siderne. Farven arver som
+ * udgangspunkt currentColor fra den sektion den står i (fungerer automatisk
+ * i både lyse og mørke heroer), men kan overstyres via shortcodens
+ * "color"-attribut. ---------- */
+.ddv-scroll-indicator {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+	color: currentColor;
+	opacity: 0.8;
+}
+.ddv-scroll-indicator--white {
+	color: #ffffff;
+}
+.ddv-scroll-indicator--dark {
+	color: #24312c;
+}
+.ddv-scroll-indicator__svg {
+	overflow: visible;
+}
+.ddv-scroll-indicator__line {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: ddv-scroll-indicator-move 1.8s ease-in-out infinite;
+}
+@keyframes ddv-scroll-indicator-move {
+	0% { transform: translateY(0); opacity: 0; }
+	25% { opacity: 1; }
+	65% { opacity: 1; }
+	100% { transform: translateY(11px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.ddv-scroll-indicator__line {
+		animation: none;
+		opacity: 1;
+	}
+}

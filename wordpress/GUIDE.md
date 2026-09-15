@@ -23,7 +23,8 @@ wordpress/
 │       ├── theme-json-snippet.json      ← farver/fonte du merger ind i temaets theme.json
 │       ├── includes/
 │       │   ├── cpt-indsigt.php          ← custom post type + kategori-taksonomi til "Indsigt"
-│       │   └── indsigt-filter.php       ← [ddv_indsigt_filter]-shortcode (kategori-filterknapper)
+│       │   ├── indsigt-filter.php       ← [ddv_indsigt_filter]-shortcode (kategori-filterknapper)
+│       │   └── scroll-indicator.php     ← [ddv_scroll_indicator]-shortcode (scroll-mus til heroer)
 │       ├── assets/
 │       │   ├── css/ddv-landing.css      ← styling af custom komponenter (kort, FAQ, badges...)
 │       │   └── js/ddv-indsigt-filter.js ← klik-og-filtrér-logik til Indsigt-oversigten
@@ -138,6 +139,28 @@ baggrundsklasse (fx `.ddv-analysen-hero-bg`, `.ddv-kursus-hero-bg`) kombineret
 med `.alignwide` / `.ddv-section` — ikke af en global regel. Skal en ny hero
 have samme behandling, tilføj dens klasse til de to selektor-lister i
 `ddv-landing.css` (søg efter "alle 6").
+
+### Scroll-indikator (gælder alle hero-sektioner)
+
+En lille animeret outline-mus, der viser at man kan scrolle, kan tilføjes
+til enhver hero uden at skabelonen/patternet skal genopbygges. Den er
+bygget som en LEVENDE kortkode (ligesom Indsigt-filteret), fordi flere
+heroer allerede er rettet direkte på de live sider og er løbet fra deres
+oprindelige pattern.
+
+Sådan tilføjes den:
+1. Åbn heroen i editoren og indsæt en **"Kortkode"**-blok som det SIDSTE
+   element i hero-sektionen (efter tekst/knapper).
+2. Skriv `[ddv_scroll_indicator]` i blokken.
+3. Farven følger automatisk hero'ens egen tekstfarve (hvid på de mørke
+   heroer, mørk på de lyse som Barometer forside). Rammer den forkert i en
+   given hero, kan den overstyres: `[ddv_scroll_indicator color="white"]`
+   eller `[ddv_scroll_indicator color="dark"]`.
+
+Selve elementet og animationen styres centralt i
+`includes/scroll-indicator.php` og `ddv-landing.css` (søg efter
+"ddv-scroll-indicator") — ret ét sted, og det opdaterer alle heroer den er
+sat ind på.
 
 ## 4. Trin-for-trin: byg siderne i editoren
 

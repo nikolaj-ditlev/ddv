@@ -14,6 +14,7 @@ define( 'DDV_LANDING_URL', plugin_dir_url( __FILE__ ) );
 
 require_once DDV_LANDING_DIR . '/includes/cpt-indsigt.php';
 require_once DDV_LANDING_DIR . '/includes/indsigt-filter.php';
+require_once DDV_LANDING_DIR . '/includes/scroll-indicator.php';
 
 /**
  * Enqueue komponent-CSS på både forside og i Site Editor / post-editor,
