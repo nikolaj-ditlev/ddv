@@ -1182,28 +1182,22 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	padding: 14px !important;
 }
 
-/* --- Topniveau-punkterne (Netværk, DDV Arrangementer, Faglig viden,
- * DDV analysen m.fl.) sad klistret sammen med stort set ingen luft.
- * Ensartet, behagelig linjeafstand på alle direkte børn af listen. --- */
+/* --- Alle topniveau-punkter (Medlemskab, Netværk, DDV Arrangementer,
+ * Faglig viden, DDV analysen m.fl.) skal fremstå i samme størrelse -
+ * "Medlemskab"s tidligere særskilte, større stil er nu fælles for hele
+ * topniveauet. Padding er ca. 15% mindre end den oprindelige 12px. --- */
 .wp-block-navigation__responsive-container-content .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
 	display: block !important;
-	padding-top: 12px !important;
-	padding-bottom: 12px !important;
-	font-size: 17px !important;
-}
-
-/* --- "Medlemskab" (punktet med undermenu) skal fremstå som en tydelig
- * sektionsoverskrift over sine undermenu-punkter, ikke som et
- * ligeværdigt linje-punkt. --- */
-.wp-block-navigation__responsive-container-content .wp-block-navigation-submenu > .wp-block-navigation-item__content {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
 	font-size: 20px !important;
 	font-weight: 700 !important;
-	padding-bottom: 2px !important;
 }
 
-/* --- Undermenu-punkterne (Priser, Bliv medlem, Dine oplysninger) havde
- * enorme, ujævne mellemrum (~40-50px). Strammet til et kompakt, let
- * indrykket sæt, så de tydeligt hører sammen under "Medlemskab". --- */
+/* --- Undermenu-punkterne (Priser, Bliv medlem, Dine oplysninger) skal
+ * blive i deres nuværende (mindre) størrelse, men med endnu mindre
+ * luft top/bund end sidst - og let indrykket, så de tydeligt hører
+ * sammen under "Medlemskab". --- */
 .wp-block-navigation__submenu-container {
 	padding-left: 6px !important;
 }
@@ -1212,17 +1206,16 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 }
 .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
 	display: block !important;
-	padding-top: 9px !important;
-	padding-bottom: 9px !important;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
 	font-size: 16px !important;
 	font-weight: 400 !important;
 }
 
-/* --- Skillelinjen efter Medlemskab-gruppen: konsistent luft over/under
- * i stedet for at arve listens egen (for store) afstand. --- */
+/* --- Skillelinjen efter "Dine oplysninger" skal væk helt. --- */
 .wp-block-navigation__responsive-container-content hr,
 .wp-block-navigation__responsive-container-content .wp-block-separator {
-	margin: 18px 0 !important;
+	display: none !important;
 }
 
 /* --- Ikon-punkterne (optimering.nu, Podcast, Mit DDV) er sekundære
@@ -1237,7 +1230,13 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 }
 
 /* --- "Bliv medlem"-knappen skal tydeligt adskilles fra listen ovenover
- * i stedet for at hænge lige efter sidste link. --- */
+ * i stedet for at hænge lige efter sidste link, og have mere luft i
+ * siderne (overstyrer blokkens egen inline padding, som !important i et
+ * eksternt stylesheet vinder over). --- */
 .wp-block-navigation__responsive-container-content .wp-block-buttons {
 	margin-top: 24px !important;
+}
+.wp-block-navigation__responsive-container-content .wp-block-buttons .wp-block-button__link {
+	padding-left: 32px !important;
+	padding-right: 32px !important;
 }
