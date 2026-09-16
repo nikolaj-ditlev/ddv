@@ -1312,10 +1312,26 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 	}
 	.wp-block-navigation__responsive-container-open {
 		z-index: 999999 !important;
+		/* Større klik-areal (var kun det nøgne 24x24px ikon) - ca. 44x44px
+		 * i alt, som er det anbefalede minimum for et finger-tryk. */
+		padding: 10px !important;
 	}
 	.wp-block-navigation__responsive-container-open svg {
 		width: 27px !important;
 		height: 27px !important;
+	}
+	/* --- FUNDET VIA DEVTOOLS: kolonnen der wrapper søgeformularen har en
+	 * usynlig klik-boks på 297x72px (arvet fra en "flex-basis: 1320px"
+	 * beregnet til desktop-layoutet), selvom selve søgeikonet kun fylder
+	 * 36x22px. Den brede, usynlige boks stak ind over hamburger-knappens
+	 * område og stjal kliks derfra - den egentlige årsag til at
+	 * hamburgeren var svær at ramme. Tvinger kolonnen til kun at fylde så
+	 * meget som dens indhold (ikonet + "Søg"), uanset dens brede
+	 * flex-basis. --- */
+	.header-top-nav .wp-block-column:has(.is-search-form) {
+		flex: 0 0 auto !important;
+		width: auto !important;
+		max-width: max-content !important;
 	}
 }
 /* --- DDV-logoet, forsøg 3: DevTools' Computed-fane afslørede den
