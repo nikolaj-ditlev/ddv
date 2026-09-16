@@ -1292,25 +1292,29 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
  * formularens submit-knap (36x36px klik-areal) ligger lige ved siden af
  * og delvist overlapper den. Skubber søgeknappen væk og sikrer at
  * hamburger-knappen altid ligger øverst, uanset overlap. Kun relevant på
- * mobil-bredder, hvor hamburgeren rent faktisk vises. --- */
+ * mobil-bredder, hvor hamburgeren rent faktisk vises.
+ *
+ * "position:relative !important" ødelagde (samme fejl som luk-knappen
+ * tidligere) temaets egen mekanisme til at skjule "Åbn menu"-knappen når
+ * mobilmenuen er åben - den blev ved med at være synlig ved siden af
+ * luk-knappen. Fjernet igen; z-index virker stadig uden position, fordi
+ * knappen er et flex-barn (z-index gælder for flex-børn uanset position,
+ * jf. flexbox-specifikationen).
+ *
+ * Logo-forstørrelsen er også fjernet igen: "transform:scale()" flytter
+ * ikke selve layout-pladsen, så logo og søgefelt endte med at stå
+ * forskudt i forhold til hinanden. Hamburger-ikonets størrelse sættes nu
+ * i stedet via width/height direkte på selve SVG'en (påvirker dens
+ * egen, selvstændige boks - ikke naboelementer). --- */
 @media (max-width: 599px) {
 	.is-search-submit {
 		margin-right: 14px !important;
 	}
 	.wp-block-navigation__responsive-container-open {
-		position: relative !important;
 		z-index: 999999 !important;
 	}
-	/* --- Hamburger-ikonet og DDV-logoet ca. 12% større. "transform" i
-	 * stedet for width/height, da vi ikke kender temaets faste
-	 * billedstørrelse for logoet fra denne fil - garanterer en
-	 * proportional forøgelse uanset hvilken størrelse temaet har sat. --- */
 	.wp-block-navigation__responsive-container-open svg {
-		transform: scale(1.12);
-	}
-	.custom-logo,
-	.wp-block-site-logo img {
-		transform: scale(1.12);
-		transform-origin: left center;
+		width: 27px !important;
+		height: 27px !important;
 	}
 }
