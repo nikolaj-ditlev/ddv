@@ -1168,18 +1168,31 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
  * intet af det rører skrivebords-navigationen.
  * ==================================================================== */
 
-/* --- Luk-knappen ("X") bliver overlejret af søge-elementet i headeren
- * og reagerer ikke på klik. Vi kan ikke se søge-blokkens egen markup
- * herfra (den ligger i temaet, ikke i vores plugin), så dette er en
- * defensiv rettelse: luk-knappen får garanteret det højeste lag og et
- * stort klik-areal, uanset hvad der ellers måtte ligge henover den.
- * Ram os endelig med et DevTools-inspect af selve søge-ikonet, hvis den
- * stadig ikke reagerer - så kan vi target det direkte i stedet. */
+/* --- Luk-knappen ("X"): "position:relative" i forrige version ødelagde
+ * temaets egen absolutte placering (top-højre) og fik knappen til at
+ * flyde ned under logoet i stedet - rettet ved slet ikke at røre
+ * position, kun z-index/klik-areal. Får samtidig en rund, farvet
+ * baggrund så den er tydelig, nem at ramme med fingeren, og ikke bare
+ * et nøgent ikon der drukner mellem søg-elementet og logoet. */
 .wp-block-navigation__responsive-container-close {
-	position: relative !important;
 	z-index: 999999 !important;
 	pointer-events: auto !important;
-	padding: 14px !important;
+	width: 40px !important;
+	height: 40px !important;
+	min-width: 40px !important;
+	min-height: 40px !important;
+	border-radius: 50% !important;
+	background-color: var(--wp--preset--color--ddv-dark-teal, #3c5956) !important;
+	color: #ffffff !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	padding: 0 !important;
+}
+.wp-block-navigation__responsive-container-close svg {
+	fill: #ffffff !important;
+	width: 18px !important;
+	height: 18px !important;
 }
 
 /* --- Alle topniveau-punkter (Medlemskab, Netværk, DDV Arrangementer,
