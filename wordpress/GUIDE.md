@@ -12,6 +12,12 @@ Da I kører **Site Editor med et bloktema**, styres farver/fonte af temaets
 editoren. Header/footer/nav er allerede globale template parts i jeres tema —
 dem skal du IKKE genbygge.
 
+**Bemærk:** `ddv-landing.css` indlæses på HELE sitet (ikke kun landingssiderne),
+så den også bruges til enkelte punkt-rettelser i temaets header/mobilmenu, hvor
+vi ikke har adgang til selve temaets filer (fx afsnittet "Mobilmenu" nederst i
+CSS-filen). Det er en undtagelse — hovedreglen er stadig at filen kun styler
+landingssidernes egne `.ddv-*`-klasser.
+
 ## 1. Sådan er pakken bygget
 
 ```

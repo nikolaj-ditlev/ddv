@@ -1158,3 +1158,86 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 		opacity: 1;
 	}
 }
+
+/* ====================================================================
+ * Mobilmenu (header-navigationen, hele sitet - IKKE kun landingssiderne).
+ * ddv-landing.css indlæses globalt (wp_enqueue_scripts uden betingelse),
+ * så disse regler virker overalt, selvom filen ligger i landingsside-
+ * pakken. Alt herunder er scopet til selve den responsive (mobil)
+ * menu-dialog (.wp-block-navigation__responsive-container-content), så
+ * intet af det rører skrivebords-navigationen.
+ * ==================================================================== */
+
+/* --- Luk-knappen ("X") bliver overlejret af søge-elementet i headeren
+ * og reagerer ikke på klik. Vi kan ikke se søge-blokkens egen markup
+ * herfra (den ligger i temaet, ikke i vores plugin), så dette er en
+ * defensiv rettelse: luk-knappen får garanteret det højeste lag og et
+ * stort klik-areal, uanset hvad der ellers måtte ligge henover den.
+ * Ram os endelig med et DevTools-inspect af selve søge-ikonet, hvis den
+ * stadig ikke reagerer - så kan vi target det direkte i stedet. */
+.wp-block-navigation__responsive-container-close {
+	position: relative !important;
+	z-index: 999999 !important;
+	pointer-events: auto !important;
+	padding: 14px !important;
+}
+
+/* --- Topniveau-punkterne (Netværk, DDV Arrangementer, Faglig viden,
+ * DDV analysen m.fl.) sad klistret sammen med stort set ingen luft.
+ * Ensartet, behagelig linjeafstand på alle direkte børn af listen. --- */
+.wp-block-navigation__responsive-container-content .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	display: block !important;
+	padding-top: 12px !important;
+	padding-bottom: 12px !important;
+	font-size: 17px !important;
+}
+
+/* --- "Medlemskab" (punktet med undermenu) skal fremstå som en tydelig
+ * sektionsoverskrift over sine undermenu-punkter, ikke som et
+ * ligeværdigt linje-punkt. --- */
+.wp-block-navigation__responsive-container-content .wp-block-navigation-submenu > .wp-block-navigation-item__content {
+	font-size: 20px !important;
+	font-weight: 700 !important;
+	padding-bottom: 2px !important;
+}
+
+/* --- Undermenu-punkterne (Priser, Bliv medlem, Dine oplysninger) havde
+ * enorme, ujævne mellemrum (~40-50px). Strammet til et kompakt, let
+ * indrykket sæt, så de tydeligt hører sammen under "Medlemskab". --- */
+.wp-block-navigation__submenu-container {
+	padding-left: 6px !important;
+}
+.wp-block-navigation__submenu-container > .wp-block-navigation-item {
+	margin: 0 !important;
+}
+.wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	display: block !important;
+	padding-top: 9px !important;
+	padding-bottom: 9px !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+}
+
+/* --- Skillelinjen efter Medlemskab-gruppen: konsistent luft over/under
+ * i stedet for at arve listens egen (for store) afstand. --- */
+.wp-block-navigation__responsive-container-content hr,
+.wp-block-navigation__responsive-container-content .wp-block-separator {
+	margin: 18px 0 !important;
+}
+
+/* --- Ikon-punkterne (optimering.nu, Podcast, Mit DDV) er sekundære
+ * "utility"-links: ikon og tekst på linje med ensartet mellemrum,
+ * adskilt fra CTA-knappen med lidt ekstra luft. --- */
+.wp-block-navigation-item.optimering > .wp-block-navigation-item__content,
+.wp-block-navigation-item.podcast > .wp-block-navigation-item__content,
+.wp-block-navigation-item.my-ddv > .wp-block-navigation-item__content {
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+}
+
+/* --- "Bliv medlem"-knappen skal tydeligt adskilles fra listen ovenover
+ * i stedet for at hænge lige efter sidste link. --- */
+.wp-block-navigation__responsive-container-content .wp-block-buttons {
+	margin-top: 24px !important;
+}
