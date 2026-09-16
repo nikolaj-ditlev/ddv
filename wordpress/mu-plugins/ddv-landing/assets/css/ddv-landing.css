@@ -1324,14 +1324,24 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 	 * usynlig klik-boks på 297x72px (arvet fra en "flex-basis: 1320px"
 	 * beregnet til desktop-layoutet), selvom selve søgeikonet kun fylder
 	 * 36x22px. Den brede, usynlige boks stak ind over hamburger-knappens
-	 * område og stjal kliks derfra - den egentlige årsag til at
-	 * hamburgeren var svær at ramme. Tvinger kolonnen til kun at fylde så
-	 * meget som dens indhold (ikonet + "Søg"), uanset dens brede
-	 * flex-basis. --- */
+	 * område og stjal kliks derfra.
+	 *
+	 * Første forsøg tvang kolonnens BREDDE til at passe indholdet
+	 * (flex/width/max-width) - det virkede, men fik i stedet søgefeltets
+	 * egen udvid/kollaps-animation (Ivory Search-pluginets JS) til at
+	 * "kæmpe" imod vores faste bredde, så feltet hoppede rundt og
+	 * dukkede op flere steder på samme tid (set på skærmoptagelsen).
+	 * Rører derfor slet ikke bredden/flex mere - kun hvilke DELE af
+	 * kolonnen der reagerer på klik: den tomme, usynlige del af boksen
+	 * "sender kliks igennem" (pointer-events:none) til det der ligger
+	 * bagved (hamburgeren), mens selve søgeformularen/-ikonet stadig er
+	 * fuldt klikbart. Layoutet/animationen er derfor helt urørt. --- */
 	.header-top-nav .wp-block-column:has(.is-search-form) {
-		flex: 0 0 auto !important;
-		width: auto !important;
-		max-width: max-content !important;
+		pointer-events: none !important;
+	}
+	.header-top-nav .wp-block-column:has(.is-search-form) .is-search-form,
+	.header-top-nav .wp-block-column:has(.is-search-form) .is-search-form * {
+		pointer-events: auto !important;
 	}
 }
 /* --- DDV-logoet, forsøg 3: DevTools' Computed-fane afslørede den
