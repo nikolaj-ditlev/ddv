@@ -1251,6 +1251,17 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	.header-top-nav .wp-block-column:has(.is-search-form) {
 		margin-right: auto !important;
 	}
+	/* --- FUNDET VIA DEVTOOLS: det er ikke vores kolonne, men selve
+	 * ".is-search-form" (temaets egen markup) der er den brede, klikbare
+	 * boks (252x36px) - temaet har allerede givet DEN z-index:999999 og
+	 * et lille højreskub (left:10px). Sænker dens lag under hamburgerens,
+	 * og fjerner højreskubbet - rører hverken bredde, overflow eller
+	 * position:relative i sig selv, så pluginets egen åbn/luk-animation
+	 * (som tidligere gik i konflikt med bredde-ændringer) er helt urørt. */
+	.is-search-form {
+		z-index: 1 !important;
+		left: 0 !important;
+	}
 	/* --- Hamburger-knappen skal altid ligge øverst i lag, uanset hvad
 	 * der ellers måtte overlappe den. Kun z-index - ingen position- eller
 	 * display-ændring, som tidligere viste sig at ødelægge temaets egen
