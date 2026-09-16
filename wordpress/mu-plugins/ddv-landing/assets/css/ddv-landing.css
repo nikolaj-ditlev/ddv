@@ -1317,14 +1317,12 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 		width: 27px !important;
 		height: 27px !important;
 	}
-	/* DDV-logoet: native størrelse er 150x94 (fra <img width/height>) -
-	 * 12% større er 168x105. Sat som eksplicit width/height (ikke
-	 * transform), så det reflower korrekt og ikke overlapper søgefeltet
-	 * ved siden af. max-width:none for en sikkerheds skyld, i tilfælde af
-	 * en eksisterende mobil-begrænsning der ellers ville klippe den. */
-	.wp-block-site-logo .custom-logo {
-		width: 168px !important;
-		height: 105px !important;
-		max-width: none !important;
-	}
 }
+/* Logo-størrelsen (width:168px + height:105px) er fjernet igen - den
+ * fik logoet til at strække helt vildt, og fik samtidig hamburger-
+ * knappen til at forsvinde (formentlig fordi temaet selv har en
+ * mobil-specifik regel der tvang en ANDEN bredde igennem end vores,
+ * mens vores height stod uimodsagt - resultatet blev en forvrænget,
+ * for høj logo-boks der skubbede/dækkede resten af header-rækken).
+ * Se GUIDE.md/chatten for hvordan vi finder den rigtige, konfliktfrie
+ * værdi via DevTools' Computed-fane, før vi prøver igen. */
