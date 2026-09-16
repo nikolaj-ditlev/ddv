@@ -1287,3 +1287,30 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 	padding-left: 32px !important;
 	padding-right: 32px !important;
 }
+
+/* --- Hamburger-knappen (Åbn menu) er svær at ramme, bl.a. fordi søge-
+ * formularens submit-knap (36x36px klik-areal) ligger lige ved siden af
+ * og delvist overlapper den. Skubber søgeknappen væk og sikrer at
+ * hamburger-knappen altid ligger øverst, uanset overlap. Kun relevant på
+ * mobil-bredder, hvor hamburgeren rent faktisk vises. --- */
+@media (max-width: 599px) {
+	.is-search-submit {
+		margin-right: 14px !important;
+	}
+	.wp-block-navigation__responsive-container-open {
+		position: relative !important;
+		z-index: 999999 !important;
+	}
+	/* --- Hamburger-ikonet og DDV-logoet ca. 12% større. "transform" i
+	 * stedet for width/height, da vi ikke kender temaets faste
+	 * billedstørrelse for logoet fra denne fil - garanterer en
+	 * proportional forøgelse uanset hvilken størrelse temaet har sat. --- */
+	.wp-block-navigation__responsive-container-open svg {
+		transform: scale(1.12);
+	}
+	.custom-logo,
+	.wp-block-site-logo img {
+		transform: scale(1.12);
+		transform-origin: left center;
+	}
+}
