@@ -1317,4 +1317,14 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 		width: 27px !important;
 		height: 27px !important;
 	}
+	/* DDV-logoet: native størrelse er 150x94 (fra <img width/height>) -
+	 * 12% større er 168x105. Sat som eksplicit width/height (ikke
+	 * transform), så det reflower korrekt og ikke overlapper søgefeltet
+	 * ved siden af. max-width:none for en sikkerheds skyld, i tilfælde af
+	 * en eksisterende mobil-begrænsning der ellers ville klippe den. */
+	.wp-block-site-logo .custom-logo {
+		width: 168px !important;
+		height: 105px !important;
+		max-width: none !important;
+	}
 }
