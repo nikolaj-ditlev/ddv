@@ -1173,8 +1173,14 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
  * flyde ned under logoet i stedet - rettet ved slet ikke at røre
  * position, kun z-index/klik-areal. Får samtidig en rund, farvet
  * baggrund så den er tydelig, nem at ramme med fingeren, og ikke bare
- * et nøgent ikon der drukner mellem søg-elementet og logoet. */
-.wp-block-navigation__responsive-container-close {
+ * et nøgent ikon der drukner mellem søg-elementet og logoet.
+ * "display:flex !important" tvang den til at være synlig HELE TIDEN
+ * (også på desktop, uden for mobilmenuen) fordi den skjules via
+ * [hidden]-attributten (WP's Interactivity API), som er en browser-
+ * standardregel author-CSS altid vinder over. Løsning: ":not([hidden])"
+ * i selectoren, så vores styling kun gælder når knappen rent faktisk
+ * er synlig (mobilmenuen åben) - ellers rører vi den slet ikke. */
+.wp-block-navigation__responsive-container-close:not([hidden]) {
 	z-index: 999999 !important;
 	pointer-events: auto !important;
 	width: 40px !important;
@@ -1189,7 +1195,7 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	justify-content: center !important;
 	padding: 0 !important;
 }
-.wp-block-navigation__responsive-container-close svg {
+.wp-block-navigation__responsive-container-close:not([hidden]) svg {
 	fill: #ffffff !important;
 	width: 18px !important;
 	height: 18px !important;
