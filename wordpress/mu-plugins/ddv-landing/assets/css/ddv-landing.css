@@ -1318,11 +1318,21 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 		height: 27px !important;
 	}
 }
-/* Logo-størrelsen (width:168px + height:105px) er fjernet igen - den
- * fik logoet til at strække helt vildt, og fik samtidig hamburger-
- * knappen til at forsvinde (formentlig fordi temaet selv har en
- * mobil-specifik regel der tvang en ANDEN bredde igennem end vores,
- * mens vores height stod uimodsagt - resultatet blev en forvrænget,
- * for høj logo-boks der skubbede/dækkede resten af header-rækken).
- * Se GUIDE.md/chatten for hvordan vi finder den rigtige, konfliktfrie
- * værdi via DevTools' Computed-fane, før vi prøver igen. */
+/* --- DDV-logoet, forsøg 3: DevTools' Computed-fane afslørede den
+ * egentlige årsag - temaet begrænser logoet med "max-width: 40%"
+ * (relativt til dets forælder), og billedets height regnes automatisk
+ * ud fra bredden via "aspect-ratio: auto 150/94" (fra <img width/
+ * height>). Vores tidligere faste width:168px+height:105px tabte
+ * bredde-kampen mod de 40% men vandt højde-kampen, så resultatet blev
+ * strukket (105px høj på kun 61px bred). Løsning: rør kun max-width
+ * (den faktiske styrende egenskab), skru den 12% op (40% -> 45%), og
+ * sæt height:auto eksplicit - så følger højden automatisk med i
+ * korrekt forhold, uanset hvilken bredde der reelt vinder. Klassen
+ * gentages 3x for garanteret at vinde specificitets-kampen mod
+ * temaets "max-width: 40%"-regel. --- */
+@media (max-width: 599px) {
+	.custom-logo.custom-logo.custom-logo {
+		max-width: 45% !important;
+		height: auto !important;
+	}
+}
