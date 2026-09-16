@@ -1158,3 +1158,104 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 		opacity: 1;
 	}
 }
+
+/* ====================================================================
+ * Mobilmenu (header-navigationen, hele sitet - IKKE kun landingssiderne).
+ * ddv-landing.css indlæses globalt, så disse regler virker overalt.
+ *
+ * VIGTIGT: ".wp-block-navigation__responsive-container-content" er den
+ * SAMME markup temaet bruger på både desktop (vist inline i baren) og
+ * mobil (vist som fuldskærms-dialog) - ikke to forskellige elementer.
+ * Alt herunder er derfor scopet bag ".is-menu-open" (klassen WP's
+ * Interactivity API selv sætter på ".wp-block-navigation__responsive-
+ * container", når mobilmenuen rent faktisk er åbnet), så intet af det
+ * slår igennem på skrivebordsvisningen.
+ *
+ * Denne runde holder sig bevidst til selve menupunkterne, stregen,
+ * vandret scroll, søgefeltets position og hamburgerens lag - IKKE
+ * luk-knappens udseende/klik-areal eller logo-størrelsen, som tidligere
+ * forsøg viste sig at kunne kollidere med Ivory Search-pluginets egen
+ * JS-animation. ==================================================== */
+
+/* --- Alle topniveau-punkter (Medlemskab, Netværk, DDV Arrangementer,
+ * Faglig viden, DDV analysen m.fl.) i samme størrelse, med ca. 15%
+ * mindre padding end den oprindelige 12px. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	display: block !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	font-size: 20px !important;
+	font-weight: 700 !important;
+}
+
+/* --- Undermenu-punkterne (Priser, Bliv medlem, Dine oplysninger): mindre
+ * størrelse, kompakt luft top/bund, let indrykket så de tydeligt hører
+ * sammen under "Medlemskab". --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+	padding-left: 6px !important;
+	margin-bottom: 0 !important;
+	/* Skillelinjen under gruppen er ikke en <hr>, men en border-bottom
+	 * sat direkte på selve undermenu-containeren via en regel med 4
+	 * klasser i en @media (width <= 1111px) (fundet via DevTools) - vores
+	 * klasse gentages 3x for garanteret at vinde specificitets-kampen. */
+	border-bottom: none !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container > .wp-block-navigation-item {
+	margin: 0 !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	display: block !important;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+}
+
+/* --- Ikon-punkterne (optimering.nu, Podcast, Mit DDV): ikon og tekst på
+ * linje med ensartet mellemrum. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.optimering > .wp-block-navigation-item__content,
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.podcast > .wp-block-navigation-item__content,
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.my-ddv > .wp-block-navigation-item__content {
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+}
+
+/* --- "Bliv medlem"-knappen: luft ned til listen ovenover, og mere
+ * padding i siderne. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-buttons {
+	margin-top: 24px !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-buttons .wp-block-button__link {
+	padding-left: 32px !important;
+	padding-right: 32px !important;
+}
+
+/* --- Forhindrer at hele menuen kan trækkes/scrolles sidelæns med touch,
+ * mens den er åben. Sat KUN på selve indholds-listen (ikke på dialogen
+ * som helhed) - "overflow-y:auto" sat eksplicit for at garantere lodret
+ * scroll stadig virker (sætter man overflow-x uden at røre overflow-y,
+ * bliver overflow-y automatisk "auto" i stedet for "visible", hvilket
+ * tidligere skabte en utilsigtet klippe-kontekst andre steder). --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+	max-width: 100vw !important;
+	touch-action: pan-y !important;
+}
+
+/* --- Søgefunktionen i headeren flyttes mod venstre (tættere på logoet),
+ * så den ikke ligger så tæt på/overlapper hamburger-knappen. Kun
+ * layout/margin - rører ikke søgeformularens egen bredde/animation. --- */
+@media (max-width: 599px) {
+	.header-top-nav .wp-block-column:has(.is-search-form) {
+		margin-right: auto !important;
+	}
+	/* --- Hamburger-knappen skal altid ligge øverst i lag, uanset hvad
+	 * der ellers måtte overlappe den. Kun z-index - ingen position- eller
+	 * display-ændring, som tidligere viste sig at ødelægge temaets egen
+	 * skjul/vis-mekanisme for knappen. --- */
+	.wp-block-navigation__responsive-container-open {
+		z-index: 999999 !important;
+	}
+}
