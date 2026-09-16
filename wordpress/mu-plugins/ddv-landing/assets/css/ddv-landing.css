@@ -1212,13 +1212,19 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) .is-search-for
 
 /* --- Forhindrer at hele menuen kan trækkes/scrolles sidelæns med touch,
  * mens den er åben (indholdet var bredere end skærmen ved visse
- * bredder). --- */
+ * bredder). Sat KUN på selve indholds-listen (ikke på ".../dialog", som
+ * også er luk-knappens forælder) - "overflow-x:hidden" der beskar
+ * toppen af luk-knappen og ødelagde lodret scroll (CSS-regel: sætter man
+ * overflow-x uden også at røre overflow-y, bliver overflow-y automatisk
+ * "auto" i stedet for "visible", hvilket skabte en ny, forkert klippe-/
+ * scroll-kontekst). "overflow-y:auto" sat eksplicit for at garantere
+ * lodret scroll stadig virker. --- */
 body:has(.wp-block-navigation__responsive-container.is-menu-open) {
 	overflow-x: hidden !important;
 }
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-dialog,
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
 	overflow-x: hidden !important;
+	overflow-y: auto !important;
 	max-width: 100vw !important;
 	touch-action: pan-y !important;
 }
@@ -1240,8 +1246,11 @@ body:has(.wp-block-navigation__responsive-container.is-menu-open) {
  * luft top/bund end sidst - og let indrykket, så de tydeligt hører
  * sammen under "Medlemskab". Skillelinjen under gruppen er slet ikke en
  * <hr>, men en border-bottom sat direkte på selve undermenu-containeren
- * (fundet via DevTools) - fjernet her. --- */
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
+ * via en regel med 4 klasser i selectoren (".bottom-navigation
+ * .wp-block-navigation.has-child .wp-block-navigation__submenu-container",
+ * fundet via DevTools) - vores 3-klasses regel tabte specificitets-
+ * kampen. Klassen gentaget for kunstigt at ramme 5 og garanteret vinde. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
 	padding-left: 6px !important;
 	border-bottom: none !important;
 	margin-bottom: 0 !important;
