@@ -68,6 +68,10 @@
  * baren selv skulle stå for afstanden op til heroen. */
 .ddv-indsigt-hero-bg {
 	margin-bottom: 20px !important;
+	/* Samme mørke petroleum som de øvrige heroer - blokkens egen
+	 * backgroundColor-attribut (ddv-dark-teal-tokenet) gav en synligt
+	 * mørkere farve på den live side, derfor sat eksplicit her. */
+	background-color: #3c5956 !important;
 }
 /* Samme 6 heroer: fast 50px luft foroven og forneden (i stedet for
  * --ddv-section-y + 50px, som på store skærme gav helt op til ca. 150px og
