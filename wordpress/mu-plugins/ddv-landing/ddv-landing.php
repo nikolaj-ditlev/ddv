@@ -48,23 +48,6 @@ function ddv_landing_enqueue_indsigt_filter() {
 add_action( 'wp_enqueue_scripts', 'ddv_landing_enqueue_indsigt_filter' );
 
 /**
- * Mobilmenu: lukker "Medlemskab"s undermenu automatisk når mobilmenuen
- * åbnes (WP's egen navigations-blok starter den som åben - se scriptet
- * for detaljer). Hele sitet, ikke kun landingssiderne, da header/nav er
- * global - ikke i editoren, det er en ren front-end interaktion.
- */
-function ddv_landing_enqueue_mobile_menu() {
-	wp_enqueue_script(
-		'ddv-mobile-menu',
-		DDV_LANDING_URL . 'assets/js/ddv-mobile-menu.js',
-		array(),
-		filemtime( DDV_LANDING_DIR . '/assets/js/ddv-mobile-menu.js' ),
-		true
-	);
-}
-add_action( 'wp_enqueue_scripts', 'ddv_landing_enqueue_mobile_menu' );
-
-/**
  * Egen kategori i pattern-inserteren, så de 12 DDV-patterns er nemme at finde.
  */
 function ddv_landing_register_pattern_category() {
