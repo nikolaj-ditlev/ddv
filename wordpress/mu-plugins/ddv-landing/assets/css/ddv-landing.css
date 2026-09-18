@@ -1237,6 +1237,13 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	padding: 0 !important;
 	background: transparent !important;
 	border: none !important;
+	/* Pilen var synlig, men reagerede ikke på klik - temaets egen
+	 * standardstil til denne (normalt skjulte) knap kan have sat
+	 * pointer-events:none, siden den ikke plejer at blive vist/brugt på
+	 * mobil. Sikrer eksplicit at den er klikbar og øverst i lag. */
+	pointer-events: auto !important;
+	cursor: pointer !important;
+	z-index: 5 !important;
 }
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle svg {
 	width: 18px !important;
