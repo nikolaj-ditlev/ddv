@@ -1211,6 +1211,48 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	font-weight: 400 !important;
 }
 
+/* --- "Medlemskab"s undermenu skal være kollapset som udgangspunkt og
+ * kunne foldes ud med en pil i højre side. WordPress har allerede en
+ * fuldt fungerende, tilgængelig fold-ud-knap indbygget i blokken
+ * (".wp-block-navigation-submenu__toggle", styret reaktivt af WP's egen
+ * Interactivity API via "aria-expanded" - ingen ny JS nødvendig), men
+ * temaet viser den ikke på mobil, så undermenuen står altid åben. Vi
+ * gør bare knappen synlig og lader CSS vise/skjule listen ud fra dens
+ * eksisterende aria-expanded-tilstand. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.has-child {
+	position: relative;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.has-child > .wp-block-navigation-item__content {
+	padding-right: 40px !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	position: absolute !important;
+	top: 4px !important;
+	right: 0 !important;
+	width: 32px !important;
+	height: 32px !important;
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle svg {
+	width: 18px !important;
+	height: 18px !important;
+	transition: transform 0.2s ease !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle[aria-expanded="true"] svg {
+	transform: rotate(180deg) !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle[aria-expanded="false"] ~ .wp-block-navigation__submenu-container {
+	display: none !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle[aria-expanded="true"] ~ .wp-block-navigation__submenu-container {
+	display: block !important;
+}
+
 /* --- Ikon-punkterne (optimering.nu, Podcast, Mit DDV): ikon og tekst på
  * linje med ensartet mellemrum. --- */
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.optimering > .wp-block-navigation-item__content,
