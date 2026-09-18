@@ -27,7 +27,8 @@ wordpress/
 │       │   └── scroll-indicator.php     ← [ddv_scroll_indicator]-shortcode (scroll-mus til heroer)
 │       ├── assets/
 │       │   ├── css/ddv-landing.css      ← styling af custom komponenter (kort, FAQ, badges...)
-│       │   └── js/ddv-indsigt-filter.js ← klik-og-filtrér-logik til Indsigt-oversigten
+│       │   ├── js/ddv-indsigt-filter.js ← klik-og-filtrér-logik til Indsigt-oversigten
+│       │   └── js/ddv-mobile-menu.js    ← lukker Medlemskab-undermenuen når mobilmenuen åbnes
 │       └── patterns/
 │           ├── analysen-*.php           ← sektioner til DDV Analysen
 │           ├── barometer-*.php          ← sektioner til Vedligeholdsbarometer
