@@ -278,6 +278,13 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	margin: 0 !important;
 }
 @media (max-width: 782px) {
+	/* Boksen gik helt ud til skærmkanten på mobil, da wrap'en bevidst har
+	   nul sidepadding (for at ramme Figma-grid'et præcist på desktop) -
+	   10px luft i siderne, kun på mobil. */
+	.ddv-hero-forside-wrap {
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+	}
 	.ddv-hero-forside-photo-col {
 		flex-basis: 100% !important;
 		max-width: 100% !important;
@@ -291,6 +298,14 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	.ddv-hero-forside-cards-col {
 		flex-basis: 100% !important;
 		max-width: 100% !important;
+	}
+	/* Uden aspect-ratio bliver boksen kun så høj som indholdet, og
+	   knap-rækkens "margin-top:auto" (som presser den til bunds på
+	   desktop) har derfor ikke altid plads at skubbe i - underrubrikken
+	   endte lige oven i "Læs hvad tallene fortæller"-knappen. Fast
+	   margin-bottom garanterer luft uanset. */
+	.ddv-hero-forside-lead {
+		margin-bottom: 24px;
 	}
 }
 
