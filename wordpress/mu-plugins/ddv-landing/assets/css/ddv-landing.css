@@ -298,6 +298,15 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	.ddv-hero-forside-cards-col {
 		flex-basis: 100% !important;
 		max-width: 100% !important;
+		/* Var 32px (samme som desktop) - for meget luft mellem de stablede
+		   kort på mobil. */
+		gap: 16px !important;
+	}
+	/* Afstanden mellem selve tan-boksen og kort-kolonnen (styret af
+	   ".ddv-hero-forside-row"s fælles gap, som også bruges vandret på
+	   desktop) - reduceret på mobil, hvor de to stables lodret. */
+	.ddv-hero-forside-row {
+		gap: 16px !important;
 	}
 	/* Uden aspect-ratio bliver boksen kun så høj som indholdet, og
 	   knap-rækkens "margin-top:auto" (som presser den til bunds på
