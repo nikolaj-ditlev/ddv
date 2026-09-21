@@ -583,6 +583,19 @@ body .wp-block-button__link:active {
 	background-size: cover;
 	background-position: center;
 }
+/* Samme topafstand som de øvrige heroer, af samme grund: første barn af
+ * en ".is-layout-constrained"-wrapper, og WordPress' egen
+ * nulstillingsregel for det tilfælde vinder ellers trods !important -
+ * se forklaring ved .ddv-hero-forside-wrap. Klassen gentaget 3x for
+ * garanteret at vinde. */
+.ddv-analysen-hero-bg.ddv-analysen-hero-bg.ddv-analysen-hero-bg {
+	margin-top: 110px !important;
+}
+@media (max-width: 782px) {
+	.ddv-analysen-hero-bg.ddv-analysen-hero-bg.ddv-analysen-hero-bg {
+		margin-top: 56px !important;
+	}
+}
 
 /* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content").
  * Eksplicit bredde-/højde-begrænsning i stedet for kun at stole på temaets/core's egen
