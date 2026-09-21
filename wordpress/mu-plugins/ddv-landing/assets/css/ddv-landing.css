@@ -135,6 +135,19 @@
 .ddv-kursuskatalog-hero-bg {
 	background-color: #3B5957 !important;
 }
+/* Samme topafstand som de øvrige heroer, af samme grund: første barn af
+ * en ".is-layout-constrained"-wrapper, og WordPress' egen
+ * nulstillingsregel for det tilfælde vinder ellers trods !important -
+ * se forklaring ved .ddv-hero-forside-wrap. Klassen gentaget 3x for
+ * garanteret at vinde. */
+.ddv-kursuskatalog-hero-bg.ddv-kursuskatalog-hero-bg.ddv-kursuskatalog-hero-bg {
+	margin-top: 110px !important;
+}
+@media (max-width: 782px) {
+	.ddv-kursuskatalog-hero-bg.ddv-kursuskatalog-hero-bg.ddv-kursuskatalog-hero-bg {
+		margin-top: 56px !important;
+	}
+}
 /* Kursus-heroens to kolonner er sat op med core's "centrer lodret"
  * (verticalAlignment:center), hvilket giver tekst-kolonnen et stort,
  * skævt luftrum ovenover, når faktaboks-kolonnen er højere. Overstyrer her
