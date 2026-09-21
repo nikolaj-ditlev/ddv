@@ -161,7 +161,7 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	/* Erstatter det afstandsstykke der lå manuelt i editoren oven over
 	 * blokken (nu fjernet der) - kun på desktop, se mobil-override
 	 * nedenfor i @media (max-width: 782px). */
-	margin-top: 80px;
+	margin-top: 90px;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -289,7 +289,7 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	.ddv-hero-forside-wrap {
 		padding-left: 10px !important;
 		padding-right: 10px !important;
-		margin-top: 20px;
+		margin-top: 36px;
 	}
 	.ddv-hero-forside-photo-col {
 		flex-basis: 100% !important;
@@ -589,7 +589,7 @@ body .wp-block-button__link:active {
 	display: flex;
 	align-items: center;
 	/* Samme topafstand som Barometer forside-heroen. */
-	margin-top: 80px;
+	margin-top: 90px;
 }
 /* Mørkt overlay så den hvide tekst forbliver læselig, uanset hvor lyst
  * eller "støjende" baggrundsbilledet er lige der, hvor teksten lander. */
@@ -613,7 +613,7 @@ body .wp-block-button__link:active {
 	.ddv-barometer-hero-bg {
 		background-position: 70% center;
 		min-height: 500px;
-		margin-top: 20px;
+		margin-top: 36px;
 	}
 }
 
