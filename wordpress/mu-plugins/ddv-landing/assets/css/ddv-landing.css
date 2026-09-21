@@ -127,6 +127,20 @@
 .ddv-kursus-hero-bg {
 	background-color: #3C5956;
 }
+/* Samme topafstand som de øvrige heroer (erstatter den manuelle spacer-
+ * blok i editoren, som slettes på alle 11 kursus-sider + Kursus 2), af
+ * samme grund: første barn af en ".is-layout-constrained"-wrapper, og
+ * WordPress' egen nulstillingsregel for det tilfælde vinder ellers
+ * trods !important - se forklaring ved .ddv-hero-forside-wrap. Klassen
+ * gentaget 3x for garanteret at vinde. */
+.ddv-kursus-hero-bg.ddv-kursus-hero-bg.ddv-kursus-hero-bg {
+	margin-top: 110px !important;
+}
+@media (max-width: 782px) {
+	.ddv-kursus-hero-bg.ddv-kursus-hero-bg.ddv-kursus-hero-bg {
+		margin-top: 56px !important;
+	}
+}
 /* ---------- Kursuskatalog – hero: egen baggrundsfarve. Blokken har sin
  * egen backgroundColor-attribut sat til "ddv-dark-teal"-tokenet
  * (#3c5956), som WordPress' style-engine sætter med !important via
