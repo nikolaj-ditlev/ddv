@@ -588,10 +588,33 @@ body .wp-block-button__link:active {
 	min-height: 500px;
 	display: flex;
 	align-items: center;
+	/* Samme topafstand som Barometer forside-heroen. */
+	margin-top: 80px;
+}
+/* Mørkt overlay så den hvide tekst forbliver læselig, uanset hvor lyst
+ * eller "støjende" baggrundsbilledet er lige der, hvor teksten lander. */
+.ddv-barometer-hero-bg::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(15, 26, 23, 0.4);
+	pointer-events: none;
+	z-index: 0;
+	/* Matcher heroens egne runde hjørner (fra .ddv-section), ellers ville
+	 * overlayet stikke ud som firkantede hjørner. */
+	border-radius: inherit;
+}
+.ddv-barometer-hero-bg .ddv-barometer-hero-content {
+	position: relative;
+	z-index: 1;
 }
 .ddv-barometer-hero-content { max-width: 620px; margin: 0; }
 @media (max-width: 782px) {
-	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 500px; }
+	.ddv-barometer-hero-bg {
+		background-position: 70% center;
+		min-height: 500px;
+		margin-top: 20px;
+	}
 }
 
 /* ---------- Hero-hjælpeklasser ---------- */
