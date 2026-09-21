@@ -591,21 +591,14 @@ body .wp-block-button__link:active {
 	/* Samme topafstand som Barometer forside-heroen. */
 	margin-top: 90px;
 }
-/* Mørkt overlay så den hvide tekst forbliver læselig, uanset hvor lyst
- * eller "støjende" baggrundsbilledet er lige der, hvor teksten lander. */
-.ddv-barometer-hero-bg::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: rgba(15, 26, 23, 0.4);
-	pointer-events: none;
-	z-index: 0;
-	/* Matcher heroens egne runde hjørner (fra .ddv-section), ellers ville
-	 * overlayet stikke ud som firkantede hjørner. */
-	border-radius: inherit;
-}
+/* Indholdet skal ligge oven på det mørke overlay (::before nedenfor) -
+ * kun z-index, IKKE position:relative: heroen er selv display:flex, og
+ * flex-børn reagerer på z-index uden position (jf. flexbox-specen).
+ * "position:relative" her ville skabe en NY positioneringskontekst
+ * mellem heroen og scroll-indikatoren, som ellers skal centrere sig i
+ * forhold til heroen som helhed - ikke i forhold til denne smallere
+ * (620px) tekstkolonne. */
 .ddv-barometer-hero-bg .ddv-barometer-hero-content {
-	position: relative;
 	z-index: 1;
 }
 .ddv-barometer-hero-content { max-width: 620px; margin: 0; }
@@ -614,6 +607,20 @@ body .wp-block-button__link:active {
 		background-position: 70% center;
 		min-height: 500px;
 		margin-top: 36px;
+	}
+	/* Mørkt overlay så den hvide tekst forbliver læselig, uanset hvor
+	 * lyst/støjende baggrundsbilledet er lige der, hvor teksten lander -
+	 * kun på mobil. */
+	.ddv-barometer-hero-bg::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: rgba(15, 26, 23, 0.4);
+		pointer-events: none;
+		z-index: 0;
+		/* Matcher heroens egne runde hjørner (fra .ddv-section), ellers
+		 * ville overlayet stikke ud som firkantede hjørner. */
+		border-radius: inherit;
 	}
 }
 
