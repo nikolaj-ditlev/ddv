@@ -158,10 +158,10 @@ body .ddv-kursus-hero-bg .wp-block-column {
 	 * skævt fordelt, og hele sektionen fremstod ikke justeret til sidens grid. */
 	padding-left: 0 !important;
 	padding-right: 0 !important;
-	/* Erstatter det 55px afstandsstykke der lå manuelt i editoren oven
-	 * over blokken (nu fjernet der) - kun på desktop, se mobil-override
+	/* Erstatter det afstandsstykke der lå manuelt i editoren oven over
+	 * blokken (nu fjernet der) - kun på desktop, se mobil-override
 	 * nedenfor i @media (max-width: 782px). */
-	margin-top: 55px;
+	margin-top: 80px;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -284,12 +284,12 @@ body .ddv-kursus-hero-bg .wp-block-column {
 @media (max-width: 782px) {
 	/* Boksen gik helt ud til skærmkanten på mobil, da wrap'en bevidst har
 	   nul sidepadding (for at ramme Figma-grid'et præcist på desktop) -
-	   10px luft i siderne, kun på mobil. Margin-top:55px (desktop) fjernes
-	   helt igen her, på mobil. */
+	   10px luft i siderne, kun på mobil. Margin-top (80px på desktop)
+	   sættes ned til 20px her, på mobil. */
 	.ddv-hero-forside-wrap {
 		padding-left: 10px !important;
 		padding-right: 10px !important;
-		margin-top: 0;
+		margin-top: 20px;
 	}
 	.ddv-hero-forside-photo-col {
 		flex-basis: 100% !important;
