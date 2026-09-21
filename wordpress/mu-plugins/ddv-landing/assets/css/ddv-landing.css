@@ -168,7 +168,7 @@ body .ddv-kursus-hero-bg .wp-block-column {
  * :where() stadig højere specificitet end en almindelig 1-klasses
  * regel, fordi ":root" og ":first-child" ligger uden for :where(). */
 .ddv-hero-forside-wrap.ddv-hero-forside-wrap.ddv-hero-forside-wrap {
-	margin-top: 90px !important;
+	margin-top: 110px !important;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -298,7 +298,7 @@ body .ddv-kursus-hero-bg .wp-block-column {
 		padding-right: 10px !important;
 	}
 	.ddv-hero-forside-wrap.ddv-hero-forside-wrap.ddv-hero-forside-wrap {
-		margin-top: 36px !important;
+		margin-top: 56px !important;
 	}
 	.ddv-hero-forside-photo-col {
 		flex-basis: 100% !important;
@@ -603,7 +603,7 @@ body .wp-block-button__link:active {
  * wrapper, og WordPress' egen nulstillingsregel for det tilfælde vinder
  * ellers, se forklaring ved .ddv-hero-forside-wrap. */
 .ddv-barometer-hero-bg.ddv-barometer-hero-bg.ddv-barometer-hero-bg {
-	margin-top: 90px !important;
+	margin-top: 110px !important;
 }
 /* Indholdet skal ligge oven på det mørke overlay (::before nedenfor) -
  * kun z-index, IKKE position:relative: heroen er selv display:flex, og
@@ -622,7 +622,7 @@ body .wp-block-button__link:active {
 		min-height: 500px;
 	}
 	.ddv-barometer-hero-bg.ddv-barometer-hero-bg.ddv-barometer-hero-bg {
-		margin-top: 36px !important;
+		margin-top: 56px !important;
 	}
 	/* Mørkt overlay så den hvide tekst forbliver læselig, uanset hvor
 	 * lyst/støjende baggrundsbilledet er lige der, hvor teksten lander -
