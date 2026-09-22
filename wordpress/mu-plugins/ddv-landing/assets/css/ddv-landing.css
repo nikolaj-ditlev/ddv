@@ -590,6 +590,10 @@ body .wp-block-button__link:active {
 	content: "";
 	position: absolute;
 	inset: 0;
+	/* Uden dette er overlayet en helt firkantet rektangel, der lægger sig
+	 * ovenpå og skjuler boksens/billedets egen runde facon i hjørnerne,
+	 * selvom de i virkeligheden stadig er korrekt rundet nedenunder. */
+	border-radius: inherit;
 	background: linear-gradient(
 		to right,
 		rgba(60, 89, 86, 0.96) 0%,
@@ -611,6 +615,42 @@ body .wp-block-button__link:active {
 			rgba(60, 89, 86, 0.97) 0%,
 			rgba(60, 89, 86, 0.93) 60%,
 			rgba(60, 89, 86, 0.75) 100%
+		);
+	}
+}
+
+/* ---------- Barometer (data-side) – hero: samme læsbarheds-overlay som
+ * DDV Analysen, så H1/brødtekst ikke lander direkte oven i det travle
+ * baggrundsbillede (diagrammer/tablet). Samme opskrift: ::before med
+ * border-radius:inherit (så det ikke skjuler boksens runde hjørner),
+ * og indholdet løftet til z-index:1. ---------- */
+.ddv-barometer-hero-bg::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: linear-gradient(
+		to right,
+		rgba(60, 89, 86, 0.96) 0%,
+		rgba(60, 89, 86, 0.88) 40%,
+		rgba(60, 89, 86, 0.2) 58%,
+		rgba(60, 89, 86, 0) 75%
+	);
+	pointer-events: none;
+	z-index: 0 !important;
+}
+.ddv-barometer-hero-bg > .ddv-barometer-hero-content,
+.ddv-barometer-hero-bg > .wp-block-columns {
+	position: relative !important;
+	z-index: 1 !important;
+}
+@media (max-width: 782px) {
+	.ddv-barometer-hero-bg::before {
+		background: linear-gradient(
+			to bottom,
+			rgba(60, 89, 86, 0.97) 0%,
+			rgba(60, 89, 86, 0.93) 55%,
+			rgba(60, 89, 86, 0.8) 100%
 		);
 	}
 }
