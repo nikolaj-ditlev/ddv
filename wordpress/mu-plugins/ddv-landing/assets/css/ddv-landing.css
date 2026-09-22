@@ -521,6 +521,89 @@ body {
  * begrænses selv i bredden, så den ikke strækker sig over hele 1440px-sektionen. ---------- */
 .ddv-intro-text { max-width: 640px; }
 
+/* ---------- Forside: "Seneste indsigter" (Query Loop, 4 kolonner) ----------
+ * Genskaber udseendet fra indsigtssidens 3-kolonne-kort (billede + mørk
+ * kategori-badge + overskrift + tekst), skaleret til 4 kolonner med mindre
+ * skriftstørrelser. Præcis badge-/hover-CSS fra originalen kunne ikke hentes
+ * (ingen "Rediger som HTML" på den sammensatte struktur), så denne er
+ * genskabt ud fra skærmbillede - juster frit hvis noget afviger fra originalen. */
+.ddv-indsigt-preview-head {
+	margin-bottom: 2rem;
+	gap: 1.5rem;
+}
+.ddv-indsigt-grid.wp-block-post-template {
+	column-gap: 1.5rem;
+	row-gap: 2rem;
+}
+.ddv-indsigt-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+.ddv-indsigt-media {
+	position: relative;
+	overflow: hidden;
+	border-radius: 12px;
+	aspect-ratio: 4 / 3;
+}
+.ddv-indsigt-image {
+	margin: 0;
+	height: 100%;
+}
+.ddv-indsigt-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.35s ease;
+}
+.ddv-indsigt-card:hover .ddv-indsigt-image img {
+	transform: scale(1.06);
+}
+.ddv-indsigt-badge {
+	position: absolute;
+	top: 0.85rem;
+	left: 0.85rem;
+	background: rgba(36, 49, 44, 0.85);
+	color: #ffffff;
+	font-size: 0.65rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	padding: 0.4em 0.75em;
+	border-radius: var(--ddv-radius-pill);
+	border: 1px solid rgba(255,255,255,0.35);
+}
+.ddv-indsigt-badge a {
+	color: inherit;
+	text-decoration: none;
+}
+.ddv-indsigt-title {
+	font-size: 1.05rem;
+	line-height: 1.3;
+	margin: 0;
+}
+.ddv-indsigt-title a {
+	color: var(--wp--preset--color--ddv-dark-teal, #243c39);
+	text-decoration: none;
+}
+.ddv-indsigt-excerpt {
+	font-size: 0.85rem;
+	line-height: 1.5;
+	color: rgba(36, 49, 44, 0.75);
+	margin: 0;
+}
+@media (max-width: 960px) {
+	.ddv-indsigt-grid.wp-block-post-template {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+}
+@media (max-width: 480px) {
+	.ddv-indsigt-grid.wp-block-post-template {
+		grid-template-columns: 1fr !important;
+	}
+}
+
 /* ---------- Mobil-navigation (hovedmenuens fuldskærms-overlay): ensartet
  * stregfarve mellem menupunkter. Temaets egne stylesheets sætter to let
  * forskellige grå-nuancer alt efter om punktet har en undermenu eller ej
