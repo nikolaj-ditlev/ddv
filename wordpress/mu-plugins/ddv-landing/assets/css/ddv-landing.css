@@ -497,4 +497,13 @@
 /* ---------- Intro-tekst i sektioner (eyebrow/heading over en fuld-bredde columns-blok):
  * begrænses selv i bredden, så den ikke strækker sig over hele 1440px-sektionen. ---------- */
 .ddv-intro-text { max-width: 640px; }
+
+/* ---------- Mobil-navigation (hovedmenuens fuldskærms-overlay): ensartet
+ * stregfarve mellem menupunkter. Temaets egne stylesheets sætter to let
+ * forskellige grå-nuancer alt efter om punktet har en undermenu eller ej
+ * (#e1e1e1 vs. #e7e7e7) – ensret til én farve, uanset hvilken regel der
+ * ellers ville vinde. ---------- */
+.wp-block-navigation-item {
+	border-top-color: #e7e7e7 !important;
+}
 .ddv-intro-text--center { margin-left: auto; margin-right: auto; }
