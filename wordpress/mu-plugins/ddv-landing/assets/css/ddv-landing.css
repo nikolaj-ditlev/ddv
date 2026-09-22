@@ -526,45 +526,52 @@ body {
  * kategori-badge + overskrift + tekst), skaleret til 4 kolonner med mindre
  * skriftstørrelser. Præcis badge-/hover-CSS fra originalen kunne ikke hentes
  * (ingen "Rediger som HTML" på den sammensatte struktur), så denne er
- * genskabt ud fra skærmbillede - juster frit hvis noget afviger fra originalen. */
-.ddv-indsigt-preview {
+ * genskabt ud fra skærmbillede - juster frit hvis noget afviger fra originalen.
+ *
+ * VIGTIGT: "ddv-indsigt-*" var allerede i brug som klassenavne på selve
+ * indsigtssiden (samme navnekonvention som ddv-indsigt-filter.js), så de
+ * første udgaver af disse regler lækkede ind over den rigtige side og
+ * ødelagde dens egen styling/hover. Alt herunder er derfor omdøbt til
+ * "ddv-forside-indsigt-*" OG bundet til .ddv-forside-indsigt-preview som
+ * forælder, så det aldrig kan ramme noget uden for denne ene blok. */
+.ddv-forside-indsigt-preview {
 	padding-top: 1.5rem !important;
 	padding-bottom: 1.5rem !important;
 }
-.ddv-indsigt-preview-head {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-head {
 	margin-bottom: 2rem;
 	gap: 1.5rem;
 }
-.ddv-indsigt-grid.wp-block-post-template {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-grid.wp-block-post-template {
 	column-gap: 1.5rem;
 	row-gap: 2rem;
 }
-.ddv-indsigt-card {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-card {
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
 }
-.ddv-indsigt-media {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-media {
 	position: relative;
 	overflow: hidden;
 	border-radius: var(--ddv-radius-card);
 	aspect-ratio: 4 / 3;
 }
-.ddv-indsigt-image {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-image {
 	margin: 0;
 	height: 100%;
 }
-.ddv-indsigt-image img {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-image img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 	display: block;
 	transition: transform 0.35s ease;
 }
-.ddv-indsigt-card:hover .ddv-indsigt-image img {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-card:hover .ddv-forside-indsigt-image img {
 	transform: scale(1.06);
 }
-.ddv-indsigt-badge {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-badge {
 	position: absolute;
 	top: 0.85rem;
 	left: 0.85rem;
@@ -578,32 +585,32 @@ body {
 	border-radius: var(--ddv-radius-pill);
 	border: 1px solid rgba(255,255,255,0.35);
 }
-.ddv-indsigt-badge a {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-badge a {
 	color: inherit;
 	text-decoration: none;
 }
-.ddv-indsigt-title {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-title {
 	font-size: 1.05rem;
 	line-height: 1.3;
 	margin: 0;
 }
-.ddv-indsigt-title a {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-title a {
 	color: var(--wp--preset--color--ddv-dark-teal, #243c39);
 	text-decoration: none;
 }
-.ddv-indsigt-excerpt {
+.ddv-forside-indsigt-preview .ddv-forside-indsigt-excerpt {
 	font-size: 0.85rem;
 	line-height: 1.5;
 	color: rgba(36, 49, 44, 0.75);
 	margin: 0;
 }
 @media (max-width: 960px) {
-	.ddv-indsigt-grid.wp-block-post-template {
+	.ddv-forside-indsigt-preview .ddv-forside-indsigt-grid.wp-block-post-template {
 		grid-template-columns: repeat(2, 1fr) !important;
 	}
 }
 @media (max-width: 480px) {
-	.ddv-indsigt-grid.wp-block-post-template {
+	.ddv-forside-indsigt-preview .ddv-forside-indsigt-grid.wp-block-post-template {
 		grid-template-columns: 1fr !important;
 	}
 }
