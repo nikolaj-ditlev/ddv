@@ -357,10 +357,40 @@
 
 /* ---------- DDV Analysen – hero: fuldt baggrundsbillede for hele sektionen ---------- */
 .ddv-analysen-hero-bg {
+	position: relative;
 	background-color: #2E453F;
-	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddv-analysen-hero-background.jpg');
+	background-image: url('https://ddv.org/wp-content/uploads/2026/09/ddv-analysen-2-hero-background.jpg');
 	background-size: cover;
 	background-position: center;
+}
+/* Læsbarheds-overlay: mørk-teal der falmer ud mod score-kortet, så H1/brødtekst
+ * ikke lander oven i det lyse kort-motiv, der er tegnet ind i baggrundsbilledet. */
+.ddv-analysen-hero-bg::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to right,
+		rgba(46, 69, 63, 0.96) 0%,
+		rgba(46, 69, 63, 0.88) 45%,
+		rgba(46, 69, 63, 0.2) 62%,
+		rgba(46, 69, 63, 0) 78%
+	);
+	pointer-events: none;
+}
+.ddv-analysen-hero-bg > .wp-block-columns {
+	position: relative;
+	z-index: 1;
+}
+@media (max-width: 782px) {
+	.ddv-analysen-hero-bg::before {
+		background: linear-gradient(
+			to bottom,
+			rgba(46, 69, 63, 0.97) 0%,
+			rgba(46, 69, 63, 0.93) 60%,
+			rgba(46, 69, 63, 0.75) 100%
+		);
+	}
 }
 
 /* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content") ---------- */
