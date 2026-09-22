@@ -623,6 +623,33 @@ body .wp-block-button__link:active {
 		margin-top: 56px !important;
 	}
 }
+/* Indholdet skal ligge oven på farve-overlayet (::before nedenfor) - kun
+ * z-index, IKKE position:relative: heroen er selv display:flex, og
+ * flex-børn reagerer på z-index uden position (jf. flexbox-specen).
+ * "position:relative" ville skabe en ny positioneringskontekst tættere
+ * på scroll-indikatoren end selve heroen, og få den til at centrere sig
+ * forkert - samme fejl som ramte Barometer-heroen tidligere. Scopet til
+ * kun DENNE hero (.ddv-hero-lead genbruges også af Kursuskatalog og
+ * Indsigt, som ikke skal have z-index). */
+.ddv-analysen-hero-bg .ddv-hero-lead {
+	z-index: 1;
+}
+@media (max-width: 782px) {
+	/* Farve-overlay (#3B5957, 40%) så teksten forbliver læselig, uanset
+	 * hvor lyst/støjende baggrundsbilledet er lige der, hvor teksten
+	 * lander - kun på mobil, ligesom Barometer-heroen. */
+	.ddv-analysen-hero-bg::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: rgba(59, 89, 87, 0.4);
+		pointer-events: none;
+		z-index: 0;
+		/* Matcher heroens egne runde hjørner (fra .ddv-section), ellers
+		 * ville overlayet stikke ud som firkantede hjørner. */
+		border-radius: inherit;
+	}
+}
 
 /* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content").
  * Eksplicit bredde-/højde-begrænsning i stedet for kun at stole på temaets/core's egen
