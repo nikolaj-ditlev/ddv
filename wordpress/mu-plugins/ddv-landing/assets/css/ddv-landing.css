@@ -165,6 +165,12 @@ body .ddv-kursus-hero-bg .wp-block-column {
  * - Mellemrum boks→kort-kolonne: 37px. */
 .ddv-hero-forside-wrap {
 	background-color: transparent !important;
+	/* WordPress' automatiske mellemrum mellem blokke (--wp--style--block-gap)
+	 * sættes normalt på ALLE blokke undtagen den første i deres forælder -
+	 * heroen er første blok på siden og fik derfor ingen luft foroven, mens
+	 * alle sektionerne under den (som ikke er "første") fik den automatisk.
+	 * Tilføjet eksplicit her, så heroen matcher den samme luft som resten. */
+	margin-top: var(--wp--style--block-gap, 1.2rem) !important;
 	/* Figma: boks (1069px) + mellemrum (37px) + kort-kolonne (330px) = 1436px,
 	 * dvs. den skal fylde stort set hele den 1440px brede wrapper uden ekstra
 	 * indramning - .ddv-section's egen sidepadding (clamp 1.25rem-3rem) gjorde
@@ -859,10 +865,11 @@ body .wp-block-button__link:active {
  * denne margin og gør mellemrummet større end de tiltænkte 32px - nulstillet herunder. */
 .wp-block-post-template .wp-block-post-featured-image {
 	padding-bottom: 0 !important;
-	/* Sikkerhedsnet: klip også billedet i sig selv til de to øverste hjørner (kun toppen,
-	 * da billedbokse sidder øverst i kortet) - hvis kortets egen klipning et sted fejler,
-	 * er billedet stadig rundet korrekt foroven til venstre og skarpt foroven til højre. */
-	border-radius: 30px 0 0 0 !important;
+	/* Fuld signatur-facon på selve figur-boksen (ikke kun toppen) - billedet
+	 * herunder får nu samme facon direkte på <img>, og hvis figur-boksen selv
+	 * klipper til en anden facon, ville den skære billedets egen runding af
+	 * forneden. Begge skal matche for at hjørnerne rent faktisk bliver synlige. */
+	border-radius: 30px 0 30px 30px !important;
 	overflow: hidden !important;
 }
 .wp-block-post-template .wp-block-post-featured-image + * {
@@ -890,10 +897,14 @@ body .wp-block-button__link:active {
 	aspect-ratio: 4 / 3 !important;
 	height: auto !important;
 	object-fit: cover !important;
-	/* Billedblokken kan sætte sin egen (som regel ensartede) border-radius via
-	 * Stil → Kant, hvilket giver et rundet hjørne foroven til højre, selvom kortet
-	 * ellers er klippet med sitets skarpe signatur-facon. Nulstil den her. */
-	border-radius: 0 !important;
+	/* Facon sat direkte på <img>, ikke kun via overflow:hidden på en forælder -
+	 * en kendt Chrome/WebKit-kvirk kan få klipning til at fejle på elementer
+	 * hvis forælderkæde indeholder en transition/transform (kortets hover-
+	 * skalering), som ellers efterlod billedet med skarpe hjørner overalt.
+	 * Hardcodet (ikke var(--ddv-radius-card)) for at udelukke at variablen
+	 * ikke bliver opløst korrekt i denne kontekst - samme tilgang som kortets
+	 * egen border-radius-regel ovenfor. */
+	border-radius: 30px 0 30px 30px !important;
 }
 /* Kategori-mærkat: lagt oven på billedet (øverst til venstre) i stedet for som
  * almindelig tekst under billedet - outline-badge med sitets signatur-hjørnefacon,
