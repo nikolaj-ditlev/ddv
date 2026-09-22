@@ -51,7 +51,7 @@ body {
  *   (tekst øverst, knap presset til bunds), samme hjørnemønster.
  * - Mellemrum boks→kort-kolonne: 37px. */
 .ddv-hero-forside-wrap {
-	background-color: #efe8d7 !important;
+	background-color: transparent !important;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -527,6 +527,10 @@ body {
  * skriftstørrelser. Præcis badge-/hover-CSS fra originalen kunne ikke hentes
  * (ingen "Rediger som HTML" på den sammensatte struktur), så denne er
  * genskabt ud fra skærmbillede - juster frit hvis noget afviger fra originalen. */
+.ddv-indsigt-preview {
+	padding-top: 1.5rem !important;
+	padding-bottom: 1.5rem !important;
+}
 .ddv-indsigt-preview-head {
 	margin-bottom: 2rem;
 	gap: 1.5rem;
@@ -543,7 +547,7 @@ body {
 .ddv-indsigt-media {
 	position: relative;
 	overflow: hidden;
-	border-radius: 12px;
+	border-radius: var(--ddv-radius-card);
 	aspect-ratio: 4 / 3;
 }
 .ddv-indsigt-image {
