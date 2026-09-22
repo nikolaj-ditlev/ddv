@@ -1007,7 +1007,8 @@ body .ddv-indsigt-artikel-excerpt {
 	margin-left: auto !important;
 	margin-right: auto !important;
 	opacity: 0.75;
-	text-wrap: balance;
+	/* text-wrap:balance fjernet efter ønske - underrubrikken skal ombryde
+	 * normalt, ikke tvinges til linjer af ensartet længde. */
 	/* Temaets egen linjeafstand for uddrag er 1.6 (unitless, dvs. 1.6 gange
 	 * skriftstørrelsen) - lægger 4px fast oveni via calc(), uanset hvad den
 	 * faktiske skriftstørrelse er. */
@@ -1121,6 +1122,28 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	font-size: 1rem;
 	color: var(--wp--preset--color--ddv-dark-teal);
 	opacity: 0.75;
+}
+
+/* ---------- Info-boks i løbende brødtekst. Tilføj klassen "ddv-info-box"
+ * direkte på ET Paragraph-element (Avanceret → Ekstra CSS-klasse(r)) - ingen
+ * wrapping-blok eller anden markup nødvendig. Bruger sitets egne kort-farver
+ * og signatur-hjørnefacon (samme opskrift som .ddv-card), ikke en generisk
+ * grå boks med rød venstre-streg, så den ser ud som en del af DDV's eget
+ * formsprog i stedet for et fremmed UI-element klistret ind i teksten. */
+body .ddv-info-box {
+	background: var(--wp--preset--color--ddv-tan);
+	border-radius: var(--ddv-radius-card);
+	padding: 1.5rem 1.75rem;
+	margin-top: 2rem !important;
+	margin-bottom: 2rem !important;
+	color: var(--wp--preset--color--ddv-dark-teal, #243c39);
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+/* Sidste (eller eneste) info-boks i en artikel skal ikke efterlade dobbelt
+ * luft, hvis temaets egen ".entry-content p"-margin lægger sig oveni. */
+body .ddv-info-box:last-child {
+	margin-bottom: 0 !important;
 }
 
 /* ---------- Indsigt: kategori-filterknapper (se includes/indsigt-filter.php
