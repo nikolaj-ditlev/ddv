@@ -1328,6 +1328,16 @@ body .ddv-info-box:last-child {
 		opacity: 1;
 	}
 }
+/* Fast bundpositionering (bottom:28px) forudsætter luft under teksten -
+ * heroens højde følger indholdet, og med flere linjer tekst på mobil er
+ * den luft ikke altid der, så ikonet ender med at ligge oven i teksten
+ * i stedet for under den. Skjult på mobil, hvor "scroll for at se mere"
+ * er indlysende i forvejen. */
+@media (max-width: 782px) {
+	.ddv-scroll-indicator {
+		display: none;
+	}
+}
 
 /* ---------- Forside: "Seneste indsigter" (Query Loop, 4 kolonner) ----------
  * Bruger den SAMME Query Loop-opbygning som Indsigt-sidens 3-kolonne-liste
