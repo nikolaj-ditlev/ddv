@@ -401,10 +401,17 @@ body {
 		rgba(46, 69, 63, 0) 78%
 	);
 	pointer-events: none;
+	z-index: 0 !important;
 }
-.ddv-analysen-hero-bg > .wp-block-columns {
-	position: relative;
-	z-index: 1;
+/* Alt rigtigt indhold i sektionen skal løftes eksplicit over overlayet - ikke
+ * kun kolonnerne. .ddv-scroll-indicator er et selvstændigt sidste-barn ved
+ * siden af .wp-block-columns (ikke inde i den), så den var glemt i første
+ * omgang og forblev "unpositioned" -> røg bag den positionerede ::before.
+ * !important fordi temaets egne regler ellers vandt over disse. */
+.ddv-analysen-hero-bg > .wp-block-columns,
+.ddv-analysen-hero-bg > .ddv-scroll-indicator {
+	position: relative !important;
+	z-index: 1 !important;
 }
 @media (max-width: 782px) {
 	.ddv-analysen-hero-bg::before {
