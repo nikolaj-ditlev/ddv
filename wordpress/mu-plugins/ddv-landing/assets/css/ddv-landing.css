@@ -25,6 +25,22 @@
 	margin-right: auto !important;
 }
 
+/* ---------- Undgå vandret scroll på mobil ----------
+ * WordPress' egen alignwide/alignfull-teknik (width:100vw + negativ margin
+ * for at bryde ud af det smallere indholds-layout) kan gøre den samlede side
+ * bredere end skærmen på mobil, især iOS Safari. Headeren ligger uden for
+ * flowet (sticky/fixed) og rammes ikke, men resten af siden bliver vandret
+ * scrollbar, og indhold ender klippet/forskudt i venstre side. Lås det med
+ * overflow-x:hidden på roden, så intet kan skubbe siden bredere end 100%. */
+html {
+	overflow-x: hidden;
+	max-width: 100%;
+}
+body {
+	overflow-x: hidden;
+	max-width: 100%;
+}
+
 /* ---------- Barometer forside – hero ----------
  * Eksakte mål hentet fra Figma (node 3065:1615) via Figma MCP:
  * - Venstre boks: 1069×784px, hjørner runde 3 steder (top-højre skarp),
