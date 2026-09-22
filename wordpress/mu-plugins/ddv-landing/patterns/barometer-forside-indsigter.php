@@ -29,23 +29,17 @@ return array(
 </div>
 <!-- /wp:group -->
 
-<!-- wp:query {"queryId":0,"query":{"perPage":4,"pages":0,"offset":0,"postType":"indsigt","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"taxQuery":null,"parents":[]},"className":"ddv-forside-indsigt-query"} -->
-<div class="wp-block-query ddv-forside-indsigt-query">
-<!-- wp:post-template {"className":"ddv-forside-indsigt-grid","layout":{"type":"grid","columnCount":4}} -->
+<!-- wp:query {"queryId":0,"query":{"perPage":4,"pages":0,"offset":0,"postType":"indsigt","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"taxQuery":null,"parents":[]}} -->
+<div class="wp-block-query">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":4}} -->
 
-<!-- wp:group {"className":"ddv-forside-indsigt-card"} -->
-<div class="wp-block-group ddv-forside-indsigt-card">
+<!-- wp:post-featured-image {"isLink":true} /-->
 
-<!-- wp:group {"className":"ddv-forside-indsigt-media"} -->
-<div class="wp-block-group ddv-forside-indsigt-media">
-<!-- wp:post-featured-image {"isLink":true,"className":"ddv-forside-indsigt-image"} /-->
-<!-- wp:post-terms {"term":"indsigt-kategori","className":"ddv-forside-indsigt-badge"} /-->
-</div>
-<!-- /wp:group -->
-
-<!-- wp:post-title {"level":3,"isLink":true,"className":"ddv-forside-indsigt-title"} /-->
-<!-- wp:post-excerpt {"moreText":"","excerptLength":16,"className":"ddv-forside-indsigt-excerpt"} /-->
-
+<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group">
+<!-- wp:post-title {"level":2,"isLink":true} /-->
+<!-- wp:post-excerpt {"moreText":"","excerptLength":16} /-->
+<!-- wp:post-terms {"term":"indsigt_kategori"} /-->
 </div>
 <!-- /wp:group -->
 

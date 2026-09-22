@@ -28,9 +28,7 @@
 /* ---------- Undgå vandret scroll på mobil ----------
  * WordPress' egen alignwide/alignfull-teknik (width:100vw + negativ margin
  * for at bryde ud af det smallere indholds-layout) kan gøre den samlede side
- * bredere end skærmen på mobil, især iOS Safari. Headeren ligger uden for
- * flowet (sticky/fixed) og rammes ikke, men resten af siden bliver vandret
- * scrollbar, og indhold ender klippet/forskudt i venstre side. Lås det med
+ * bredere end skærmen på mobil, især iOS Safari. Lås det med
  * overflow-x:hidden på roden, så intet kan skubbe siden bredere end 100%. */
 html {
 	overflow-x: hidden;
@@ -39,6 +37,121 @@ html {
 body {
 	overflow-x: hidden;
 	max-width: 100%;
+}
+
+/* ---------- Sektioner hvor selve baggrunden (farve) skal fylde bredden ud, mens indholdet
+ * holder sig inden for det normale 1440px grid. Tre lag pr. sektion:
+ * 1) .ddv-bleed-1440 (align="full"): ingen farve/padding under 1440px viewport (så baggrunden
+ *    ligger helt ud til kanten der) – over 1440px får DEN et fast 50px sidepadding, se
+ *    media-query-reglen nedenfor. Selve farven ligger IKKE her, så paddingen skaber et rigtigt
+ *    mellemrum til browserkanten (ikke bare luft inden i farvefeltet).
+ * 2) .ddv-section (nestet indeni, har selve backgroundColor): bliver dermed automatisk 100px
+ *    smallere end sit forældre-lag, når paddingen er aktiv – det ER farvefeltet. Beholder sin
+ *    egen sidepadding (clamp) til selve teksten/indholdet, uafhængigt af lag 1.
+ * 3) .ddv-section-inner (nestet i #2): begrænser selve indholdet (kolonner) til 1440px, centreret,
+ *    uanset hvor bred baggrunden er.
+ * Brugt på DDV Analysen: testimonial, rapport-preview og kursusbånd. */
+.ddv-section-inner {
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media (min-width: 1440px) {
+	.ddv-bleed-1440.alignfull {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+}
+
+/* ---------- Hero-sektioner (alle 6: DDV Analysen, Barometer data-side, Barometer forside,
+ * Kursuskatalog, Kursus-side, Indsigt): bredere end resten af sektionerne (1840px i stedet
+ * for standardens 1440px). Overskriver kun disse specifikke heroer via deres egne
+ * baggrunds-klasser, ikke .ddv-section.alignwide globalt. ---------- */
+.ddv-analysen-hero-bg.alignwide,
+.ddv-barometer-hero-bg.alignwide,
+.ddv-kursuskatalog-hero-bg.alignwide,
+.ddv-kursus-hero-bg.alignwide,
+.ddv-indsigt-hero-bg.alignwide {
+	max-width: 1840px !important;
+}
+/* Barometer forside-heroen skal IKKE være bredere end sitets almindelige
+ * 1440px (.ddv-section.alignwide) - derfor bevidst udeladt af listen
+ * ovenfor. */
+/* Kun Indsigt-heroen (ikke de 5 andre, som deler padding-reglen nedenfor):
+ * luft NED til filterknapperne/kortene under, i stedet for at filterknap-
+ * baren selv skulle stå for afstanden op til heroen. */
+.ddv-indsigt-hero-bg {
+	margin-bottom: 20px !important;
+	/* Samme mørke petroleum som de øvrige heroer - blokkens egen
+	 * backgroundColor-attribut (ddv-dark-teal-tokenet) gav en synligt
+	 * mørkere farve på den live side, derfor sat eksplicit her. */
+	background-color: #3c5956 !important;
+}
+/* Samme 6 heroer: fast 50px luft foroven og forneden (i stedet for
+ * --ddv-section-y + 50px, som på store skærme gav helt op til ca. 150px og
+ * skubbede knapperne unødigt langt fra bunden). position:relative gør heroen
+ * til ankerpunktet for scroll-indikatoren (.ddv-scroll-indicator) nedenfor,
+ * så den kan sidde fast ved hero-bunden uafhængigt af hvor meget tekst/
+ * knapper der er ovenover. */
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-barometer-hero-bg.ddv-section,
+.ddv-hero-forside-wrap.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-kursus-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
+	position: relative;
+	padding-top: 50px !important;
+	padding-bottom: 50px !important;
+}
+/* Samme 5 heroer (Barometer data-side har allerede sin egen 660px
+ * min-height + centreret indhold, se ".ddv-barometer-hero-bg" nedenfor, og
+ * er bevidst udeladt her): mindst 550px høj, og selve sektionen er
+ * display:flex så dens indholds-wrapper (.ddv-hero-lead) automatisk
+ * strækker sig til at udfylde hele højden - det er det der gør det muligt
+ * at skubbe en evt. knap-række til bunds med margin-top:auto nedenfor,
+ * uafhængigt af hvor meget tekst der er ovenover. */
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-hero-forside-wrap.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-kursus-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
+	min-height: 500px;
+}
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
+	display: flex;
+}
+
+/* ---------- Kursus-side – hero: egen baggrundsfarve (afviger fra ddv-dark-teal-tokenet). ---------- */
+.ddv-kursus-hero-bg {
+	background-color: #3C5956;
+}
+/* ---------- Kursuskatalog – hero: egen baggrundsfarve. Blokken har sin
+ * egen backgroundColor-attribut sat til "ddv-dark-teal"-tokenet
+ * (#3c5956), som WordPress' style-engine sætter med !important via
+ * .has-ddv-dark-teal-background-color - derfor skal denne overstyring
+ * også have !important for at slå igennem. ---------- */
+.ddv-kursuskatalog-hero-bg {
+	background-color: #3B5957 !important;
+}
+/* Kursus-heroens to kolonner er sat op med core's "centrer lodret"
+ * (verticalAlignment:center), hvilket giver tekst-kolonnen et stort,
+ * skævt luftrum ovenover, når faktaboks-kolonnen er højere. Overstyrer her
+ * (kun inde i Kursus-heroen) til top-justering i stedet - faktaboksen
+ * fylder allerede rækkens fulde højde, så den rykker sig ikke synligt,
+ * mens teksten nu starter i toppen. Gælder alle 11 kursus-sider + Kursus 2,
+ * da de deler samme markup-struktur.
+ * Rammer BÅDE rækkens egen align-items (are-vertically-aligned-center) og
+ * hver enkelt kolonnes align-self (is-vertically-aligned-center) - og også
+ * uden disse klasser, i tilfælde af at den centrering på nogle af de 11
+ * sider reelt kommer fra en anden kilde end antaget. body-præfiks + bred
+ * (ikke klasse-afhængig) selector sikrer at den slår igennem uanset. */
+body .ddv-kursus-hero-bg .wp-block-columns {
+	align-items: flex-start !important;
+}
+body .ddv-kursus-hero-bg .wp-block-column {
+	align-self: flex-start !important;
 }
 
 /* ---------- Barometer forside – hero ----------
@@ -52,6 +165,13 @@ body {
  * - Mellemrum boks→kort-kolonne: 37px. */
 .ddv-hero-forside-wrap {
 	background-color: transparent !important;
+	/* Figma: boks (1069px) + mellemrum (37px) + kort-kolonne (330px) = 1436px,
+	 * dvs. den skal fylde stort set hele den 1440px brede wrapper uden ekstra
+	 * indramning - .ddv-section's egen sidepadding (clamp 1.25rem-3rem) gjorde
+	 * ellers den ledige plads mindre end de 1436px, indholdet blev klemt/
+	 * skævt fordelt, og hele sektionen fremstod ikke justeret til sidens grid. */
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 .ddv-hero-forside-row {
 	align-items: stretch !important;
@@ -91,10 +211,13 @@ body {
 }
 .ddv-hero-forside-photo-col h1 {
 	color: #3f5e5a !important;
-	/* Justér dette tal for at ændre størrelsen på forsidens H1 – uafhængigt
-	   af temaets globale "x-large" skriftstørrelse. Nuværende værdi er ca.
-	   50% større end temaets x-large (2.5rem max) som udgangspunkt. */
-	font-size: clamp(2.4rem, 2rem + 2vw, 3.75rem) !important;
+	/* Figma (node 3065:1622): 80px Bai Jamjuree Bold, tracking -1.6px,
+	 * linjehøjde 75px (≈0.9375). Justér clamp-loftet (5rem = 80px) for at
+	 * ændre størrelsen på forsidens H1 – uafhængigt af temaets globale
+	 * "x-large" skriftstørrelse. */
+	font-size: clamp(2.4rem, 1.8rem + 3vw, 5rem) !important;
+	letter-spacing: -1.6px !important;
+	line-height: 0.9375 !important;
 }
 .ddv-hero-forside-photo-col .ddv-eyebrow {
 	color: #3f5e5a;
@@ -102,6 +225,7 @@ body {
 }
 .ddv-hero-forside-cta-item p {
 	color: #243c39;
+	margin-right: 10px;
 }
 .ddv-hero-forside-cards-col {
 	/* grow:0 shrink:0 – holder sin bredde (330px) uændret, indtil hele
@@ -128,6 +252,9 @@ body {
 }
 .ddv-hero-forside-cards-col .ddv-card--blue {
 	background-color: #81c0d3 !important;
+}
+.ddv-hero-forside-cards-col .ddv-card--yellow {
+	background-color: #f1d372 !important;
 }
 .ddv-hero-forside-cards-col h3,
 .ddv-hero-forside-cards-col p {
@@ -201,6 +328,12 @@ body {
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	opacity: 0.85;
+	/* Forhindrer at pillen bliver strukket til fuld bredde når den (eller
+	 * .ddv-eyebrow-row) sidder som direkte flex-barn af .ddv-hero-lead
+	 * (som er en lodret flex-kolonne, se "hero-lead"-reglen) - uden dette
+	 * ville align-items:stretch fra forælderen tvinge pillen til at fylde
+	 * hele heroens bredde i stedet for kun teksten. */
+	align-self: flex-start;
 }
 /* Udfyldt variant af eyebrow-pillen (matcher Figma: solid baggrund, ingen
    kant), brugt fx på Barometer-hero'en i stedet for outline-varianten. */
@@ -216,9 +349,19 @@ body {
 	font-size: clamp(2.2rem, 1.6rem + 2.6vw, 4.375rem) !important;
 	line-height: 1.1 !important;
 }
-/* Barometer-hero'ens H1 (Figma: 60px Bold). */
-.ddv-hero-heading-60 {
-	font-size: clamp(2rem, 1.5rem + 2.2vw, 3.75rem) !important;
+/* Barometer (data-side) og DDV Analysen's hero-overskrifter skal have
+ * samme størrelse - en mellemstørrelse mellem Barometerets tidligere
+ * 60px og Analysens (temaets "x-large"-token, som var mindre).
+ * Forrige version (kun 1 klasse + h1) slog ikke igennem på den live side -
+ * temaets egen font-size-regel er formentlig en compound-selector med 2+
+ * klasser (fx ".wp-block-heading.has-x-large-font-size"), som vinder over
+ * en enkelt klasse uanset !important. Her er specificiteten skruet kunstigt
+ * op (samme klasse gentaget) så den er garanteret højere end noget
+ * realistisk tema-selector kan matche. */
+.ddv-hero-heading-60,
+.ddv-section.ddv-analysen-hero-bg.ddv-analysen-hero-bg h1,
+.ddv-section.ddv-barometer-hero-bg.ddv-barometer-hero-bg h1 {
+	font-size: clamp(2rem, 1.5rem + 2.2vw, 3.25rem) !important;
 	line-height: 1.15 !important;
 }
 
@@ -379,37 +522,54 @@ body {
 	padding-bottom: 0.667em;
 }
 
+/* ---------- Knapper: afdæmpet men tydelig hover/press-effekt på ALLE CTA-
+ * knapper (solide og outline), uanset farve. Virker via transform/filter/
+ * box-shadow i stedet for faste farveværdier, så den automatisk passer til
+ * enhver baggrundsfarve knappen måtte have - ingen risiko for at glemme en
+ * variant. !important sikrer at den slår igennem uanset temaets egne
+ * knap-hover-regler. ---------- */
+body .wp-block-button__link {
+	transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease !important;
+}
+body .wp-block-button__link:hover {
+	filter: brightness(0.92) !important;
+	transform: translateY(-2px) !important;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18) !important;
+}
+body .wp-block-button__link:active {
+	filter: brightness(0.85) !important;
+	transform: translateY(0) scale(0.96) !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
 /* ---------- DDV Analysen – hero: fuldt baggrundsbillede for hele sektionen ---------- */
 .ddv-analysen-hero-bg {
-	position: relative;
-	background-color: #2E453F;
+	background-color: #3c5956;
 	background-image: url('https://ddv.org/wp-content/uploads/2026/09/ddv-analysen-2-hero-background.jpg');
 	background-size: cover;
 	background-position: center;
 }
-/* Læsbarheds-overlay: mørk-teal der falmer ud mod score-kortet, så H1/brødtekst
- * ikke lander oven i det lyse kort-motiv, der er tegnet ind i baggrundsbilledet. */
+/* Læsbarheds-overlay: mørk-teal der falmer ud mod score-kortet, som er
+ * tegnet ind i baggrundsbilledet, så H1/brødtekst ikke lander oven i det
+ * lyse kort-motiv. z-index:0 på overlayet + z-index:1 på indholdet
+ * (.wp-block-columns) sikrer korrekt lagorden - scroll-indikatoren
+ * (.ddv-scroll-indicator, se længere nede) har allerede sin egen
+ * z-index:2 og ligger derfor automatisk oven på begge dele. */
 .ddv-analysen-hero-bg::before {
 	content: "";
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(
 		to right,
-		rgba(46, 69, 63, 0.96) 0%,
-		rgba(46, 69, 63, 0.88) 45%,
-		rgba(46, 69, 63, 0.2) 62%,
-		rgba(46, 69, 63, 0) 78%
+		rgba(60, 89, 86, 0.96) 0%,
+		rgba(60, 89, 86, 0.88) 45%,
+		rgba(60, 89, 86, 0.2) 62%,
+		rgba(60, 89, 86, 0) 78%
 	);
 	pointer-events: none;
 	z-index: 0 !important;
 }
-/* Alt rigtigt indhold i sektionen skal løftes eksplicit over overlayet - ikke
- * kun kolonnerne. .ddv-scroll-indicator er et selvstændigt sidste-barn ved
- * siden af .wp-block-columns (ikke inde i den), så den var glemt i første
- * omgang og forblev "unpositioned" -> røg bag den positionerede ::before.
- * !important fordi temaets egne regler ellers vandt over disse. */
-.ddv-analysen-hero-bg > .wp-block-columns,
-.ddv-analysen-hero-bg > .ddv-scroll-indicator {
+.ddv-analysen-hero-bg > .wp-block-columns {
 	position: relative !important;
 	z-index: 1 !important;
 }
@@ -417,36 +577,66 @@ body {
 	.ddv-analysen-hero-bg::before {
 		background: linear-gradient(
 			to bottom,
-			rgba(46, 69, 63, 0.97) 0%,
-			rgba(46, 69, 63, 0.93) 60%,
-			rgba(46, 69, 63, 0.75) 100%
+			rgba(60, 89, 86, 0.97) 0%,
+			rgba(60, 89, 86, 0.93) 60%,
+			rgba(60, 89, 86, 0.75) 100%
 		);
 	}
 }
 
-/* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content") ---------- */
+/* ---------- Rundede billeder (undgår core/image's border-attribut, som kan give "invalid content").
+ * Eksplicit bredde-/højde-begrænsning i stedet for kun at stole på temaets/core's egen
+ * .wp-block-image-styling: uden den kan et højtopløst originalbillede presse sin egen
+ * flex-kolonne bredere end sektionen (og dermed poppe ud over sektionens højre/nederste kant
+ * uden hverken padding eller runding), fordi flex-items som udgangspunkt ikke skrumper under
+ * deres indholds naturlige (min-content) størrelse. */
+.ddv-rounded-image {
+	min-width: 0;
+	max-width: 100%;
+}
 .ddv-rounded-image img {
+	display: block;
+	width: 100%;
+	height: auto;
 	border-radius: var(--ddv-radius-card);
 }
 
 /* ---------- Barometer (data-side) hero: ét samlet baggrundsbillede for hele sektionen ---------- */
 .ddv-barometer-hero-bg {
-	background-color: #2E453F;
+	background-color: #3c5956;
 	background-image: url('https://ddv.org/wp-content/uploads/2026/08/ddvbaro-herobackground.jpg');
 	background-size: cover;
 	background-position: right center;
-	min-height: 560px;
+	/* Ensrettet med de øvrige 5 heroer (var 660px). */
+	min-height: 500px;
 	display: flex;
 	align-items: center;
 }
 .ddv-barometer-hero-content { max-width: 620px; margin: 0; }
 @media (max-width: 782px) {
-	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 420px; }
+	.ddv-barometer-hero-bg { background-position: 70% center; min-height: 500px; }
 }
 
 /* ---------- Hero-hjælpeklasser ---------- */
 .ddv-hero-visual { position: relative; }
-.ddv-eyebrow-row { margin-bottom: 1.5rem; }
+/* DDV Analysen-heroen har ikke længere et separat billede (motivet ligger i
+ * baggrundsbilledet) - begræns i stedet selve teksten i bredden, så den ikke
+ * strækker sig ud over den nu 1640px-brede sektion. Samme bredde som
+ * .ddv-barometer-hero-content, så de to heroer matcher. */
+.ddv-hero-lead { max-width: 620px; }
+/* Fylder heroens fulde (flex-strakte) højde og bliver selv en lodret
+ * flex-kolonne, så en evt. knap-række inde i den kan skubbes til bunds
+ * med margin-top:auto - se ".ddv-analysen-hero-bg.ddv-section" m.fl.
+ * ovenfor. Ingen synlig effekt på heroer uden knapper (Kursuskatalog,
+ * Indsigt). */
+.ddv-hero-lead {
+	display: flex;
+	flex-direction: column;
+}
+.ddv-hero-lead .wp-block-buttons {
+	margin-top: auto;
+}
+.ddv-eyebrow-row { margin-bottom: 1.5rem; align-self: flex-start; }
 .ddv-hero-trust { opacity: 0.75; margin-top: 1rem; }
 .ddv-testimonial-audio {
 	margin-top: 1.5rem;
@@ -500,6 +690,11 @@ body {
 .ddv-cta-banner {
 	border-radius: var(--ddv-radius-card);
 	text-align: center;
+	/* Selve den røde kasse (ikke kun teksten inden i) tvinges til en fast bredde
+	 * og centreres, i stedet for at fylde hele sektionens brede. */
+	max-width: 1180px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* ---------- Sektion-rytme ---------- */
@@ -520,20 +715,519 @@ body {
 /* ---------- Intro-tekst i sektioner (eyebrow/heading over en fuld-bredde columns-blok):
  * begrænses selv i bredden, så den ikke strækker sig over hele 1440px-sektionen. ---------- */
 .ddv-intro-text { max-width: 640px; }
+.ddv-intro-text--center { margin-left: auto; margin-right: auto; }
+
+/* ---------- Kursus-side (skabelon til de 11 kursus-undersider) ---------- */
+
+/* "Kurset handler om"-tjekliste i hero-kortet: flueben i stedet for prikker. */
+.ddv-check-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.ddv-check-list li {
+	position: relative;
+	padding-left: 1.75em;
+	margin-bottom: 0.6em;
+}
+.ddv-check-list li::before {
+	content: "\2713";
+	position: absolute;
+	left: 0;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	font-weight: 700;
+}
+.ddv-kursus-duration {
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(36, 49, 44, 0.15);
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+/* Lydklip-kort under underviser-fotoet: afspilknap + "waveform" + varighed. */
+.ddv-audio-card {
+	background: var(--wp--preset--color--ddv-white);
+	border-radius: var(--ddv-radius-card);
+	padding: 1.25rem 1.5rem;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+	margin-top: 1.5rem;
+}
+.ddv-audio-card__title {
+	font-weight: 600;
+	margin: 0 0 0.75rem;
+}
+.ddv-audio-card__row {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+.ddv-audio-card__playbtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 50%;
+	background: var(--wp--preset--color--ddv-red);
+	color: var(--wp--preset--color--ddv-white);
+	flex: 0 0 auto;
+	font-size: 0.9rem;
+}
+.ddv-audio-card__waveform {
+	display: flex;
+	align-items: flex-end;
+	gap: 3px;
+	height: 24px;
+	flex: 1 1 auto;
+}
+.ddv-audio-card__waveform span {
+	display: block;
+	width: 3px;
+	border-radius: 2px;
+	background: rgba(36, 49, 44, 0.25);
+}
+.ddv-audio-card__duration {
+	margin: 0.75rem 0 0;
+	font-size: 0.8rem;
+	opacity: 0.7;
+}
+
+/* "Vi vil arbejde med"-underoverskrifter: lidt mindre luft end en almindelig H3/H4. */
+.ddv-kursus-subsection {
+	margin-bottom: 2rem;
+}
+.ddv-kursus-subsection h3,
+.ddv-kursus-subsection h4 {
+	margin-bottom: 0.5rem;
+}
+
+/* ---------- Indsigt: styling af WP's indbyggede Forespørgsel (Query Loop)-blok.
+ * Rammer selve Query Loop-strukturen direkte (li.wp-block-post, .wp-block-post-terms osv.)
+ * i stedet for en manuelt tilføjet "ddv-post-card"-klasse - kortudseendet (rundet, cremefarvet
+ * boks) kommer allerede fra temaets egen standard-styling, så her rettes kun det der mangler:
+ * kategori-badge oven på billedet, og at billedet ikke bliver forvrænget.
+ * VIGTIGT: disse regler er UNSCOPED (rammer enhver Query Loop-instans på sitet, ikke kun
+ * Indsigt-siden) med vilje, så enhver ny "post-template"-baseret liste (fx forsidens "Seneste
+ * indsigter") automatisk arver samme kort/badge/hover-udseende uden at skulle duplikere det. */
+.wp-block-post-template li.wp-block-post {
+	position: relative;
+	/* Sitets signatur-hjørnefacon (runde alle hjørner undtagen øverst til højre) tvunget
+	 * igennem her, da temaet ellers runder alle fire hjørner ens - overflow:hidden sørger
+	 * for at billedet (som har border-radius:0, se nedenfor) også bliver klippet til facon.
+	 * Værdien er hardcodet (i stedet for var(--ddv-radius-card)) for at udelukke at en
+	 * CSS-variabel ikke bliver opløst korrekt i denne kontekst. */
+	border-radius: 30px 0 30px 30px !important;
+	overflow: hidden !important;
+	/* mask-image tvinger browseren til at klippe hjørnerne via maskering i stedet for via
+	 * GPU-kompositeringslag. Uden dette "mister" nogle browsere (kendt Chrome/WebKit-kvirk)
+	 * overflow:hidden-klipningen, når samme element også har en transition/transform - præcis
+	 * det vi har herunder til hover-effekten. Gradienten er 100% hvid = ingen visuel ændring,
+	 * den tvinger bare beskæringen til at blive udført korrekt. */
+	-webkit-mask-image: -webkit-radial-gradient(circle, #fff 100%, #fff 100%);
+	mask-image: radial-gradient(circle, #fff 100%, #fff 100%);
+	/* Hover: hele kortet skalerer 3% op fra midten. */
+	transition: transform 0.25s ease;
+	transform-origin: center;
+}
+.wp-block-post-template li.wp-block-post:hover {
+	transform: scale(1.03);
+	z-index: 3;
+}
+/* Gør hele kortet klikbart ("stretched link"): usynligt lag oven på hele kortet, knyttet
+ * til titlens eget link, i stedet for at kun titel-teksten er klikbar. Kategori-badgen
+ * ligger over dette lag (z-index:2 > 1) men har pointer-events:none, så klik "falder igennem"
+ * til kort-linket i stedet for at ramme badgen. */
+.wp-block-post-template li.wp-block-post .wp-block-post-title a {
+	position: static;
+	text-decoration: none !important;
+}
+.wp-block-post-template li.wp-block-post .wp-block-post-title a:hover {
+	text-decoration: none !important;
+}
+.wp-block-post-template li.wp-block-post .wp-block-post-title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+/* Afstand billede → overskrift: 32px på desktop, skalerer ned mod mobil. Rammer den
+ * direkte næste blok efter billedet, uanset om det er titlen selv eller en gruppe der
+ * indeholder den, og vinder over evt. inline spacing-preset fra temaet. Billedblokken
+ * (figure.wp-block-post-featured-image) har selv en indbygget padding-bottom
+ * (var(--wp--preset--spacing--20), beregnet til billedtekster) som ellers lægger sig oveni
+ * denne margin og gør mellemrummet større end de tiltænkte 32px - nulstillet herunder. */
+.wp-block-post-template .wp-block-post-featured-image {
+	padding-bottom: 0 !important;
+	/* Sikkerhedsnet: klip også billedet i sig selv til de to øverste hjørner (kun toppen,
+	 * da billedbokse sidder øverst i kortet) - hvis kortets egen klipning et sted fejler,
+	 * er billedet stadig rundet korrekt foroven til venstre og skarpt foroven til højre. */
+	border-radius: 30px 0 0 0 !important;
+	overflow: hidden !important;
+}
+.wp-block-post-template .wp-block-post-featured-image + * {
+	margin-top: clamp(1.25rem, 4vw, 2rem) !important;
+}
+/* Afstand overskrift → uddrag: fast 16px, og KUN 16px. Nulstiller to andre kilder til
+ * mellemrum der ellers lægger sig oveni: temaets egen "ddv.css"-regel
+ * (.entry-content h2 { margin-block-end: 25px !important }), og WP's flex-gap på gruppen der
+ * wrapper overskrift+uddrag (is-layout-flex, gap sat pr. blok-instans). Hvis der ligger en
+ * manuel Spacer-blok mellem titel og uddrag i Indlægsskabelonen, fjern den, ellers lægges
+ * dens højde oveni de 16px. */
+.wp-block-post-template .wp-block-post-title {
+	margin-block-end: 0 !important;
+	margin-bottom: 0 !important;
+}
+.wp-block-post-template .is-layout-flex {
+	gap: 0 !important;
+}
+.wp-block-post-template .wp-block-post-excerpt {
+	margin-top: 16px !important;
+}
+.wp-block-post-template .wp-block-post-featured-image img {
+	display: block;
+	width: 100% !important;
+	aspect-ratio: 4 / 3 !important;
+	height: auto !important;
+	object-fit: cover !important;
+	/* Billedblokken kan sætte sin egen (som regel ensartede) border-radius via
+	 * Stil → Kant, hvilket giver et rundet hjørne foroven til højre, selvom kortet
+	 * ellers er klippet med sitets skarpe signatur-facon. Nulstil den her. */
+	border-radius: 0 !important;
+}
+/* Kategori-mærkat: lagt oven på billedet (øverst til venstre) i stedet for som
+ * almindelig tekst under billedet - outline-badge med sitets signatur-hjørnefacon,
+ * blot i mindre skala (6px i stedet for de 30px kort/knapper bruger). pointer-events:none
+ * gør den ikke-klikbar, så man ikke kan hoppe videre til kategori-arkivet fra kortet. */
+.wp-block-post-template .wp-block-post-terms {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 2;
+	display: inline-block;
+	padding: 0.4em 0.9em;
+	border: 1px solid #ffffff;
+	border-radius: 6px 0 6px 6px;
+	background: rgba(0, 0, 0, 0.15);
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	pointer-events: none;
+}
+.wp-block-post-template .wp-block-post-terms,
+.wp-block-post-template .wp-block-post-terms a {
+	color: #ffffff;
+	text-decoration: none;
+	cursor: default;
+}
+
+/* ---------- Indsigt-artikel: skabelon til de enkelte artikelsider (titel +
+ * udvalgt billede trækkes automatisk ind af skabelonen "Enkelt Indsigt" i
+ * Site Editor, brødtekst med fremhævet citat i højre spalte indsættes manuelt). */
+.ddv-indsigt-artikel-hero .ddv-intro-text {
+	margin-top: 0.75rem;
+	margin-bottom: 2.5rem;
+}
+/* Smallere indhold på Indsigt-artikler end sitets almindelige 1440px
+ * (.ddv-section.alignwide) - kun tekstsektionerne, IKKE det udvalgte billede
+ * (det ligger uden for .wp-block-post-content i skabelonen og rammes ikke
+ * her). Rammer .wp-block-post-content DIREKTE (Indhold-blokkens faste egen
+ * klasse - virker uanset om klassen ddv-indsigt-artikel-body sidder på den
+ * SELV eller på et barn af den), samt vores egne klasser overalt hvor de
+ * måtte optræde - IKKE med en ">"-barn-selector, som tidligere fejlede når
+ * klassen sad et andet sted i markup'et end antaget. Flere selectorer, ingen
+ * antagelser om nøjagtig struktur = virker under alle omstændigheder. */
+body.single-indsigt .wp-block-post-content,
+body .ddv-indsigt-artikel-hero,
+body .ddv-indsigt-artikel-body {
+	max-width: 1200px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+/* Klassen tilføjes på Udvalgt billede-blokken i selve skabelonen (Site
+ * Editor → Skabeloner → Enkelt Indsigt → marker blokken → Avanceret →
+ * Ekstra CSS-klasse(r)): giver billedet sitets runde facon (fra
+ * .ddv-rounded-image) og et ensartet bredt/lavt format (16:9), uanset
+ * hvilket billedformat der uploades pr. artikel. */
+body .ddv-indsigt-artikel-image img {
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+/* Billedet skal "stikke ud" og være bredere end tekstspalten (1200px) -
+ * bruger sitets almindelige sektionsbredde (1440px), så det ikke er et nyt,
+ * tilfældigt tal, men genbruger en værdi der allerede findes andre steder. */
+body .ddv-indsigt-artikel-image {
+	max-width: 1440px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	/* Standard-afstanden ned til teksten under billedet er ca. 19px (temaets
+	 * globale 1.2rem margin-top på næste element). Sat til 40px her (margin
+	 * vinder over næste elements margin-top ved kollaps, da vores er størst),
+	 * så der samlet er ca. 20px MERE end før. */
+	margin-bottom: 40px !important;
+}
+/* Samme metode som ovenfor, men til Post-titel-blokken i skabelonen: sikrer
+ * centreret, stor overskrift uanset temaets egne standardværdier (som
+ * tidligere har vist sig at vinde over blok-editorens indstillinger). */
+body .ddv-indsigt-artikel-title {
+	text-align: center !important;
+	font-size: var(--wp--preset--font-size--x-large) !important;
+	max-width: 900px;
+	margin-top: 12px !important;
+	margin-bottom: 12px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	/* Ombryder til linjer af nogenlunde samme længde, i stedet for fx en lang
+	 * linje + et enkelt ord på linje to. Understøttes af alle moderne
+	 * browsere (Chrome/Edge/Safari) - falder blot tilbage til normal
+	 * ombrydning i de få der endnu ikke understøtter det. */
+	text-wrap: balance;
+}
+/* Samme metode til Uddrag-blokken (Post Excerpt) i skabelonen, brugt som
+ * underrubrik lige under titlen: centreret, dæmpet og med en fast
+ * maks-bredde så den ikke løber ud til hele sidens bredde. */
+body .ddv-indsigt-artikel-excerpt {
+	text-align: center !important;
+	max-width: 640px;
+	margin-top: 0.75rem !important;
+	margin-bottom: 2.5rem !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	opacity: 0.75;
+	text-wrap: balance;
+	/* Temaets egen linjeafstand for uddrag er 1.6 (unitless, dvs. 1.6 gange
+	 * skriftstørrelsen) - lægger 4px fast oveni via calc(), uanset hvad den
+	 * faktiske skriftstørrelse er. */
+	/*line-height: calc(1.6em + 4px) !important;*/
+}
+/* Fremhævet citat i højre spalte: større, fed og i sitets mørke petroleum-
+ * farve, med en tynd venstre-streg der markerer det som et citat. */
+body .ddv-indsigt-quote {
+	border-left: 3px solid var(--wp--preset--color--ddv-dark-teal);
+	padding-left: 1.25rem;
+	font-size: 1.375rem;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+/* ---------- Indsigt-artikel: luft over/under alle tekstelementer i
+ * brødteksten. Skoped via "body.single-indsigt" i stedet for (kun) vores
+ * egen klasse ddv-indsigt-artikel-body - den klasse skal tilføjes manuelt
+ * pr. artikel og er derfor let at glemme eller placere forkert, hvilket har
+ * givet problemer flere gange. body.single-indsigt sættes DERIMOD
+ * automatisk af WordPress selv (kernefunktionalitet, body_class()) på
+ * enhver Indsigt-artikel, uden nogen manuel handling - reglerne rammer
+ * derfor med sikkerhed alle artikler, uanset om vores egen klasse mangler.
+ * Kombineret med .wp-block-post-content (Indhold-blokkens egen faste
+ * klasse) er specificiteten desuden høj nok til at vinde over enhver
+ * realistisk tema-regel. Værdierne er sat højt med vilje, så ændringen er
+ * umulig at overse. */
+body.single-indsigt .wp-block-post-content p,
+body.single-indsigt .wp-block-post-content ul,
+body.single-indsigt .wp-block-post-content ol {
+	margin-top: 0 !important;
+	/* Temaets standard-linjeafstand i brødteksten virkede dobbelt så luftig
+	 * som normal læsevenlig tekst - sat ned til 1.5 (almindeligt, læsevenligt
+	 * niveau for brødtekst). Sig til med et konkret px-tal, hvis 1.5 stadig
+	 * er for meget/for lidt, så rammer vi det præcist. */
+	line-height: 1.5 !important;
+}
+/* margin-bottom sættes IKKE på <p> - temaets egen ".entry-content p"-regel
+ * (15px) styrer afstanden mellem afsnit, og skal ikke overskrives. Lister
+ * har ingen tilsvarende tema-regel, så de beholder deres egen bund-margin,
+ * ellers ville de mangle luft under sig helt. */
+body.single-indsigt .wp-block-post-content ul,
+body.single-indsigt .wp-block-post-content ol {
+	margin-bottom: 2.5rem !important;
+}
+/* Luft mellem selve listepunkterne, ikke kun før/efter hele listen. */
+body.single-indsigt .wp-block-post-content li + li {
+	margin-top: 0.75rem !important;
+}
+body.single-indsigt .wp-block-post-content h2 {
+	margin-top: 4.5rem !important;
+	margin-bottom: 1.5rem !important;
+}
+body.single-indsigt .wp-block-post-content h3 {
+	margin-top: 3rem !important;
+	margin-bottom: 1.25rem !important;
+}
+
+/* ---------- Fremhævet citat i løbende brødtekst (WordPress' indbyggede
+ * "Pullquote"-blok). Tilføj klassen "ddv-pullquote" på blokken via
+ * Avanceret → Ekstra CSS-klasse(r), så den kan genbruges på alle fremtidige
+ * artikler. Citatteksten skal bruge sitets Bai Jamjuree, kilde-linjen Plus
+ * Jakarta Sans - begge er allerede indlæst af temaet (bruges til
+ * overskrifter/brødtekst andre steder), så de er tilgængelige uden ekstra
+ * @font-face. var(...) forsøger først temaets egen preset-variabel (det
+ * navn, WordPress selv genererer ud fra skrifttypens slug i theme.json);
+ * lykkes det ikke (forkert gættet slug), falder den tilbage til at skrive
+ * fontnavnet direkte - fonten er stadig indlæst på siden, så den virker
+ * under alle omstændigheder. */
+body .ddv-pullquote {
+	margin-top: clamp(2.5rem, 5vw, 3.5rem) !important;
+	margin-bottom: clamp(2.5rem, 5vw, 3.5rem) !important;
+}
+/* Ingen linjer over/under citatet - kun tekst. */
+body .ddv-pullquote blockquote {
+	font-family: var(--wp--preset--font-family--bai-jamjuree, "Bai Jamjuree", sans-serif) !important;
+	font-style: normal !important;
+	font-weight: 700;
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	line-height: 1.4;
+	text-align: center;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	border: none !important;
+	padding: 1rem;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* Selve citatteksten: fed, Bai Jamjuree. */
+body .ddv-pullquote blockquote p {
+	font-family: var(--wp--preset--font-family--bai-jamjuree, "Bai Jamjuree", sans-serif) !important;
+	font-style: normal !important;
+	font-weight: 700 !important;
+	margin: 0 0 0.75rem;
+}
+/* Forfatter-linjen: almindelig (ikke fed) paragraf-tekst i Plus Jakarta
+ * Sans. To selectorer dækker begge de mulige måder, blokken kan være bygget
+ * på: enten det indbyggede "cite"-felt (Tilføj citation), ELLER en ekstra
+ * linje skrevet direkte ind som endnu et afsnit i citatet - sidste afsnit
+ * rammes KUN, hvis der er mere end ét afsnit, så en almindelig ét-afsnits-
+ * citat ikke ved et uheld bliver ramt. */
+body .ddv-pullquote blockquote cite,
+body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
+	display: block;
+	font-family: var(--wp--preset--font-family--plus-jakarta-sans, "Plus Jakarta Sans", sans-serif) !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	font-size: 1rem;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	opacity: 0.75;
+}
+
+/* ---------- Indsigt: kategori-filterknapper (se includes/indsigt-filter.php
+ * + assets/js/ddv-indsigt-filter.js). ---------- */
+.ddv-filter-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 0;
+	margin-bottom: 50px;
+}
+/* Query Loop-blokken har fået sat sin egen padding-top (~104px, et
+ * blok-niveau spacing-preset valgt i editorens Dimensions-panel) på den
+ * gruppe der wrapper selve kortene - det lægger sig oveni margin-bottom
+ * herover og gjorde den samlede afstand langt større end tilsigtet.
+ * Nulstillet her, kun for Query Loop'en der følger lige efter vores
+ * filterbar (rammer ikke evt. andre Query Loop-blokke på sitet). */
+.ddv-filter-bar + .wp-block-query > .wp-block-group {
+	padding-top: 0 !important;
+}
+.ddv-filter-btn {
+	font: inherit;
+	cursor: pointer;
+	padding: 0.5em 1.25em;
+	border-radius: var(--ddv-radius-pill);
+	border: 1px solid var(--wp--preset--color--ddv-dark-teal);
+	background: transparent;
+	color: var(--wp--preset--color--ddv-dark-teal);
+	font-size: 0.9rem;
+	transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.ddv-filter-btn:hover {
+	background: rgba(60, 89, 86, 0.1);
+	transform: translateY(-1px);
+}
+.ddv-filter-btn:active {
+	background: rgba(60, 89, 86, 0.2);
+	transform: translateY(0) scale(0.96);
+}
+.ddv-filter-btn.is-active {
+	background: var(--wp--preset--color--ddv-dark-teal);
+	color: var(--wp--preset--color--ddv-white);
+}
+.ddv-filter-btn.is-active:hover {
+	background: #33504c;
+}
+.ddv-filter-btn.is-active:active {
+	background: #2a423e;
+	transform: translateY(0) scale(0.96);
+}
+/* Kort skjult af filteret. */
+.ddv-filtered-out {
+	display: none !important;
+}
+
+/* ---------- WordPress' indbyggede Lyd-blok (core/audio): 50px luft til
+ * højre, så den ikke støder direkte op ad næste element ved siden af. */
+.wp-block-audio {
+	margin-right: 50px;
+}
+
+/* ---------- Scroll-indikator til hero-sektioner: outline-mus med en
+ * animeret streg der bevæger sig nedad. Indsættes LIVE via kortkoden
+ * [ddv_scroll_indicator] (se includes/scroll-indicator.php) - ét centralt
+ * element I selv sætter ind i hver hero, uden at skulle genopbygge/erstatte
+ * de rettelser der allerede er lavet direkte på siderne. Position: absolute,
+ * centreret og fastgjort til hero-bunden (ankeret er position:relative på
+ * selve hero-sektionen, sat i "6 heroer"-reglen ovenfor) - dermed er den
+ * IKKE afhængig af hvor i heroen kortkode-blokken indsættes, eller hvor
+ * knapperne/teksten ender. Farven arver som udgangspunkt currentColor fra
+ * den sektion den står i (fungerer automatisk i både lyse og mørke heroer),
+ * men kan overstyres via shortcodens "color"-attribut. ---------- */
+.ddv-scroll-indicator {
+	position: absolute;
+	left: 50%;
+	bottom: 28px;
+	transform: translateX(-50%);
+	color: currentColor;
+	opacity: 0.8;
+	pointer-events: none;
+	z-index: 2;
+}
+.ddv-scroll-indicator--white {
+	color: #ffffff;
+}
+.ddv-scroll-indicator--dark {
+	color: #24312c;
+}
+.ddv-scroll-indicator__svg {
+	overflow: visible;
+}
+.ddv-scroll-indicator__line {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: ddv-scroll-indicator-move 1.8s ease-in-out infinite;
+}
+@keyframes ddv-scroll-indicator-move {
+	0% { transform: translateY(0); opacity: 0; }
+	25% { opacity: 1; }
+	65% { opacity: 1; }
+	100% { transform: translateY(11px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.ddv-scroll-indicator__line {
+		animation: none;
+		opacity: 1;
+	}
+}
 
 /* ---------- Forside: "Seneste indsigter" (Query Loop, 4 kolonner) ----------
- * Genskaber udseendet fra indsigtssidens 3-kolonne-kort (billede + mørk
- * kategori-badge + overskrift + tekst), skaleret til 4 kolonner med mindre
- * skriftstørrelser. Præcis badge-/hover-CSS fra originalen kunne ikke hentes
- * (ingen "Rediger som HTML" på den sammensatte struktur), så denne er
- * genskabt ud fra skærmbillede - juster frit hvis noget afviger fra originalen.
- *
- * VIGTIGT: "ddv-indsigt-*" var allerede i brug som klassenavne på selve
- * indsigtssiden (samme navnekonvention som ddv-indsigt-filter.js), så de
- * første udgaver af disse regler lækkede ind over den rigtige side og
- * ødelagde dens egen styling/hover. Alt herunder er derfor omdøbt til
- * "ddv-forside-indsigt-*" OG bundet til .ddv-forside-indsigt-preview som
- * forælder, så det aldrig kan ramme noget uden for denne ene blok. */
+ * Bruger den SAMME Query Loop-opbygning som Indsigt-sidens 3-kolonne-liste
+ * (post-featured-image + gruppe med post-title/post-excerpt/post-terms) og
+ * arver derfor automatisk kort/badge/hover-udseendet fra de unscopede
+ * ".wp-block-post-template li.wp-block-post"-regler ovenfor - ingen
+ * duplikeret kort-CSS her. Kun det der reelt er specifikt for denne blok:
+ * mindre luft omkring sektionen, og lidt mindre skrift så teksten passer
+ * bedre i 4 (smallere) kolonner end originalens 3. Alt scopet under
+ * .ddv-forside-indsigt-preview som forælder, så det aldrig kan påvirke
+ * Indsigt-sidens egen liste. */
 .ddv-forside-indsigt-preview {
 	padding-top: 1.5rem !important;
 	padding-bottom: 1.5rem !important;
@@ -542,85 +1236,130 @@ body {
 	margin-bottom: 2rem;
 	gap: 1.5rem;
 }
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-grid.wp-block-post-template {
-	column-gap: 1.5rem;
-	row-gap: 2rem;
+.ddv-forside-indsigt-preview .wp-block-post-title {
+	font-size: 1.05rem !important;
+	line-height: 1.3 !important;
 }
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-card {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-media {
-	position: relative;
-	overflow: hidden;
-	border-radius: var(--ddv-radius-card);
-	aspect-ratio: 4 / 3;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-image {
-	margin: 0;
-	height: 100%;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-	transition: transform 0.35s ease;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-card:hover .ddv-forside-indsigt-image img {
-	transform: scale(1.06);
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-badge {
-	position: absolute;
-	top: 0.85rem;
-	left: 0.85rem;
-	background: rgba(36, 49, 44, 0.85);
-	color: #ffffff;
-	font-size: 0.65rem;
-	font-weight: 700;
-	letter-spacing: 0.05em;
-	text-transform: uppercase;
-	padding: 0.4em 0.75em;
-	border-radius: var(--ddv-radius-pill);
-	border: 1px solid rgba(255,255,255,0.35);
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-badge a {
-	color: inherit;
-	text-decoration: none;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-title {
-	font-size: 1.05rem;
-	line-height: 1.3;
-	margin: 0;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-title a {
-	color: var(--wp--preset--color--ddv-dark-teal, #243c39);
-	text-decoration: none;
-}
-.ddv-forside-indsigt-preview .ddv-forside-indsigt-excerpt {
-	font-size: 0.85rem;
-	line-height: 1.5;
-	color: rgba(36, 49, 44, 0.75);
-	margin: 0;
-}
-@media (max-width: 960px) {
-	.ddv-forside-indsigt-preview .ddv-forside-indsigt-grid.wp-block-post-template {
-		grid-template-columns: repeat(2, 1fr) !important;
-	}
-}
-@media (max-width: 480px) {
-	.ddv-forside-indsigt-preview .ddv-forside-indsigt-grid.wp-block-post-template {
-		grid-template-columns: 1fr !important;
-	}
+.ddv-forside-indsigt-preview .wp-block-post-excerpt {
+	font-size: 0.85rem !important;
+	line-height: 1.5 !important;
 }
 
-/* ---------- Mobil-navigation (hovedmenuens fuldskærms-overlay): ensartet
- * stregfarve mellem menupunkter. Temaets egne stylesheets sætter to let
- * forskellige grå-nuancer alt efter om punktet har en undermenu eller ej
- * (#e1e1e1 vs. #e7e7e7) – ensret til én farve, uanset hvilken regel der
- * ellers ville vinde. ---------- */
-.wp-block-navigation-item {
+/* ====================================================================
+ * Mobilmenu (header-navigationen, hele sitet - IKKE kun landingssiderne).
+ * ddv-landing.css indlæses globalt, så disse regler virker overalt.
+ *
+ * VIGTIGT: ".wp-block-navigation__responsive-container-content" er den
+ * SAMME markup temaet bruger på både desktop (vist inline i baren) og
+ * mobil (vist som fuldskærms-dialog) - ikke to forskellige elementer.
+ * Alt herunder er derfor scopet bag ".is-menu-open" (klassen WP's
+ * Interactivity API selv sætter på ".wp-block-navigation__responsive-
+ * container", når mobilmenuen rent faktisk er åbnet), så intet af det
+ * slår igennem på skrivebordsvisningen.
+ *
+ * Denne runde holder sig bevidst til selve menupunkterne, stregen,
+ * vandret scroll, søgefeltets position og hamburgerens lag - IKKE
+ * luk-knappens udseende/klik-areal eller logo-størrelsen, som tidligere
+ * forsøg viste sig at kunne kollidere med Ivory Search-pluginets egen
+ * JS-animation. ==================================================== */
+
+/* --- Alle topniveau-punkter (Medlemskab, Netværk, DDV Arrangementer,
+ * Faglig viden, DDV analysen m.fl.) i samme størrelse, med ca. 15%
+ * mindre padding end den oprindelige 12px. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	display: block !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	font-size: 20px !important;
+	font-weight: 700 !important;
+}
+
+/* --- Stregen mellem menupunkter: temaet sætter to lidt forskellige
+ * grå-nuancer afhængigt af om punktet har en undermenu eller ej
+ * (#e1e1e1 vs. #e7e7e7) - ensret til én farve. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
 	border-top-color: #e7e7e7 !important;
 }
-.ddv-intro-text--center { margin-left: auto; margin-right: auto; }
+
+/* --- Undermenu-punkterne (Priser, Bliv medlem, Dine oplysninger): mindre
+ * størrelse, kompakt luft top/bund, let indrykket så de tydeligt hører
+ * sammen under "Medlemskab". --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+	padding-left: 6px !important;
+	margin-bottom: 0 !important;
+	/* Skillelinjen under gruppen er ikke en <hr>, men en border-bottom
+	 * sat direkte på selve undermenu-containeren via en regel med 4
+	 * klasser i en @media (width <= 1111px) (fundet via DevTools) - vores
+	 * klasse gentages 3x for garanteret at vinde specificitets-kampen. */
+	border-bottom: none !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container > .wp-block-navigation-item {
+	margin: 0 !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	display: block !important;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+}
+
+/* --- Ikon-punkterne (optimering.nu, Podcast, Mit DDV): ikon og tekst på
+ * linje med ensartet mellemrum. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.optimering > .wp-block-navigation-item__content,
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.podcast > .wp-block-navigation-item__content,
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item.my-ddv > .wp-block-navigation-item__content {
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+}
+
+/* --- "Bliv medlem"-knappen: luft ned til listen ovenover, og mere
+ * padding i siderne. --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-buttons {
+	margin-top: 24px !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-buttons .wp-block-button__link {
+	padding-left: 32px !important;
+	padding-right: 32px !important;
+}
+
+/* --- Forhindrer at hele menuen kan trækkes/scrolles sidelæns med touch,
+ * mens den er åben. Sat KUN på selve indholds-listen (ikke på dialogen
+ * som helhed) - "overflow-y:auto" sat eksplicit for at garantere lodret
+ * scroll stadig virker (sætter man overflow-x uden at røre overflow-y,
+ * bliver overflow-y automatisk "auto" i stedet for "visible", hvilket
+ * tidligere skabte en utilsigtet klippe-kontekst andre steder). --- */
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+	max-width: 100vw !important;
+	touch-action: pan-y !important;
+}
+
+/* --- Søgefunktionen i headeren flyttes mod venstre (tættere på logoet),
+ * så den ikke ligger så tæt på/overlapper hamburger-knappen. Kun
+ * layout/margin - rører ikke søgeformularens egen bredde/animation. --- */
+@media (max-width: 599px) {
+	.header-top-nav .wp-block-column:has(.is-search-form) {
+		margin-right: auto !important;
+	}
+	/* --- FUNDET VIA DEVTOOLS: det er ikke vores kolonne, men selve
+	 * ".is-search-form" (temaets egen markup) der er den brede, klikbare
+	 * boks (252x36px) - temaet har allerede givet DEN z-index:999999 og
+	 * et lille højreskub (left:10px). Sænker dens lag under hamburgerens,
+	 * og fjerner højreskubbet - rører hverken bredde, overflow eller
+	 * position:relative i sig selv, så pluginets egen åbn/luk-animation
+	 * (som tidligere gik i konflikt med bredde-ændringer) er helt urørt. */
+	.is-search-form {
+		z-index: 1 !important;
+		left: 0 !important;
+	}
+	/* --- Hamburger-knappen skal altid ligge øverst i lag, uanset hvad
+	 * der ellers måtte overlappe den. Kun z-index - ingen position- eller
+	 * display-ændring, som tidligere viste sig at ødelægge temaets egen
+	 * skjul/vis-mekanisme for knappen. --- */
+	.wp-block-navigation__responsive-container-open {
+		z-index: 999999 !important;
+	}
+}
