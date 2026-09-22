@@ -103,6 +103,30 @@ body {
 	padding-top: 50px !important;
 	padding-bottom: 50px !important;
 }
+/* Headeren ligger fast/sticky oven på indholdet (gennemsigtig baggrund) -
+ * de 50px padding herover er KUN internt åndehul i selve hero-boksen og
+ * rykker ikke boksen væk fra under headeren. Alle 5 heroer (Forside-heroen
+ * har sin egen tilsvarende regel, se ".ddv-hero-forside-wrap" nedenfor) får
+ * derfor samme margin-top-værdi udenpå boksen som Forsiden allerede har.
+ * Mindre værdi på mobil, hvor headeren kun fylder én række (logo + burger)
+ * i stedet for to (logo/ikoner + menu). */
+.ddv-analysen-hero-bg.ddv-section,
+.ddv-barometer-hero-bg.ddv-section,
+.ddv-kursuskatalog-hero-bg.ddv-section,
+.ddv-kursus-hero-bg.ddv-section,
+.ddv-indsigt-hero-bg.ddv-section {
+	margin-top: 140px !important;
+}
+@media (max-width: 782px) {
+	.ddv-analysen-hero-bg.ddv-section,
+	.ddv-barometer-hero-bg.ddv-section,
+	.ddv-hero-forside-wrap.ddv-section,
+	.ddv-kursuskatalog-hero-bg.ddv-section,
+	.ddv-kursus-hero-bg.ddv-section,
+	.ddv-indsigt-hero-bg.ddv-section {
+		margin-top: 90px !important;
+	}
+}
 /* Samme 5 heroer (Barometer data-side har allerede sin egen 660px
  * min-height + centreret indhold, se ".ddv-barometer-hero-bg" nedenfor, og
  * er bevidst udeladt her): mindst 550px høj, og selve sektionen er
