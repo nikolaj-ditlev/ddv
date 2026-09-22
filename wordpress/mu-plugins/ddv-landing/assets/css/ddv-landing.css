@@ -165,12 +165,13 @@ body .ddv-kursus-hero-bg .wp-block-column {
  * - Mellemrum boks→kort-kolonne: 37px. */
 .ddv-hero-forside-wrap {
 	background-color: transparent !important;
-	/* WordPress' automatiske mellemrum mellem blokke (--wp--style--block-gap)
-	 * sættes normalt på ALLE blokke undtagen den første i deres forælder -
-	 * heroen er første blok på siden og fik derfor ingen luft foroven, mens
-	 * alle sektionerne under den (som ikke er "første") fik den automatisk.
-	 * Tilføjet eksplicit her, så heroen matcher den samme luft som resten. */
-	margin-top: var(--wp--style--block-gap, 1.2rem) !important;
+	/* Headeren ligger fast/sticky oven på indholdet (gennemsigtig baggrund -
+	 * hero-farverne skinner igennem den) - det almindelige blok-mellemrum
+	 * (~19px) var alt for lille til at rydde en to-rækket header (logo/ikoner
+	 * + menu), så heroens eyebrow-pille blev delvist skjult bag den. Sat til
+	 * en fast værdi der matcher headerens synlige højde i stedet - juster
+	 * tallet hvis headeren reelt er højere/lavere end antaget her. */
+	margin-top: 140px !important;
 	/* Figma: boks (1069px) + mellemrum (37px) + kort-kolonne (330px) = 1436px,
 	 * dvs. den skal fylde stort set hele den 1440px brede wrapper uden ekstra
 	 * indramning - .ddv-section's egen sidepadding (clamp 1.25rem-3rem) gjorde
