@@ -163,6 +163,14 @@
 		flex-basis: 100% !important;
 		max-width: 100% !important;
 	}
+	/* margin-top:auto presser på desktop knap-rækken ned mod bunden af den
+	   faste 784px-boks (med vilje). På mobil er boksen kun min-height:480px,
+	   så "auto" spænder i stedet et stort tomt hul ud mellem brødtekst og
+	   knapper, hver gang indholdet er kortere end de 480px. Nulstil til
+	   normal afstand her. */
+	.ddv-hero-forside-cta-row {
+		margin-top: 1.75rem !important;
+	}
 }
 
 /* ---------- Eyebrow / pill label ---------- */
