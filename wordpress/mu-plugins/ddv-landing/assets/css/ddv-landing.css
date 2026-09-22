@@ -1134,11 +1134,23 @@ body .ddv-info-box {
 	background: var(--wp--preset--color--ddv-tan);
 	border-radius: var(--ddv-radius-card);
 	padding: 1.5rem 1.75rem;
+	box-sizing: border-box;
 	margin-top: 2rem !important;
 	margin-bottom: 2rem !important;
 	color: var(--wp--preset--color--ddv-dark-teal, #243c39);
 	font-size: 0.95rem;
 	line-height: 1.6;
+	/* Et Paragraph-element arver automatisk artiklens smallere læsebredde
+	 * (WP's egen "is-layout-constrained > *"-regel), men en Group-blok fylder
+	 * som udgangspunkt hele sin container - og hvis Group'en har fået
+	 * "fuld"/"bred" bredde sat i editoren (alignfull/alignwide), bryder den
+	 * helt ud af artiklen via WP's egen negative-margin-teknik. Låst her til
+	 * samme bredde som artikel-teksten (.wp-block-post-content), uanset
+	 * hvilket blok-element klassen sidder på. */
+	max-width: 1200px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	width: auto !important;
 }
 /* Sidste (eller eneste) info-boks i en artikel skal ikke efterlade dobbelt
  * luft, hvis temaets egen ".entry-content p"-margin lægger sig oveni. */
