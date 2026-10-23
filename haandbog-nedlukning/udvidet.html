@@ -69,7 +69,7 @@
   .header { border-bottom: 1px solid var(--line); background: var(--white); }
   .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
   .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo span { font-size: 14px; line-height: 1.1; font-weight: 500; }
+  .logo img { height: auto; max-width: 100%; }
   .header__contact { display: flex; gap: 24px; font-size: 13px; color: var(--muted); }
   .header__contact a { text-decoration: none; }
   .header__contact a:hover { color: var(--red); }
@@ -199,11 +199,7 @@
 <header class="header">
   <div class="wrap">
     <a class="logo" href="https://www.mmf.dk" aria-label="Maskinmestrenes Forening – forside">
-      <!-- Placeholder-mærke: udskift med det officielle logo (SVG) -->
-      <svg width="34" height="24" viewBox="0 0 34 24" aria-hidden="true">
-        <path d="M0 24 L6 2 Q7 0 9 1 L17 12 L25 1 Q27 0 28 2 L34 24 H27 L24 12 L17 21 L10 12 L7 24 Z" fill="#d6094d"/>
-      </svg>
-      <span>Maskinmestrenes<br>Forening</span>
+      <img src="mmf-logo.svg" alt="Maskinmestrenes Forening" width="206" height="34">
     </a>
     <div class="header__contact">
       <a href="tel:+4533364920">+45 3336 4920</a>
@@ -339,10 +335,7 @@
 <footer class="footer">
   <div class="wrap">
     <a class="logo" href="https://www.mmf.dk">
-      <svg width="28" height="20" viewBox="0 0 34 24" aria-hidden="true">
-        <path d="M0 24 L6 2 Q7 0 9 1 L17 12 L25 1 Q27 0 28 2 L34 24 H27 L24 12 L17 21 L10 12 L7 24 Z" fill="#d6094d"/>
-      </svg>
-      <span style="color: var(--ink);">Maskinmestrenes<br>Forening</span>
+      <img src="mmf-logo.svg" alt="Maskinmestrenes Forening" width="170" height="28">
     </a>
     <div>© 2026 Maskinmestrenes Forening · <a href="https://www.mmf.dk">Persondata &amp; cookiepolitik</a></div>
   </div>
