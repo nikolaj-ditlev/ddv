@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Håndbogen er lukket | Maskinmestrenes Forening</title>
+<meta name="description" content="Den digitale Håndbog for Maskinmestre er lukket. Læs hvad det betyder for dig, og hvor du fremover finder viden og rådgivning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d6094d;
+    --red-dark: #b0073f;
+    --navy: #1e3a5c;
+    --navy-dark: #12263d;
+    --ink: #14181f;
+    --muted: #5b6573;
+    --line: #e3e6ea;
+    --grey: #f3f4f6;
+    --white: #fff;
+    --radius: 14px;
+    --wrap: 1040px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font: 400 16px/1.6 Inter, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+  }
+  a { color: inherit; }
+  img, svg { display: block; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+  h1, h2, h3, .btn {
+    font-family: Saira, Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  h1 { font-size: clamp(30px, 4.6vw, 48px); line-height: 1.08; margin: 0 0 18px; }
+  h2 { font-size: clamp(22px, 2.6vw, 28px); line-height: 1.15; margin: 0 0 24px; }
+  h3 { font-size: 16px; line-height: 1.3; margin: 0 0 8px; }
+  p { margin: 0 0 14px; }
+
+  /* Signatur-form: afrundede hjørner på alle undtagen øverst til højre */
+  .shape { border-radius: var(--radius) 0 var(--radius) var(--radius); }
+
+  /* Knapper */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px;
+    font-size: 13px; font-weight: 700;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1.5px solid transparent;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .btn::after { content: "→"; font-family: Inter, sans-serif; }
+  .btn--red { background: var(--red); color: var(--white); }
+  .btn--red:hover { background: var(--red-dark); }
+  .btn--ghost { border-color: rgba(255,255,255,.55); color: var(--white); }
+  .btn--ghost:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+  .btn--outline { border-color: var(--red); color: var(--red); }
+  .btn--outline:hover { background: var(--red); color: var(--white); }
+
+  /* Header */
+  .header { border-bottom: 1px solid var(--line); background: var(--white); }
+  .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo span { font-size: 14px; line-height: 1.1; font-weight: 500; }
+  .header__contact { display: flex; gap: 24px; font-size: 13px; color: var(--muted); }
+  .header__contact a { text-decoration: none; }
+  .header__contact a:hover { color: var(--red); }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    color: var(--white);
+    background:
+      linear-gradient(180deg, rgba(18,38,61,.35) 0%, rgba(18,38,61,.92) 100%),
+      radial-gradient(1200px 500px at 70% 0%, #2c5079 0%, transparent 60%),
+      var(--navy-dark);
+    border-radius: 0 0 28px 28px;
+    overflow: hidden;
+  }
+  /* Diskret teknisk linjemønster i stedet for foto – udskift evt. med billede */
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+  }
+  .hero .wrap { position: relative; padding-top: 120px; padding-bottom: 72px; }
+  .hero__tag {
+    display: inline-block; margin-bottom: 22px;
+    padding: 6px 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    background: var(--red); border-radius: 4px;
+  }
+  .hero p { max-width: 560px; font-size: 17px; color: rgba(255,255,255,.85); }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+  /* Nøgledato */
+  .date-strip { background: var(--grey); padding: 56px 0; }
+  .date-strip .wrap { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
+  .date-big {
+    font-family: Saira, sans-serif; font-weight: 700;
+    font-size: clamp(40px, 6vw, 64px); line-height: 1; color: var(--navy);
+  }
+  .date-big small { display: block; margin-top: 8px; font: 500 13px/1.3 Inter, sans-serif; color: var(--muted); text-transform: none; letter-spacing: 0; }
+  .date-strip p { margin: 0; max-width: 560px; color: var(--muted); }
+
+  /* Sektioner */
+  .section { padding: 80px 0; }
+
+  /* Tidslinje */
+  .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
+  .timeline li { padding: 28px; border: 1px solid var(--line); background: var(--white); }
+  .timeline li.is-now { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .timeline__when {
+    display: block; margin-bottom: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--red);
+  }
+  .timeline li.is-now .timeline__when { color: #ff8fb2; }
+  .timeline p { margin: 0; font-size: 15px; color: var(--muted); }
+  .timeline li.is-now p { color: rgba(255,255,255,.8); }
+
+  /* Hvor finder jeg indholdet */
+  .links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .link-card {
+    display: flex; align-items: center; gap: 18px;
+    padding: 18px 20px 18px 18px;
+    background: var(--white); border: 1px solid var(--line);
+    text-decoration: none;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .link-card:hover { border-color: var(--navy); box-shadow: 0 8px 24px rgba(18,38,61,.08); transform: translateY(-2px); }
+  .link-card__icon {
+    flex: none; width: 48px; height: 48px;
+    display: grid; place-items: center;
+    background: var(--navy); color: var(--white);
+    border-radius: 10px 0 10px 10px;
+  }
+  .link-card__text { flex: 1; }
+  .link-card__text strong { display: block; font-weight: 600; }
+  .link-card__text span { font-size: 14px; color: var(--muted); }
+  .link-card__arrow { color: var(--navy); font-size: 18px; }
+
+  /* FAQ */
+  .faq { max-width: 760px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq details:first-of-type { border-top: 1px solid var(--line); }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; gap: 20px;
+    padding: 20px 0; font-weight: 600;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-size: 22px; line-height: 1; color: var(--red); transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { color: var(--muted); padding-bottom: 8px; }
+
+  /* Kontakt-boks */
+  .contact {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center;
+    padding: 48px; background: var(--navy); color: var(--white);
+  }
+  .contact p { color: rgba(255,255,255,.8); margin: 0; }
+  .contact h2 { margin-bottom: 12px; }
+  .contact ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
+  .contact ul a { text-decoration: none; }
+  .contact ul a:hover { text-decoration: underline; }
+  .contact ul small { display: block; color: rgba(255,255,255,.6); font-size: 13px; }
+
+  /* Footer */
+  .footer { background: var(--grey); padding: 48px 0 32px; font-size: 13px; color: var(--muted); }
+  .footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: flex-end; }
+
+  @media (max-width: 820px) {
+    .header__contact { display: none; }
+    .hero .wrap { padding-top: 72px; padding-bottom: 56px; }
+    .date-strip .wrap { grid-template-columns: 1fr; gap: 16px; }
+    .timeline, .links, .contact { grid-template-columns: 1fr; }
+    .contact { padding: 32px 24px; }
+    .section { padding: 56px 0; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .hero__actions .btn { width: 100%; justify-content: space-between; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="https://www.mmf.dk" aria-label="Maskinmestrenes Forening – forside">
+      <!-- Placeholder-mærke: udskift med det officielle logo (SVG) -->
+      <svg width="34" height="24" viewBox="0 0 34 24" aria-hidden="true">
+        <path d="M0 24 L6 2 Q7 0 9 1 L17 12 L25 1 Q27 0 28 2 L34 24 H27 L24 12 L17 21 L10 12 L7 24 Z" fill="#d6094d"/>
+      </svg>
+      <span>Maskinmestrenes<br>Forening</span>
+    </a>
+    <div class="header__contact">
+      <a href="tel:+4533364920">+45 3336 4920</a>
+      <a href="mailto:mf@mmf.dk">mf@mmf.dk</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero__tag">Vigtig information</span>
+      <h1>Den digitale håndbog<br>for maskinmestre er lukket</h1>
+      <p>Efter mange år som opslagsværk for maskinmestre er det digitale site for Håndbogen for Maskinmestre lukket. Sitet og dets indhold kan ikke længere tilgås. Her kan du læse, hvad det betyder for dig – og hvor du fremover finder viden, regler og rådgivning.</p>
+      <div class="hero__actions">
+        <a class="btn btn--red" href="#hvor-finder-jeg">Find indholdet her</a>
+        <a class="btn btn--ghost" href="#faq">Spørgsmål og svar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="date-strip">
+    <div class="wrap">
+      <div class="date-big">[DD.MM.ÅÅÅÅ]<small>Håndbogen blev lukket</small></div>
+      <p>Det er ikke længere muligt at logge ind, søge i indholdet eller hente data fra håndbogen. Har du brug for viden, du tidligere fandt i håndbogen, er du velkommen til at kontakte os – så hjælper vi dig videre.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Hvad betyder det for dig?</h2>
+      <ul class="timeline">
+        <li class="shape is-now">
+          <span class="timeline__when">Adgang</span>
+          <h3>Indholdet er ikke tilgængeligt</h3>
+          <p>Sitet er taget ned, og det er ikke muligt at logge ind, søge eller hente data.</p>
+        </li>
+        <li class="shape">
+          <span class="timeline__when">Medlemskab</span>
+          <h3>Dit medlemskab er uændret</h3>
+          <p>Lukningen påvirker ikke dit medlemskab af Maskinmestrenes Forening eller dine medlemsfordele.</p>
+        </li>
+        <li class="shape">
+          <span class="timeline__when">Hjælp</span>
+          <h3>Vi hjælper dig stadig</h3>
+          <p>Har du brug for faglig viden eller rådgivning, kan du altid kontakte sekretariatet.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="hvor-finder-jeg" style="background: var(--grey);">
+    <div class="wrap">
+      <h2>Hvor finder jeg viden fremover?</h2>
+      <div class="links">
+        <a class="link-card shape" href="https://www.mmf.dk">
+          <span class="link-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg>
+          </span>
+          <span class="link-card__text"><strong>Faglig viden på mmf.dk</strong><span>Artikler, guides og nyheder om faget</span></span>
+          <span class="link-card__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="link-card shape" href="https://www.mmf.dk">
+          <span class="link-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/></svg>
+          </span>
+          <span class="link-card__text"><strong>Juridisk rådgivning</strong><span>Spørgsmål om regler, ansvar og ansættelse</span></span>
+          <span class="link-card__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="link-card shape" href="https://www.mmf.dk">
+          <span class="link-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6.5a2.5 2.5 0 0 0 0 5H20"/></svg>
+          </span>
+          <span class="link-card__text"><strong>Maskinmesteren</strong><span>Læs seneste udgaver af fagbladet</span></span>
+          <span class="link-card__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="link-card shape" href="https://www.mmf.dk">
+          <span class="link-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          </span>
+          <span class="link-card__text"><strong>Personlig sparring</strong><span>Tal med en rådgiver om din konkrete sag</span></span>
+          <span class="link-card__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <h2>Spørgsmål og svar</h2>
+      <div class="faq">
+        <details open>
+          <summary>Hvorfor er håndbogen lukket?</summary>
+          <p>[Kort begrundelse – fx at indholdet samles på mmf.dk, så medlemmer har ét sted at finde opdateret viden og rådgivning.]</p>
+        </details>
+        <details>
+          <summary>Kan jeg stadig få adgang til indholdet eller mine data?</summary>
+          <p>Nej. Sitet er lukket, og hverken indhold eller data kan tilgås eller hentes. Har du brug for viden fra et bestemt område, kan du kontakte sekretariatet, som hjælper dig videre.</p>
+        </details>
+        <details>
+          <summary>Hvad er der sket med mit login og mine personoplysninger?</summary>
+          <p>Dit login til håndbogen er deaktiveret. Personoplysninger knyttet til sitet håndteres i overensstemmelse med foreningens privatlivspolitik. Dit medlemskab af Maskinmestrenes Forening påvirkes ikke.</p>
+        </details>
+        <details>
+          <summary>Udkommer håndbogen i en anden form?</summary>
+          <p>[Uddyb om der findes en trykt udgave, PDF eller lignende – eller slet spørgsmålet.]</p>
+        </details>
+        <details>
+          <summary>Hvem kan jeg kontakte, hvis jeg har spørgsmål?</summary>
+          <p>Du er altid velkommen til at kontakte sekretariatet på telefon eller mail – se kontaktoplysningerne nedenfor.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="contact shape">
+        <div>
+          <h2>Har du spørgsmål?</h2>
+          <p>Kontakt os direkte, så hjælper vi dig videre til den viden eller rådgivning, du har brug for.</p>
+        </div>
+        <ul>
+          <li><a href="tel:+4533364920">+45 3336 4920</a><small>Man–tors 09.00–15.00 · Fre 09.00–13.00</small></li>
+          <li><a href="mailto:mf@mmf.dk">mf@mmf.dk</a></li>
+          <li style="margin-top: 8px;"><a class="btn btn--red" href="https://www.mmf.dk">Gå til mmf.dk</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <a class="logo" href="https://www.mmf.dk">
+      <svg width="28" height="20" viewBox="0 0 34 24" aria-hidden="true">
+        <path d="M0 24 L6 2 Q7 0 9 1 L17 12 L25 1 Q27 0 28 2 L34 24 H27 L24 12 L17 21 L10 12 L7 24 Z" fill="#d6094d"/>
+      </svg>
+      <span style="color: var(--ink);">Maskinmestrenes<br>Forening</span>
+    </a>
+    <div>© 2026 Maskinmestrenes Forening · <a href="https://www.mmf.dk">Persondata &amp; cookiepolitik</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
