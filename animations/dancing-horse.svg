@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-labelledby="title">
+  <title id="title">Glad hest der smiler, blinker og danser</title>
+  <style>
+    :root { --coat:#E8A86B; --coat-dark:#CF8A4E; --snout:#F7DDBB; --mane:#6B3E26; --hoof:#4A2E20; --cheek:#F59E9E; --ink:#3A2418; }
+    .coat{fill:var(--coat)} .coat-dark{fill:var(--coat-dark)} .snout{fill:var(--snout)}
+    .mane{fill:var(--mane)} .hoof{fill:var(--hoof)} .cheek{fill:var(--cheek);opacity:.55} .ink{fill:var(--ink)}
+
+    .pivot{transform-box:fill-box}
+    #dancer{transform-origin:200px 350px;animation:sway 1.6s ease-in-out infinite}
+    #bounce{animation:bounce .8s ease-in-out infinite}
+    #head{transform-origin:200px 215px;animation:nod 1.6s ease-in-out infinite}
+    .ear-l{transform-origin:50% 100%;animation:ear 1.6s ease-in-out infinite}
+    .ear-r{transform-origin:50% 100%;animation:ear 1.6s ease-in-out infinite reverse}
+    #tuft{transform-origin:50% 100%;animation:tuft .8s ease-in-out infinite}
+    #tail{transform-origin:0% 0%;animation:tail .8s ease-in-out infinite}
+    .eye{transform-origin:50% 50%;animation:blink 4s infinite}
+    .leg-a{animation:step .8s ease-in-out infinite}
+    .leg-b{animation:step .8s ease-in-out infinite;animation-delay:-.4s}
+    #shadow{transform-origin:200px 352px;animation:shadow .8s ease-in-out infinite}
+    .note{opacity:0;animation:note 3.2s ease-out infinite}
+    .n2{animation-delay:1.1s} .n3{animation-delay:2.2s}
+
+    @keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes nod{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-6deg)}}
+    @keyframes ear{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(10deg)}}
+    @keyframes tuft{0%,100%{transform:rotate(-6deg) scaleY(1)}50%{transform:rotate(6deg) scaleY(1.08)}}
+    @keyframes tail{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+    @keyframes blink{0%,44%,48%,90%,94%,100%{transform:scaleY(1)}46%,92%{transform:scaleY(.08)}}
+    @keyframes step{0%,100%{transform:translateY(0)}25%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+    @keyframes shadow{0%,100%{transform:scaleX(1);opacity:.18}50%{transform:scaleX(.88);opacity:.12}}
+    @keyframes note{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(14px,-90px) rotate(18deg)}}
+
+    @media (prefers-reduced-motion: reduce){
+      #dancer,#bounce,#head,.ear-l,.ear-r,#tuft,#tail,.leg-a,.leg-b,#shadow,.note{animation:none}
+      .note{opacity:.8}
+    }
+  </style>
+
+  <!-- baggrund -->
+  <circle cx="200" cy="200" r="190" fill="#FFF3E3"/>
+  <ellipse id="shadow" cx="200" cy="352" rx="90" ry="12" fill="#3A2418" opacity=".18"/>
+
+  <!-- musiknoder -->
+  <g fill="#E58B8B">
+    <g transform="translate(70 170)"><g class="note n1"><path d="M10 0v26a7 6 0 1 1-4-5V4l16-4v20a7 6 0 1 1-4-5V5z"/></g></g>
+    <g transform="translate(318 150)"><g class="note n2"><path d="M8 0v24a7 6 0 1 1-4-5V0h4c6 2 10 6 10 12-3-4-6-5-10-5z"/></g></g>
+    <g transform="translate(58 255)"><g class="note n3"><path d="M10 0v26a7 6 0 1 1-4-5V4l16-4v20a7 6 0 1 1-4-5V5z"/></g></g>
+  </g>
+
+  <g id="dancer">
+    <!-- bagben (bagved kroppen) -->
+    <g class="leg-b"><rect class="coat-dark" x="152" y="270" width="24" height="70" rx="12"/><rect class="hoof" x="150" y="328" width="28" height="16" rx="7"/></g>
+    <g class="leg-a"><rect class="coat-dark" x="224" y="270" width="24" height="70" rx="12"/><rect class="hoof" x="222" y="328" width="28" height="16" rx="7"/></g>
+
+    <g id="bounce">
+      <!-- hale -->
+      <g transform="translate(262 238)"><g id="tail" class="pivot">
+        <path class="mane" d="M0 0c26-6 46 10 44 38-2 22-14 36-30 40 10-14 12-28 4-40C12 30 6 22 0 20z"/>
+      </g></g>
+
+      <!-- krop -->
+      <ellipse class="coat" cx="200" cy="255" rx="72" ry="52"/>
+      <ellipse class="snout" cx="200" cy="268" rx="38" ry="28" opacity=".55"/>
+
+      <!-- forben -->
+      <g class="leg-a"><rect class="coat" x="168" y="280" width="26" height="64" rx="13"/><rect class="hoof" x="166" y="332" width="30" height="16" rx="7"/></g>
+      <g class="leg-b"><rect class="coat" x="206" y="280" width="26" height="64" rx="13"/><rect class="hoof" x="204" y="332" width="30" height="16" rx="7"/></g>
+
+      <!-- hoved -->
+      <g id="head">
+        <!-- hals -->
+        <rect class="coat" x="178" y="170" width="44" height="60" rx="20"/>
+
+        <!-- ører -->
+        <g class="ear-l pivot"><path class="coat" d="M150 108 140 62c18 6 30 22 34 40z"/><path class="cheek" d="M152 100 147 74c8 5 14 14 17 24z"/></g>
+        <g class="ear-r pivot"><path class="coat" d="M250 108 260 62c-18 6-30 22-34 40z"/><path class="cheek" d="M248 100 253 74c-8 5-14 14-17 24z"/></g>
+
+        <!-- hovedform -->
+        <ellipse class="coat" cx="200" cy="140" rx="64" ry="56"/>
+
+        <!-- manke-tot -->
+        <g id="tuft" class="pivot">
+          <path class="mane" d="M168 102c-6-22 10-38 30-36-10 6-12 14-10 20 6-14 22-22 38-14-12 2-18 10-18 18 8-6 20-6 26 2-14 0-24 6-28 14-14-6-26-6-38-4z"/>
+        </g>
+
+        <!-- mule -->
+        <ellipse class="snout" cx="200" cy="178" rx="48" ry="34"/>
+        <ellipse class="ink" cx="182" cy="172" rx="5" ry="7" opacity=".75"/>
+        <ellipse class="ink" cx="218" cy="172" rx="5" ry="7" opacity=".75"/>
+
+        <!-- smil -->
+        <path d="M180 190q20 18 40 0" fill="none" stroke="#3A2418" stroke-width="4" stroke-linecap="round"/>
+        <path d="M193 197q7 9 14 0z" fill="#F07E86"/>
+
+        <!-- kinder -->
+        <ellipse class="cheek" cx="146" cy="160" rx="13" ry="8"/>
+        <ellipse class="cheek" cx="254" cy="160" rx="13" ry="8"/>
+
+        <!-- øjne -->
+        <g class="eye pivot">
+          <ellipse class="ink" cx="172" cy="134" rx="10" ry="13"/>
+          <circle cx="175" cy="129" r="4" fill="#fff"/><circle cx="169" cy="139" r="1.8" fill="#fff"/>
+        </g>
+        <g class="eye pivot">
+          <ellipse class="ink" cx="228" cy="134" rx="10" ry="13"/>
+          <circle cx="231" cy="129" r="4" fill="#fff"/><circle cx="225" cy="139" r="1.8" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
