@@ -1424,14 +1424,6 @@ body .ddv-pullquote blockquote p:last-of-type:not(:only-of-type) {
 	gap: 10px !important;
 }
 
-/* --- "Vedligehold"-menupunktet (tidligere optimering.nu): skift lyspære-
- * ikonet ud med et bogikon. Temaet sætter ikonet via et ::before på
- * .wp-block-navigation-item__label - vi rammer KUN den specifikke selector,
- * ikke nogen global CSS-variabel (det gav problemer sidst). --- */
-.wp-block-navigation-item.optimering .wp-block-navigation-item__label::before {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A3130' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z'/%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3C/svg%3E") !important;
-}
-
 /* --- "Bliv medlem"-knappen: luft ned til listen ovenover, og mere
  * padding i siderne. --- */
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-buttons {
